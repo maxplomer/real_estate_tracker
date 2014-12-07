@@ -1,1 +1,9 @@
-<h1>Properties</h1>
+<div class="property-page"><h1>Properties</h1>
+
+<% @properties.each do |property| %>
+  
+  <%= link_to "#{property.address} #{property.floor} Floor", property_url(property), class: "btn btn-default" %><br>
+  <img class="img-properties-index" src="<%= property.picture_url %>" > <br><br><br>
+
+<% end %>
+</div>
