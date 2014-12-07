@@ -2,7 +2,11 @@ RealEstateTracker::Application.routes.draw do
   root :to => "properties#index"
 
   get 'dashboard/show'
-  get 'showing_or_contact/add'
+  get 'showing_or_contact/new'
+  get 'showing_or_contact/create_showing'
+  get 'showing_or_contact/create_contact'
+
+
   resources :users, :only => [:create, :new, :edit, :update]
   resource :session, :only => [:create, :destroy, :new]
   resources :properties, :only => [:create, :new, :show, :index]

@@ -40,7 +40,7 @@
       <li>▶ <%= link_to "Dashboard", local_dashboard_url %></li>
       <% add_property_url = (signed_in? ? new_property_url : new_session_url) %>
       <li>▶ <%= link_to "Add Property", add_property_url %></li>
-      <% add_showing_or_contact_url = (signed_in? ? showing_or_contact_add_url : new_session_url) %>
+      <% add_showing_or_contact_url = (signed_in? ? showing_or_contact_new_url : new_session_url) %>
       <li>▶ <%= link_to "Add Showing or Contact", add_showing_or_contact_url %></li>
     </ul>
   </div>

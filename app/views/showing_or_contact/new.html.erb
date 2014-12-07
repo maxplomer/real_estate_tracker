@@ -1,0 +1,52 @@
+<center><h1>Add Contact</h1>
+
+
+<% @properties.each do |property| %>
+  <%= property.address %> <%= property.floor %> Floor <br>
+<% end %>
+
+<form class="add-property-form" action="<%= showing_or_contact_create_contact_url %>" method="post">
+
+  <input
+    name="authenticity_token"
+    type="hidden"
+    value="<%= form_authenticity_token %>">
+
+  <input
+    id="contact_name"
+    name="contact[name]"
+    type="text"
+    placeholder="Name">
+  <br>
+
+  <input
+    id="contact_title"
+    name="contact[title]"
+    type="text"
+    placeholder="Title">
+  <br>
+
+  <input
+    id="contact_email"
+    name="contact[email]"
+    type="text"
+    placeholder="Email">
+  <br>
+
+  <input
+    id="contact_company"
+    name="contact[company]"
+    type="text"
+    placeholder="Company">
+  <br>
+
+  <input
+    id="contact_phone"
+    name="contact[phone]"
+    type="text"
+    placeholder="Phone">
+  <br>
+
+
+  <input type="submit" value="Submit New Contact" class="btn btn-default">
+</form></center>
