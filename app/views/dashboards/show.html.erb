@@ -26,7 +26,7 @@
 <center><table class="table table-striped table-bordered table-condensed dashboard-table">
   <tr>
     <td class="left-column"><b>Income:</b></td>
-    <td class="right-column">
+    <td class="right-column">&#36;
       <input
         id="property_income"
         name="property[income]"
@@ -36,7 +36,7 @@
   </tr>
   <tr>
     <td><b>Expenses:</b></td>
-    <td class="right-column">
+    <td class="right-column">&#36;
       <input
         id="property_expenses"
         name="property[expenses]"
@@ -46,30 +46,30 @@
   </tr>
   <tr>
     <td><b>Net Operating Income (NOI):</b></td>
-    <td class="right-column"></td>
+    <td class="right-column">&#36; <%= @property.net_operating_income %></td>
   </tr>
   <tr>
     <td><b>Debt Service:</b></td>
-    <td class="right-column"></td>
+    <td class="right-column">&#36; <%= @property.debt_service %></td>
   </tr>
   <tr>
     <td><b>Cash Flow:</b></td>
-    <td class="right-column"></td>
+    <td class="right-column">&#36; <%= @property.cash_flow %></td>
   </tr>
   <tr>
     <td><b>Cash on Cash:</b></td>
-    <td class="right-column"></td>
+    <td class="right-column"><%= @property.cash_on_cash %> &#37;</td>
   </tr>
   <tr>
     <td><b>Capitalization Rate (Cap Rate):</b></td>
-    <td class="right-column"></td>
+    <td class="right-column"><%= @property.cap_rate %> &#37;</td>
   </tr>
 </table>
 
 <table class="table table-striped table-bordered table-condensed dashboard-table">
   <tr>
     <td class="left-column"><b>Purchase Price:</b></td>
-    <td class="right-column">
+    <td class="right-column">&#36;
       <input
         id="property_purchase_price"
         name="property[purchase_price]"
@@ -84,12 +84,12 @@
         id="property_interest_rate"
         name="property[interest_rate]"
         type="number"
-        value="<%= @property.interest_rate %>">
+        value="<%= @property.interest_rate %>">&#37;
     </td>
   </tr>
   <tr>
     <td><b>Loan Amount:</b></td>
-    <td class="right-column">
+    <td class="right-column">&#36;
       <input
         id="property_loan_amount"
         name="property[loan_amount]"
@@ -99,10 +99,11 @@
   </tr>
   <tr>
     <td><b>Down Payment:</b></td>
-    <td class="right-column"></td>
+    <td class="right-column">&#36; <%= @property.down_payment %></td>
   </tr>
 </table>
 
+<a href="/equations.txt">Link to equations</a><br><br>
 
   <input type="submit" value="Update" class="btn btn-default">
 </form>

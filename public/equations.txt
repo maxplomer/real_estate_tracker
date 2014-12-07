@@ -1,0 +1,23 @@
+Inputs:
+
+income, expenses, purchase price, interest rate, loan amount
+
+
+Outputs:
+
+net operating income, debt service, cash flow, cash on cash, capitalization rate, down payment
+
+
+Equations:
+
+(net operating income) = (income) - (expenses)
+
+(debt service) = (interest rate) / 100 * (loan amount)
+
+(cash flow) = (net operating income) - (debt service)
+
+(cash on cash) = (cash flow) / (down payment)
+
+(capitalization rate) = (net operating income) / (purchase price)
+
+(down payment) = (purchase price) - (loan amount)
