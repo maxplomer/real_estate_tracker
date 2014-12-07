@@ -134,19 +134,22 @@
 <%= line_chart(new_data, discrete: true) %>
 
 <br>
+<div class="group">
+  <% @property.showings.each do |showing| %>
+    <div class="showing"> 
+      <%= showing.name %><br>
+      <%= showing.title %><br>
+      <%= showing.email %><br>
+      <%= showing.company %><br>
+      <%= showing.phone %><br>
+    </div>
+  <% end %>
+</div>
 
-<% @property.showings.each do |showing| %>
-
-  <%= showing.name %><br>
-  <%= showing.title %><br>
-  <%= showing.email %><br>
-  <%= showing.company %><br>
-  <%= showing.phone %><br><br>
-
-<% end %>
 
 </div>
 
+<br><br><br><br>
 
 
 

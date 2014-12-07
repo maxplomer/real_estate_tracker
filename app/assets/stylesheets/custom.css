@@ -1,3 +1,14 @@
+.showing {
+  margin: 5px;
+  width: 240px;
+  height: 150px;
+  border: 1px solid red;
+  text-align: center;
+  float: left;
+  padding-top: 20px;
+  border-radius: 15px;
+}
+
 #property_interest_rate {
   width: 60px;
 }
@@ -19,8 +30,8 @@
 }
 
 .img-properties-index {
-  width:25%;
-  height:auto;
+  width: 25%;
+  height: auto;
 }
 
 .space-info {
