@@ -17,11 +17,38 @@ sample property 2
 
 2nd
 
-56
+40
+
+20000
+
+http://www.combustionhelp.com/cre/352parkavesouth_fplan.png
+
+http://www.combustionhelp.com/cre/352parkavesouth.png
+
+
+sample property 3 
+80 West End
+
+Penthouse
+
+70
 
 12500
 
-http://www.combustionhelp.com/cre/462broadway5th_fplan.png
+http://www.combustionhelp.com/cre/80westend_fplan.png
 
-http://www.combustionhelp.com/cre/462broadway5th.png
+http://www.combustionhelp.com/cre/80westend.png
 
+
+sample property 4 
+450 West 33rd
+
+12th
+
+60
+
+110955
+
+http://www.combustionhelp.com/cre/450west33rd_fplan.png
+
+http://www.combustionhelp.com/cre/450west33rd.png
