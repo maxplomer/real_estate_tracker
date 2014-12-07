@@ -6,7 +6,7 @@ RealEstateTracker::Application.routes.draw do
   post 'showing_or_contact/create_showing'
   post 'showing_or_contact/create_contact'
 
-
+  resources :dashboards, :only => [:show]
   resources :users, :only => [:create, :new, :edit, :update]
   resource :session, :only => [:create, :destroy, :new]
   resources :properties, :only => [:create, :new, :show, :index]

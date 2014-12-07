@@ -1,0 +1,17 @@
+<div class="property-page">
+<center><h2><a href="<%= property_url(@property) %>"><%= @property.address %> <%= @property.floor %> Floor</a></h2>
+
+<% @properties.each do |property| %>
+  <% if property == @property %>
+    <% class_str = "btn btn-default current-button" %>
+  <% else %>
+    <% class_str = "btn btn-default" %>
+  <% end %> 
+  <%= link_to "#{property.address} #{property.floor} Floor", dashboard_url(property), class: class_str %>
+<% end %></center>
+
+
+</div>
+
+
+
