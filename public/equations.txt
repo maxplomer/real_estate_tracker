@@ -18,6 +18,6 @@ Equations:
 
 (cash on cash) = (cash flow) / (down payment)
 
-(capitalization rate) = (net operating income) / (purchase price)
+(capitalization rate) = (net operating income) / (purchase price) * 100
 
 (down payment) = (purchase price) - (loan amount)

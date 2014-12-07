@@ -46,7 +46,7 @@ class Property < ActiveRecord::Base
 
   def cap_rate
     return "n/a" if self.purchase_price == 0
-    truncate(net_operating_income / self.purchase_price)
+    truncate(net_operating_income / self.purchase_price * 100)
   end
 
   def down_payment
