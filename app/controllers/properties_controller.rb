@@ -1,6 +1,42 @@
 class PropertiesController < ApplicationController
   def index
-    #@properties = Properties.all
+    @properties = Property.all
     render :index
   end
+
+  def create
+    @property = Property.new(property_params)  #can later try to refill the form if error occured
+
+    if @property.save
+      redirect_to property_url(@property)
+    else
+      flash.now[:errors] = @property.errors.full_messages
+      render :new
+    end
+  end
+
+  def new
+    @property = Property.new
+    render :new
+  end
+
+  def show
+    @property = Property.find(params[:id])
+    render :show
+  end
+
+  private
+
+  def property_params
+    params.require(:property).permit(
+      :user_id, 
+      :address, 
+      :floor, 
+      :asking_rent, 
+      :rsf_available, 
+      :floorplan_url, 
+      :picture_url
+    )
+  end
+
 end

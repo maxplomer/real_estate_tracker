@@ -7,6 +7,15 @@ class User < ActiveRecord::Base
 
   before_validation :ensure_session_token
 
+  has_many(
+    :properties,
+    class_name: "Property",
+    foreign_key: :user_id,
+    dependent: :destroy
+  )
+
+
+
 
 
   ### auth ###

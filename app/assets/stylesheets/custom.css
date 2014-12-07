@@ -1,3 +1,8 @@
+.add-property-form input {
+  width: 400px;
+}
+
+
 .sign-in {
   text-align: center;
   padding-top: 100px;

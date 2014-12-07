@@ -1,0 +1,58 @@
+<center><h1>Add Property</h1>
+
+<form class="add-property-form" action="<%= properties_url %>" method="post">
+
+  <input
+    name="authenticity_token"
+    type="hidden"
+    value="<%= form_authenticity_token %>">
+
+  <input
+    name="property[user_id]"
+    type="hidden"
+    value="<%= current_user.id %>">
+
+  <input
+    id="property_address"
+    name="property[address]"
+    type="text"
+    placeholder="Address, ex: 462 Broadway">
+  <br>
+
+  <input
+    id="property_floor"
+    name="property[floor]"
+    type="text"
+    placeholder="Floor, ex: 1st/2nd/3rd/4th">
+  <br>
+
+  <input
+    id="property_asking_rent"
+    name="property[asking_rent]"
+    type="number"
+    placeholder="Asking Rent in unit $ Psf/yr, ex: 56">
+  <br>
+
+  <input
+    id="property_rsf_available"
+    name="property[rsf_available]"
+    type="number"
+    placeholder="Asking Rent in unit SF, ex: 12500">
+  <br>
+
+  <input
+    id="property_floorplan_url"
+    name="property[floorplan_url]"
+    type="text"
+    placeholder="Floor Plan Picture URL">
+  <br>
+
+  <input
+    id="property_picture_url"
+    name="property[picture_url]"
+    type="text"
+    placeholder="Main Picture URL">
+  <br>
+
+  <input type="submit" value="Submit New Property" class="btn btn-default">
+</form></center>
