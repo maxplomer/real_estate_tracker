@@ -1,3 +1,20 @@
+.create-contact {
+  float: left;
+  width: 250px;
+
+}
+
+.create-showing {
+  float: right;
+  width: 250px;
+
+}
+
+
+.add-contact-page {
+  width: 600px;
+  margin: auto;
+}
 .showing {
   margin: 5px;
   width: 240px;
@@ -55,10 +72,7 @@
 
 }
 
-.add-contact-page {
-  width: 350px;
-  margin: auto;
-}
+
 
 .add-property-input {
   width: 400px;
