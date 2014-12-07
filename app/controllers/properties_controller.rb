@@ -23,7 +23,7 @@ class PropertiesController < ApplicationController
   def show
     @property = Property.find(params[:id])
 
-    if !signed_in? || property.user != current_user 
+    if !signed_in? || @property.user != current_user 
       View.create(property_id: @property.id)
     end
 

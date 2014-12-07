@@ -19,6 +19,26 @@
 
 <%= line_chart(new_data, discrete: true) %>
 
+<h3>Showings</h3>
+
+<% data = @property.showings.group_by_day(:created_at).count %>
+<% new_data = {} %>
+<% data.each { |key, value| new_data[key.to_date] = value } %>
+
+<%= line_chart(new_data, discrete: true) %>
+
+<br>
+
+<% @property.showings.each do |showing| %>
+
+  <%= showing.name %><br>
+  <%= showing.title %><br>
+  <%= showing.email %><br>
+  <%= showing.company %><br>
+  <%= showing.phone %><br><br>
+
+<% end %>
+
 </div>
 
 
