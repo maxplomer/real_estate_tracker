@@ -10,8 +10,18 @@
   <%= link_to "#{property.address} #{property.floor} Floor", dashboard_url(property), class: class_str %>
 <% end %></center>
 
+<h3>Page Views</h3>
+(does not count logged in user on own properties)
+
+<% data = @property.views.group_by_day(:created_at).count %>
+<% new_data = {} %>
+<% data.each { |key, value| new_data[key.to_date] = value } %>
+
+<%= line_chart(new_data, discrete: true) %>
 
 </div>
+
+
 
 
 

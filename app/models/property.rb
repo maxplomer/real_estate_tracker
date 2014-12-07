@@ -19,5 +19,12 @@ class Property < ActiveRecord::Base
     foreign_key: :property_id,
     dependent: :destroy
   )
+
+  has_many(
+    :views,
+    class_name: "View",
+    foreign_key: :property_id,
+    dependent: :destroy
+  )
 	
 end
