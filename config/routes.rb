@@ -3,8 +3,8 @@ RealEstateTracker::Application.routes.draw do
 
   get 'dashboard/show'
   get 'showing_or_contact/new'
-  get 'showing_or_contact/create_showing'
-  get 'showing_or_contact/create_contact'
+  post 'showing_or_contact/create_showing'
+  post 'showing_or_contact/create_contact'
 
 
   resources :users, :only => [:create, :new, :edit, :update]

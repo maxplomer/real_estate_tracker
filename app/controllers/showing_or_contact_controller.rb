@@ -31,6 +31,7 @@ class ShowingOrContactController < ApplicationController
 
   def contact_params
     params.require(:contact).permit(
+      :property_id,
       :name, 
       :title, 
       :email, 
@@ -40,7 +41,8 @@ class ShowingOrContactController < ApplicationController
   end
 
   def showing_params
-    params.require(:contact).permit(
+    params.require(:showing).permit(
+      :property_id,
       :name, 
       :title, 
       :email, 
