@@ -1,1 +1,41 @@
-<h1>Properties</h1>
+<center><h2><%= @property.address %> <%= @property.floor %> Floor </h2></center>
+<hr>
+<div class="property-page group">
+<div class="leftbar">
+
+<img src="<%= @property.floorplan_url %>"><br><br>CONTACTS<br><br><br>
+
+<% @property.contacts.each do |contact| %>
+
+  <%= contact.name %><br>
+  <%= contact.title %><br>
+  <%= contact.email %><br>
+  <%= contact.company %><br>
+  <%= contact.phone %><br><br>
+
+<% end %>  
+
+</div>
+<div class="rightbar">
+<img src="<%= @property.picture_url %>"><br><br>SPACE INFORMATION<br><br><br>
+
+<center><table class="table table-condensed space-info">
+  <tr>
+    <td>Floor</td>
+    <td><%= @property.floor %> Floor</td>
+  <tr>
+  <tr>
+    <td>Asking Rent</td>
+    <td>&#36;<%= @property.asking_rent %> Psf/yr</td>
+  <tr>
+  <tr>
+    <td>RSF Available</td>
+    <td><%= @property.rsf_available %> SF</td>
+  <tr>
+
+
+</table></center>
+
+
+</div>
+</div>

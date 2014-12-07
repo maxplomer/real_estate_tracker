@@ -1,5 +1,26 @@
+.space-info {
+  width: 500px;
+
+}
+
+.rightbar {
+  text-align: center;
+}
+
+.leftbar {
+  width: 300px;
+  float: left;
+
+}
+
+.property-page {
+  width: 1000px;
+  margin: auto;
+
+}
+
 .add-contact-page {
-  width:250px;
+  width: 250px;
   margin: auto;
 }
 
