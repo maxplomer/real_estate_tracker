@@ -9,7 +9,7 @@ RealEstateTracker::Application.routes.draw do
   resources :dashboards, :only => [:show]
   resources :users, :only => [:create, :new, :edit, :update]
   resource :session, :only => [:create, :destroy, :new]
-  resources :properties, :only => [:create, :new, :show, :index]
+  resources :properties, :only => [:create, :new, :show, :index, :update]
 end
 
 

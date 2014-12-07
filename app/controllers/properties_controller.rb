@@ -1,4 +1,22 @@
 class PropertiesController < ApplicationController
+
+  def update
+    @property = Property.find(params[:id])
+
+    @property.income = params[:property][:income]
+    @property.expenses = params[:property][:expenses]
+    @property.purchase_price = params[:property][:purchase_price]
+    @property.interest_rate = params[:property][:interest_rate]
+    @property.loan_amount = params[:property][:loan_amount]
+
+    if @property.save
+      redirect_to dashboard_url(@property)
+    else
+      flash[:errors] = @property.errors.full_messages
+      redirect_to dashboard_url(@property)
+    end
+  end
+
   def index
     @properties = Property.all
     render :index
