@@ -1,0 +1,62 @@
+
+
+
+
+
+
+
+
+$ rails _4.0.2_ new codechef_clone --database postgresql
+
+config/database.yml by adding username: maxplomer and host: localhost
+
+When using postgresql, you should also run the command
+
+$ rake db:create:all
+
+add .DS_Store and .localized to .gitignore
+
+in the terminal before trying to run migrations
+
+# Add to Gemfile
+group :development do
+  gem 'better_errors'
+  gem 'binding_of_caller'
+  gem 'pry-rails'
+  gem 'quiet_assets'
+end
+
+
+$ rails generate model User
+$ rails generate controller users
+$ rails generate controller sessions
+
+
+
+have this is production.rb
+config.assets.precompile += %w( custom.css)
+
+
+add this to gemfile
+gem 'rails_12factor', group: :production
+
+
+git push heroku master
+
+
+
+heroku rake db:migrate
+
+
+
+To drop the database, if you are using SHARED_DATABASE_URL:
+
+heroku pg:reset DATABASE
+
+To recreate the database with nothing in it:
+
+heroku run rake db:migrate
+
+
+
+heroku run rails c  <-- will need to set user to admin

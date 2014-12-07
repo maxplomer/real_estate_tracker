@@ -1,0 +1,52 @@
+.sign-in {
+  text-align: center;
+  padding-top: 100px;
+}
+
+.body-application-layout {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.group:after {
+  content: "";
+  clear: both;
+  display: block;
+}
+
+.menu-left {
+  float: left;  
+}
+
+.menu-right {
+  float: right; 
+  padding-right: 25px;
+}
+
+.menu-right ul {
+  padding-top: 15px;
+  text-align: right;
+}
+
+.menu-right p {
+  padding-top: 25px;
+}
+
+ul {
+  list-style: none;
+}
+
+.menu-bottom-center {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.menu-bottom-center li {
+  display: inline;
+  margin-left: 25px;
+  margin-right: 25px;
+  font-size: 18px;
+}
+
+
+

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>RealEstateTracker.co</title>
+
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
+    <%= stylesheet_link_tag 'http://yandex.st/bootstrap/3.1.1/css/bootstrap.min.css' %>
+    <%= javascript_include_tag 'http://yandex.st/bootstrap/3.1.1/js/bootstrap.min.js' %>
+    <%= stylesheet_link_tag 'custom.css' %>
+
+    <%= csrf_meta_tags %>
+    
+  </head>
+<body class="sign-in">
+
+
+
+
+<h1><font color="orange">Real</font><font color="blue" face="verdana"><i>Estate</i></font><font color="green">Tracker</font><font color="orange">.</font></font><font color="red"><i>co</i></font></h1>
+
+<%= link_to "Sign In", new_session_url %> |
+<%= link_to "Sign up", new_user_url %>
+
+<br><br>
+
+<form action="<%= users_url %>" method="post">
+  <input
+     name="authenticity_token"
+     type="hidden"
+     value="<%= form_authenticity_token %>">
+
+  <input
+     id="user_name"
+     name="user[name]"
+     type="text"
+     placeholder="Name">
+  <br>
+
+  <input
+     id="user_email"
+     name="user[email]"
+     type="text"
+     placeholder="Email">
+  <br>
+
+  <input
+     id="user_password"
+     name="user[password]"
+     type="password"
+     placeholder="Password">
+  <br><br>
+
+  <input type="submit" value="Sign up" class="btn btn-default">
+</form>
+
+
+<!-- Errors - start -->
+<% if flash[:errors] %>
+<br><br><hr>
+<h3>Please fix the following errors:</h3>
+<ul>
+  <% flash[:errors].each do |error| %>
+  <li><%= error %></li>
+  <% end %>
+</ul>
+<br>
+
+<% end %>
+<!-- Errors - end -->
+
+
+</body>
+</html>

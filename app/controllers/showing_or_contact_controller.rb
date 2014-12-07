@@ -1,0 +1,2 @@
+class ShowingOrContactController < ApplicationController
+end

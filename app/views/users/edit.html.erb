@@ -1,0 +1,35 @@
+<body  class="sign-in">
+
+
+<form action="<%= user_url(@user) %>" method="post">
+  <input
+     name="_method"
+     type="hidden"
+     value="put">
+  <input
+     name="authenticity_token"
+     type="hidden"
+     value="<%= form_authenticity_token %>">
+
+  <label for="user_name">Name</label>
+  <br>
+  <input
+     id="user_name"
+     name="user[name]"
+     type="text"
+     value="<%= @user.name %>">
+  <br><br>
+
+  <label for="user_email">Email</label>
+  <br>
+  <input
+     id="user_email"
+     name="user[email]"
+     type="text"
+     value="<%= @user.email %>">
+  <br><br>
+
+  <input type="submit" value="Save" class="btn btn-default">
+</form>
+
+</body>
