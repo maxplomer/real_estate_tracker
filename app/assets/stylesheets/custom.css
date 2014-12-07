@@ -56,12 +56,18 @@
 }
 
 .add-contact-page {
-  width: 250px;
+  width: 350px;
   margin: auto;
 }
 
-.add-property-form input {
+.add-property-input {
   width: 400px;
+  height: 40px;
+}
+
+.add-showing-input {
+  width: 220px;
+  height: 40px;
 }
 
 

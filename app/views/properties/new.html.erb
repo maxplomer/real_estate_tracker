@@ -1,6 +1,6 @@
 <center><h1>Add Property</h1>
 
-<form class="add-property-form" action="<%= properties_url %>" method="post">
+<form action="<%= properties_url %>" method="post">
 
   <input
     name="authenticity_token"
@@ -13,6 +13,7 @@
     value="<%= current_user.id %>">
 
   <input
+    class="add-property-input"
     id="property_address"
     name="property[address]"
     type="text"
@@ -20,6 +21,7 @@
   <br>
 
   <input
+    class="add-property-input"
     id="property_floor"
     name="property[floor]"
     type="text"
@@ -27,6 +29,7 @@
   <br>
 
   <input
+    class="add-property-input"
     id="property_asking_rent"
     name="property[asking_rent]"
     type="number"
@@ -34,6 +37,7 @@
   <br>
 
   <input
+    class="add-property-input"
     id="property_rsf_available"
     name="property[rsf_available]"
     type="number"
@@ -41,6 +45,7 @@
   <br>
 
   <input
+    class="add-property-input"
     id="property_floorplan_url"
     name="property[floorplan_url]"
     type="text"
@@ -48,11 +53,12 @@
   <br>
 
   <input
+    class="add-property-input"
     id="property_picture_url"
     name="property[picture_url]"
     type="text"
     placeholder="Main Picture URL">
-  <br>
+  <br><br>
 
   <input type="submit" value="Submit New Property" class="btn btn-default">
 </form></center>

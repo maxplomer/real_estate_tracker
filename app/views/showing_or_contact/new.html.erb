@@ -13,9 +13,10 @@
 <% @properties[1..-1].each do |property| %>
   <input type="radio" name="contact[property_id]" value="<%= property.id %>"> <%= property.address %> <%= property.floor %> Floor <br>
 <% end %>
-
+<br>
 
   <input
+    class="add-showing-input"
     id="contact_name"
     name="contact[name]"
     type="text"
@@ -23,6 +24,7 @@
   <br>
 
   <input
+    class="add-showing-input"
     id="contact_title"
     name="contact[title]"
     type="text"
@@ -30,6 +32,7 @@
   <br>
 
   <input
+    class="add-showing-input"
     id="contact_email"
     name="contact[email]"
     type="text"
@@ -37,6 +40,7 @@
   <br>
 
   <input
+    class="add-showing-input"
     id="contact_company"
     name="contact[company]"
     type="text"
@@ -44,11 +48,12 @@
   <br>
 
   <input
+    class="add-showing-input"
     id="contact_phone"
     name="contact[phone]"
     type="text"
     placeholder="Phone">
-  <br>
+  <br><br>
 
 
   <input type="submit" value="Submit New Contact" class="btn btn-default">
@@ -69,9 +74,10 @@
 <% @properties[1..-1].each do |property| %>
   <input type="radio" name="showing[property_id]" value="<%= property.id %>"> <%= property.address %> <%= property.floor %> Floor <br>
 <% end %>
-
+<br>
 
   <input
+    class="add-showing-input"
     id="showing_name"
     name="showing[name]"
     type="text"
@@ -79,6 +85,7 @@
   <br>
 
   <input
+    class="add-showing-input"
     id="showing_title"
     name="showing[title]"
     type="text"
@@ -86,6 +93,7 @@
   <br>
 
   <input
+    class="add-showing-input"
     id="showing_email"
     name="showing[email]"
     type="text"
@@ -93,6 +101,7 @@
   <br>
 
   <input
+    class="add-showing-input"
     id="showing_company"
     name="showing[company]"
     type="text"
@@ -100,11 +109,12 @@
   <br>
 
   <input
+    class="add-showing-input"
     id="showing_phone"
     name="showing[phone]"
     type="text"
     placeholder="Phone">
-  <br>
+  <br><br>
 
 
   <input type="submit" value="Submit New Showing" class="btn btn-default">
