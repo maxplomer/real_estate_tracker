@@ -10,6 +10,67 @@
   <%= link_to "#{property.address} #{property.floor} Floor", dashboard_url(property), class: class_str %>
 <% end %></center>
 
+<br><br>
+
+<center><table class="table table-striped table-bordered table-condensed dashboard-table">
+  <tr>
+    <td class="left-column"><b>Income:</b></td>
+    <td class="right-column"><%= @property.income %></td>
+  </tr>
+  <tr>
+    <td><b>Expenses:</b></td>
+    <td class="right-column"><%= @property.expenses %></td>
+  </tr>
+  <tr>
+    <td><b>Net Operating Income (NOI):</b></td>
+    <td class="right-column"></td>
+  </tr>
+  <tr>
+    <td><b>Debt Service:</b></td>
+    <td class="right-column"></td>
+  </tr>
+  <tr>
+    <td><b>Cash Flow:</b></td>
+    <td class="right-column"></td>
+  </tr>
+  <tr>
+    <td><b>Cash on Cash:</b></td>
+    <td class="right-column"></td>
+  </tr>
+  <tr>
+    <td><b>Capitalization Rate (Cap Rate):</b></td>
+    <td class="right-column"></td>
+  </tr>
+</table>
+
+<table class="table table-striped table-bordered table-condensed dashboard-table">
+  <tr>
+    <td class="left-column"><b>Purchase Price:</b></td>
+    <td class="right-column"><%= @property.purchase_price %></td>
+  </tr>
+  <tr>
+    <td><b>Interest Rate:</b></td>
+    <td class="right-column"><%= @property.interest_rate %></td>
+  </tr>
+  <tr>
+    <td><b>Loan Amount:</b></td>
+    <td class="right-column"><%= @property.loan_amount %></td>
+  </tr>
+  <tr>
+    <td><b>Down Payment:</b></td>
+    <td class="right-column"></td>
+  </tr>
+</table>
+
+Update
+
+</center>
+
+
+
+
+
+
 <h3>Page Views</h3>
 (does not count logged in user on own properties)
 

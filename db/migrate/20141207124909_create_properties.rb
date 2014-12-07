@@ -9,6 +9,13 @@ class CreateProperties < ActiveRecord::Migration
       t.string :floorplan_url, :null => false
       t.string :picture_url, :null => false
 
+      #values for analysis
+      t.float :income, :null => false
+      t.float :expenses, :null => false
+      t.float :purchase_price, :null => false
+      t.float :interest_rate, :null => false
+      t.float :loan_amount, :null => false
+
       t.timestamps
     end
   end

@@ -28,13 +28,18 @@ ActiveRecord::Schema.define(version: 20141207163330) do
   end
 
   create_table "properties", force: true do |t|
-    t.integer  "user_id",       null: false
-    t.string   "address",       null: false
-    t.string   "floor",         null: false
-    t.integer  "asking_rent",   null: false
-    t.integer  "rsf_available", null: false
-    t.string   "floorplan_url", null: false
-    t.string   "picture_url",   null: false
+    t.integer  "user_id",        null: false
+    t.string   "address",        null: false
+    t.string   "floor",          null: false
+    t.integer  "asking_rent",    null: false
+    t.integer  "rsf_available",  null: false
+    t.string   "floorplan_url",  null: false
+    t.string   "picture_url",    null: false
+    t.float    "income",         null: false
+    t.float    "expenses",       null: false
+    t.float    "purchase_price", null: false
+    t.float    "interest_rate",  null: false
+    t.float    "loan_amount",    null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

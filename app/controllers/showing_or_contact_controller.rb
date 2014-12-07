@@ -1,8 +1,12 @@
 class ShowingOrContactController < ApplicationController
 
   def new
-  	@properties = current_user.properties
-    render :new
+    if current_user.properties.length > 0
+  	  @properties = current_user.properties
+      render :new
+    else
+      redirect_to new_property_url
+    end
   end	
 
   def create_showing
