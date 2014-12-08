@@ -11,6 +11,16 @@ class UsersController < ApplicationController
 
     if @user.save
       sign_in(@user)
+      PositiveVsNegativeLeverage.create(
+        user_id: @user.id,
+        purchase_price: 1000000, 
+        cap_rate: 7.0, 
+        loan_amount: 700000, 
+        low_interest_rate: 6.0, 
+        high_interest_rate: 8.0, 
+        interest_only: true, 
+        amortization: 30
+      )
       redirect_to dashboard_show_url
     else
       flash.now[:errors] = @user.errors.full_messages

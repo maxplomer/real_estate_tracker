@@ -14,6 +14,12 @@ class User < ActiveRecord::Base
     dependent: :destroy
   )
 
+  has_one(
+    :pos_neg_leverage,
+    class_name: "PositiveVsNegativeLeverage",
+    foreign_key: :user_id,
+    dependent: :destroy
+  )
 
 
 

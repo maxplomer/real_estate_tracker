@@ -1,6 +1,7 @@
 RealEstateTracker::Application.routes.draw do
   root :to => "properties#index"
 
+  get 'pos_neg_leverage/show'
   get 'dashboard/show'
   get 'showing_or_contact/new'
   post 'showing_or_contact/create_showing'
