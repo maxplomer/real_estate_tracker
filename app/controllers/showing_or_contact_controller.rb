@@ -2,7 +2,7 @@ class ShowingOrContactController < ApplicationController
 
   def new
     if current_user.properties.length > 0
-  	  @properties = current_user.properties
+  	  @properties = current_user.properties.sort! { |a,b| b.id <=> a.id }
       render :new
     else
       redirect_to new_property_url
