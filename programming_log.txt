@@ -60,3 +60,7 @@ heroku run rake db:migrate
 
 
 heroku run rails c  <-- will need to set user to admin
+
+
+
+somtimes u need to restart your server after migration...try running "heroku restart"
