@@ -2,6 +2,8 @@
 
 <h1>Positive Vs Negative Leverage</h1>
 
+<div class="group">
+
 <form action="<%= pos_neg_leverage_update_url %>" method="post">
   <input
     name="_method"
@@ -12,12 +14,17 @@
     type="hidden"
     value="<%= form_authenticity_token %>">
 
+<div class="showing2">
+
   <label for="pos_neg_leverage_purchase_price">Purchase Price</label><br>
   &#36; <input
     id="pos_neg_leverage_purchase_price"
     name="pos_neg_leverage[purchase_price]"
     type="number"
     value="<%= @pos_neg_leverage.purchase_price %>"><br><br>
+
+</div>
+<div class="showing2">
 
   <label for="pos_neg_leverage_cap_rate">Cap Rate</label><br>
   <input
@@ -27,12 +34,18 @@
     step="0.01"
     value="<%= @pos_neg_leverage.cap_rate %>"> &#37;<br><br>
 
+</div>
+<div class="showing2">
+
   <label for="pos_neg_leverage_loan_amount">Loan Amount</label><br>
   &#36; <input
     id="pos_neg_leverage_loan_amount"
     name="pos_neg_leverage[loan_amount]"
     type="number"
     value="<%= @pos_neg_leverage.loan_amount %>"><br><br>
+
+</div>
+<div class="showing2">
 
   <label for="pos_neg_leverage_low_interest_rate">Low Interest Rate</label><br>
   <input
@@ -42,6 +55,9 @@
     step="0.01"
     value="<%= @pos_neg_leverage.low_interest_rate %>"> &#37;<br><br>
 
+</div>
+<div class="showing2">
+
   <label for="pos_neg_leverage_high_interest_rate">High Interest Rate</label><br>
   <input
     id="pos_neg_leverage_high_interest_rate"
@@ -50,12 +66,18 @@
     step="0.01"
     value="<%= @pos_neg_leverage.high_interest_rate %>"> &#37;<br><br>
 
+</div>
+<div class="showing2">
+
   <label for="pos_neg_leverage_interest_only">Interest Only</label><br>
   <input
     id="pos_neg_leverage_interest_only"
     name="pos_neg_leverage[interest_only]"
     type="text"
     value="<%= (@pos_neg_leverage.interest_only ? "Yes":"No") %>"><br><br>
+
+</div>
+<div class="showing2">
 
   <label for="pos_neg_leverage_amortization">Amortization</label><br>
   <input
@@ -64,9 +86,15 @@
     type="number"
     value="<%= @pos_neg_leverage.amortization %>"> yrs<br><br>
 
-  <input type="submit" value="Update" class="btn btn-default">
+</div>
+
+<div class="showing2">
+  <input type="submit" id="pos-neg-submit" value="Update" class="btn btn-default">
+</div>
 
 </form>
+
+</div>
 
 <br><br>
 
