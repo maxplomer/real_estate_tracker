@@ -1,23 +1,34 @@
 Inputs:
 
-income, expenses, purchase price, interest rate, loan amount
+income, expenses, purchase price, interest rate, loan amount, interest only, amortization
 
 
 Outputs:
 
-net operating income, debt service, cash flow, cash on cash, capitalization rate, down payment
+net operating income, debt service, cash flow, cash on cash, capitalization rate, down payment, debt service coverage ratio, loan to value
 
 
 Equations:
 
 (net operating income) = (income) - (expenses)
 
-(debt service) = (interest rate) / 100 * (loan amount)
+if (interest only) == Yes
+    (debt service) = (interest rate) / 100 * (loan amount)
+else
+    (debt service) = PMT[ (interest rate) / 100, (amortization), -(loan amount) ]
+end
 
 (cash flow) = (net operating income) - (debt service)
+
+(debt service coverage ratio) = (net operating income) / (debt service)
 
 (cash on cash) = (cash flow) / (down payment)
 
 (capitalization rate) = (net operating income) / (purchase price) * 100
 
+(loan to value) = (loan amount) / (purchase price) * 100
+
 (down payment) = (purchase price) - (loan amount)
+
+
+

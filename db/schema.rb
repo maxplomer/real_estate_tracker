@@ -40,6 +40,8 @@ ActiveRecord::Schema.define(version: 20141207163330) do
     t.float    "purchase_price", null: false
     t.float    "interest_rate",  null: false
     t.float    "loan_amount",    null: false
+    t.boolean  "interest_only",  null: false
+    t.integer  "amortization",   null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

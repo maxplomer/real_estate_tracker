@@ -15,6 +15,8 @@ class CreateProperties < ActiveRecord::Migration
       t.float :purchase_price, :null => false
       t.float :interest_rate, :null => false
       t.float :loan_amount, :null => false
+      t.boolean :interest_only, :null => false
+      t.integer :amortization, :null => false
 
       t.timestamps
     end

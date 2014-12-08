@@ -43,6 +43,14 @@
   width: 60px;
 }
 
+#property_amortization {
+  width: 60px;
+}
+
+#property_interest_only {
+  width: 60px;
+}
+
 .left-column {
   width: 220px;
 }

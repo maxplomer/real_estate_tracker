@@ -8,6 +8,8 @@ class PropertiesController < ApplicationController
     @property.purchase_price = params[:property][:purchase_price]
     @property.interest_rate = params[:property][:interest_rate]
     @property.loan_amount = params[:property][:loan_amount]
+    @property.interest_only = (params[:property][:interest_only].downcase == "yes")
+    @property.amortization = params[:property][:amortization]
 
     if @property.save
       redirect_to dashboard_url(@property)
@@ -30,6 +32,8 @@ class PropertiesController < ApplicationController
     @property.purchase_price = 0
     @property.interest_rate = 0
     @property.loan_amount = 0
+    @property.interest_only = true
+    @property.amortization = 0
 
     if @property.save
       redirect_to property_url(@property)
