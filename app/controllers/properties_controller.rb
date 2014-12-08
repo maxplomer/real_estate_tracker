@@ -20,7 +20,7 @@ class PropertiesController < ApplicationController
   end
 
   def index
-    @properties = Property.all
+    @properties = Property.all.sort! { |a,b| b.id <=> a.id }
     render :index
   end
 
