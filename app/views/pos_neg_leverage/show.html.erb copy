@@ -1,6 +1,6 @@
 <div class="pos-neg-lev">
 
-<h1>Positive vs. Negative Leverage</h1>
+<h1>Positive Vs Negative Leverage</h1>
 
 <div class="group">
 
@@ -96,49 +96,55 @@
 
 </div>
 
-</div>
-
-
-
-
 <br><br>
-<div class="diagram">
 
-<div class="top-box">
-  <div class="inner">Investment @ 7.0% Cap Rate</div>
-  <div class="investment-top">$1,000,000,000</div>
-</div>
-<div class="top-box">
-  <div class="inner4">Leveraged vs. Unleveraged Borrowing</div>
-  <div class="middle">Borrow <br>Nothing</div>
-  <div class="left">$70,000,000 @<br><font color="black">6.0%</font> Interest</div>
-  <div class="right">$70,000,000 @<br><font color="black">8.0%</font> Interest</div>
-</div>
-<div class="top-box">
-  <div class="inner">Net Operating <br>Income</div>
-  <div class="investment">$7,000,000</div>
-  <div class="left2">$7,000,000</div>
-  <div class="right2">$7,000,000</div>
-</div>
-<div class="top-box">
-  <div class="inner">Debt Service <br>Payments</div>
-  <div class="investment">$0</div>
-  <div class="left2">$7,000,000</div>
-  <div class="right2">$7,000,000</div>
-</div>
-<div class="top-box">
-  <div class="inner2">Cash Flow</div>
-  <div class="investment2">$70,000</div>
-  <div class="left3">$7,000,000</div>
-  <div class="right3">$7,000,000</div>
-</div>
-<div class="top-box">
-  <div class="inner3">Cash on Cash <br>(Income Earned / <br>Initial Investment)</div>
-  <div class="middle-result">7.00%</div>
-  <div class="left-result">7.00%</div>
-  <div class="right-result">7.00%</div>
-</div>
-<div class="flow"></div>
-<div class="flow2"></div>
+<table class="table table-striped table-bordered table-condensed">
+  <tr>
+    <td class="left-column-pos-neg"><b>Investment &#64; <%= @pos_neg_leverage.cap_rate %>&#37; Cap Rate</b><br></td>
+    <td class="left-column-pos-neg"></td>
+    <td class="left-column-pos-neg">&#36;<%= @pos_neg_leverage.purchase_price %></td>
+    <td class="left-column-pos-neg"></td>
+  </tr>
+  <tr>
+    <td class="left-column-pos-neg"><b>Leveraged vs. Unleveraged</b></td>
+    <td>Borrow &#36;<%= @pos_neg_leverage.loan_amount %> &#64; <%= @pos_neg_leverage.low_interest_rate %>&#37; Interest</td>
+    <td>Borrow Nothing</td>
+    <td>Borrow &#36;<%= @pos_neg_leverage.loan_amount %> &#64; <%= @pos_neg_leverage.high_interest_rate %>&#37; Interest</td>
+  <tr>
+  <tr>
+    <td class="left-column-pos-neg"><b>Net Operating Income</b></td>
+    <td>&#36;<%= @pos_neg_leverage.net_operating_income %></td>
+    <td>&#36;<%= @pos_neg_leverage.net_operating_income %></td>
+    <td>&#36;<%= @pos_neg_leverage.net_operating_income %></td>
+  </tr>
+  <tr>
+    <td class="left-column-pos-neg"><b>Debt Service Payments</b></td>
+    <td>&#36;<%= @pos_neg_leverage.debt_service_low_interest_rate %></td>
+    <td>&#36;0</td>
+    <td>&#36;<%= @pos_neg_leverage.debt_service_high_interest_rate %></td>
+  </tr>
+  <tr>
+    <td class="left-column-pos-neg"><b>Cash Flow</b></td>
+    <td>&#36;<%= @pos_neg_leverage.cash_flow_low_interest_rate %></td>
+    <td>&#36;<%= @pos_neg_leverage.net_operating_income %></td>
+    <td>&#36;<%= @pos_neg_leverage.cash_flow_high_interest_rate %></td>
+  </tr>
+  <tr>
+    <td class="left-column-pos-neg"><b>Cash on Cash (Income Earned / Initial Investment)</b></td>
+    <td>&#36;<%= @pos_neg_leverage.cash_flow_low_interest_rate_k %>K/&#36;<%= @pos_neg_leverage.down_payment_k %>K = <%= @pos_neg_leverage.cash_on_cash_low_interest_rate %>&#37;</td>
+    <td>&#36;<%= @pos_neg_leverage.net_operating_income_k %>K/&#36;<%= @pos_neg_leverage.purchase_price_k %>K = <%= @pos_neg_leverage.cap_rate %>&#37;</td>
+    <td>&#36;<%= @pos_neg_leverage.cash_flow_high_interest_rate_k %>K/&#36;<%= @pos_neg_leverage.down_payment_k %>K = <%= @pos_neg_leverage.cash_on_cash_high_interest_rate %>&#37;</td>
+  </tr>
+
+</table>
+
+
+
+
 
 </div>
+
+<br><br><br>
+
+</body>
+</html>

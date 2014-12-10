@@ -40,7 +40,7 @@
       <% local_dashboard_url = (signed_in? ? dashboard_show_url : new_session_url) %>
       <li>▶ <%= link_to "Dashboard", local_dashboard_url %></li>
       <% pos_neg_url = (signed_in? ? pos_neg_leverage_show_url : new_session_url) %>
-      <li>▶ <%= link_to "Positive Vs Negative Leverage", pos_neg_url %></li>
+      <li>▶ <%= link_to "Positive vs. Negative Leverage", pos_neg_url %></li>
       <% add_property_url = (signed_in? ? new_property_url : new_session_url) %>
       <li>▶ <%= link_to "Add Property", add_property_url %></li>
       <% add_showing_or_contact_url = (signed_in? ? showing_or_contact_new_url : new_session_url) %>
