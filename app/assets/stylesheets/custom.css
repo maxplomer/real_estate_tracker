@@ -1,4 +1,61 @@
+/* start of inputs on pos neg lev digram */
 
+.amortization {
+  text-align: center;
+  position: relative;
+  width: 133px;
+  top: -190px;
+  left: 532px;
+}
+
+
+.high-interest-rate {
+  text-align: center;
+  position: relative;
+  width: 133px;
+  top: -119px;
+  left: 372px;
+}
+
+.low-interest-rate {
+  text-align: center;
+  position: relative;
+  width: 133px;
+  top: -49px;
+  left: 212px;
+}
+
+.cap-rate {
+  text-align: center;
+  position: relative;
+  width: 133px;
+  top: 22px;
+  left: 60px;
+}
+
+.interest-only {
+  text-align: center;
+  position: relative;
+  width: 133px;
+  top: -117px;
+  left: 540px;
+}
+
+.loan-amount {
+  text-align: center;
+  position: relative;
+  width: 133px;
+  top: -46px;
+  left: 302px;
+}
+
+.purchase-price {
+  text-align: center;
+  position: relative;
+  width: 133px;
+  top: 25px;
+  left: 90px;
+}
 
 #pos_neg_leverage_amortization {
   width: 40px;
@@ -28,6 +85,8 @@
   width: 110px;
 }
 
+/* end of inputs on pos neg lev digram */
+
 /* start of pos neg lev diagram*/
 
 .flow {
@@ -55,7 +114,7 @@
 .diagram {
   margin: auto;
   width:715px;
-  height: 800px;
+  height: 1200px;
 }
 
 .top-box {
