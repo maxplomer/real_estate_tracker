@@ -109,11 +109,8 @@
   <tr>
     <td><b>Interest Only:</b></td>
     <td class="right-column">
-      <input
-        id="property_interest_only"
-        name="property[interest_only]"
-        type="text"
-        value="<%= (@property.interest_only ? "Yes":"No") %>">
+      <input type="radio" name="property[interest_only]" value="Yes" <%= "checked" if @property.interest_only %>> Yes&nbsp;&nbsp;&nbsp;
+      <input type="radio" name="property[interest_only]" value="No" <%= "checked" unless @property.interest_only %>> No
     </td>
   </tr>
   <tr>
