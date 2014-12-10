@@ -21,7 +21,8 @@
     id="pos_neg_leverage_purchase_price"
     name="pos_neg_leverage[purchase_price]"
     type="number"
-    value="<%= @pos_neg_leverage.purchase_price %>"><br><br>
+    step="1"
+    value="<%= @pos_neg_leverage.purchase_price.to_i %>"><br><br>
 
 </div>
 <div class="showing2">
@@ -42,7 +43,8 @@
     id="pos_neg_leverage_loan_amount"
     name="pos_neg_leverage[loan_amount]"
     type="number"
-    value="<%= @pos_neg_leverage.loan_amount %>"><br><br>
+    step="1"
+    value="<%= @pos_neg_leverage.loan_amount.to_i %>"><br><br>
 
 </div>
 <div class="showing2">
@@ -106,37 +108,37 @@
 
 <div class="top-box">
   <div class="inner">Investment @ 7.0% Cap Rate</div>
-  <div class="investment-top">$1,000,000,000</div>
+  <div class="investment-top">&#36;<%= @pos_neg_leverage.purchase_price.to_i %></div>
 </div>
 <div class="top-box">
   <div class="inner4">Leveraged vs. Unleveraged Borrowing</div>
   <div class="middle">Borrow <br>Nothing</div>
-  <div class="left">$70,000,000 @<br><font color="black">6.0%</font> Interest</div>
-  <div class="right">$70,000,000 @<br><font color="black">8.0%</font> Interest</div>
+  <div class="left">&#36;<%= @pos_neg_leverage.loan_amount.to_i %> &#64;<br><font color="black"><%= @pos_neg_leverage.low_interest_rate %>&#37;</font> Interest</div>
+  <div class="right">&#36;<%= @pos_neg_leverage.loan_amount.to_i %> &#64;<br><font color="black"><%= @pos_neg_leverage.high_interest_rate %>&#37;</font> Interest</div>
 </div>
 <div class="top-box">
   <div class="inner">Net Operating <br>Income</div>
-  <div class="investment">$7,000,000</div>
-  <div class="left2">$7,000,000</div>
-  <div class="right2">$7,000,000</div>
+  <div class="investment">&#36;<%= @pos_neg_leverage.net_operating_income.to_i %></div>
+  <div class="left2">&#36;<%= @pos_neg_leverage.net_operating_income.to_i %></div>
+  <div class="right2">&#36;<%= @pos_neg_leverage.net_operating_income.to_i %></div>
 </div>
 <div class="top-box">
   <div class="inner">Debt Service <br>Payments</div>
   <div class="investment">$0</div>
-  <div class="left2">$7,000,000</div>
-  <div class="right2">$7,000,000</div>
+  <div class="left2">&#36;<%= @pos_neg_leverage.debt_service_low_interest_rate.to_i %></div>
+  <div class="right2">&#36;<%= @pos_neg_leverage.debt_service_high_interest_rate.to_i %></div>
 </div>
 <div class="top-box">
   <div class="inner2">Cash Flow</div>
-  <div class="investment2">$70,000</div>
-  <div class="left3">$7,000,000</div>
-  <div class="right3">$7,000,000</div>
+  <div class="investment2">&#36;<%= @pos_neg_leverage.net_operating_income.to_i %></div>
+  <div class="left3">&#36;<%= @pos_neg_leverage.cash_flow_low_interest_rate.to_i %></div>
+  <div class="right3">&#36;<%= @pos_neg_leverage.cash_flow_high_interest_rate.to_i %></div>
 </div>
 <div class="top-box">
   <div class="inner3">Cash on Cash <br>(Income Earned / <br>Initial Investment)</div>
-  <div class="middle-result">7.00%</div>
-  <div class="left-result">7.00%</div>
-  <div class="right-result">7.00%</div>
+  <div class="middle-result"><%= @pos_neg_leverage.cap_rate %>&#37;</div>
+  <div class="left-result"><%= @pos_neg_leverage.cash_on_cash_low_interest_rate %>&#37;</div>
+  <div class="right-result"><%= @pos_neg_leverage.cash_on_cash_high_interest_rate %>&#37;</div>
 </div>
 <div class="flow"></div>
 <div class="flow2"></div>

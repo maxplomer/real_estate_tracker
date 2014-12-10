@@ -36,26 +36,6 @@ class PositiveVsNegativeLeverage < ActiveRecord::Base
     truncate(net_operating_income - debt_service_high_interest_rate)
   end
 
-  def cash_flow_low_interest_rate_k
-    (cash_flow_low_interest_rate / 1000).floor
-  end
-
-  def cash_flow_high_interest_rate_k
-    (cash_flow_high_interest_rate / 1000).floor
-  end
-
-  def down_payment_k
-    ((self.purchase_price - self.loan_amount) / 1000).floor
-  end
-
-  def net_operating_income_k
-    (net_operating_income / 1000).floor
-  end
-
-  def purchase_price_k
-    (purchase_price / 1000).floor
-  end
-
   def cash_on_cash_low_interest_rate
     truncate(cash_flow_low_interest_rate / (self.purchase_price - self.loan_amount) * 100)
   end
