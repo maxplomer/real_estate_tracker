@@ -1,4 +1,17 @@
 class Property < ActiveRecord::Base
+  validates :user_id, :presence => true
+  validates :address, :presence => true
+  validates :floor, :presence => true
+  validates :asking_rent, :inclusion => { 
+    :in => 1..3000, 
+    :message => "must be between 1 and 9,999" 
+  }
+  validates :rsf_available, :inclusion => { 
+    :in => 1..99999999, 
+    :message => "must be between 1 and 99,999,999" 
+  }
+  validates :floorplan_url, :presence => true
+  validates :picture_url, :presence => true
 
   belongs_to(
     :user,
