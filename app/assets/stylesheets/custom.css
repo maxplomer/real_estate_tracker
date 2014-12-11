@@ -1,4 +1,36 @@
 /* start of modificaiton of diagram css */
+
+.loan-to-value {
+  position: relative;
+  height: 80px;
+  width: 120px;
+  z-index: 2000;
+  top: -1220px;
+  left: 363px;
+  text-align: center;
+}
+
+
+.down-payment {
+  position: relative;
+  height: 60px;
+  width: 120px;
+  z-index: 2000;
+  top: -1240px;
+  left: 225px;
+  text-align: center;
+}
+
+.dscr {
+  position: relative;
+  height: 60px;
+  width: 120px;
+  z-index: 2000;
+  top: -1059px;
+  left: 370px;
+  text-align: center;
+}
+
 .middle2 {
   left: 375px;
   top: -87px;
@@ -640,19 +672,22 @@
 }
 
 
-
+/* dont need this */
 #property_interest_only {
   width: 60px;
 }
 
+/* dont need this */
 .left-column {
   width: 220px;
 }
 
+/* dont need this */
 .right-column {
   text-align: center;
 }
 
+/* dont need this */
 .dashboard-table {
   width: 500px;
 }
