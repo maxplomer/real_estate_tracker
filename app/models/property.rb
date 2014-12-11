@@ -13,6 +13,36 @@ class Property < ActiveRecord::Base
   validates :floorplan_url, :presence => true
   validates :picture_url, :presence => true
 
+  #validations for analysis
+  validates :purchase_price, :inclusion => { 
+    :in => 1..99999999, 
+    :message => "must be between 1 and 99,999,999" 
+  }
+  validates :loan_amount, :inclusion => { 
+    :in => 0..99999999, 
+    :message => "must be between 0 and 99,999,999" 
+  }
+  validates :interest_rate, :inclusion => { 
+    :in => 0..100, 
+    :message => "must be between 0 and 100" 
+  }
+  validates :amortization, :inclusion => { 
+    :in => 0..100, 
+    :message => "must be between 0 and 100" 
+  }
+  validates :income, :inclusion => { 
+    :in => 0..99999999, 
+    :message => "must be between 0 and 99,999,999" 
+  }
+  validates :expenses, :inclusion => { 
+    :in => 0..99999999, 
+    :message => "must be between 0 and 99,999,999" 
+  }
+
+
+
+
+
   belongs_to(
     :user,
     class_name: "User",

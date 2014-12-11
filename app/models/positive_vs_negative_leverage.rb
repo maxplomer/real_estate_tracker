@@ -1,4 +1,30 @@
 class PositiveVsNegativeLeverage < ActiveRecord::Base
+  validates :user_id, :presence => true
+  validates :purchase_price, :inclusion => { 
+    :in => 1..99999999, 
+    :message => "must be between 1 and 99,999,999" 
+  }
+  validates :loan_amount, :inclusion => { 
+    :in => 0..99999999, 
+    :message => "must be between 0 and 99,999,999" 
+  }
+  validates :cap_rate, :inclusion => { 
+    :in => 0..100, 
+    :message => "must be between 0 and 100" 
+  }
+  validates :low_interest_rate, :inclusion => { 
+    :in => 0..100, 
+    :message => "must be between 0 and 100" 
+  }
+  validates :high_interest_rate, :inclusion => { 
+    :in => 0..100, 
+    :message => "must be between 0 and 100" 
+  }
+  validates :amortization, :inclusion => { 
+    :in => 0..100, 
+    :message => "must be between 0 and 100" 
+  }
+
 
   belongs_to(
     :user,

@@ -15,8 +15,8 @@ class ShowingOrContactController < ApplicationController
     if @showing.save
       redirect_to dashboard_show_url
     else
-      flash.now[:errors] = @showing.errors.full_messages
-      render :new
+      flash[:errors] = @showing.errors.full_messages
+      redirect_to showing_or_contact_new_url
     end
   end
 
@@ -26,8 +26,8 @@ class ShowingOrContactController < ApplicationController
     if @contact.save
       redirect_to property_url(@contact.property)
     else
-      flash.now[:errors] = @contact.errors.full_messages
-      render :new
+      flash[:errors] = @contact.errors.full_messages
+      redirect_to showing_or_contact_new_url
     end
   end
 
