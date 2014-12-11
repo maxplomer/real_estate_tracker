@@ -13,7 +13,7 @@
 <br><br>
 
 
-<div class="diagram2">
+<div class="diagram">
 <form action="<%= property_url(@property) %>" method="post">
   <input
     name="_method"
@@ -147,11 +147,134 @@
 <div class="flow2b"></div>
 
 
-
 </div>
-<center><a href="/equations.txt">Link to equations</a><br><br></center>
 
 
+<br><br><br>
+
+<form action="<%= property_url(@property) %>" method="post">
+  <input
+     name="_method"
+     type="hidden"
+     value="put">
+  <input
+     name="authenticity_token"
+     type="hidden"
+     value="<%= form_authenticity_token %>">
+
+<center><table class="table table-striped table-bordered table-condensed dashboard-table">
+  <tr>
+    <td class="left-column"><b>Income:</b></td>
+    <td class="right-column">&#36;
+      <input
+        id="property_income"
+        name="property[income]"
+        type="number"
+        value="<%= @property.income %>">
+    </td>
+  </tr>
+  <tr>
+    <td><b>Expenses:</b></td>
+    <td class="right-column">&#36;
+      <input
+        id="property_expenses"
+        name="property[expenses]"
+        type="number"
+        value="<%= @property.expenses %>">
+    </td>
+  </tr>
+  <tr>
+    <td><b>Net Operating Income (NOI):</b></td>
+    <td class="right-column">&#36; <%= @property.net_operating_income %></td>
+  </tr>
+  <tr>
+    <td><b>Debt Service:</b></td>
+    <td class="right-column">&#36; <%= @property.debt_service %></td>
+  </tr>
+  <tr>
+    <td><b>Cash Flow:</b></td>
+    <td class="right-column">&#36; <%= @property.cash_flow %></td>
+  </tr>
+  <tr>
+    <td><b>Debt Service Coverage Ratio (DSCR):</b></td>
+    <td class="right-column"><%= @property.dscr %></td>
+  </tr>
+  <tr>
+    <td><b>Cash on Cash:</b></td>
+    <td class="right-column"><%= @property.cash_on_cash %> &#37;</td>
+  </tr>
+  <tr>
+    <td><b>Capitalization Rate (Cap Rate):</b></td>
+    <td class="right-column"><%= @property.cap_rate %> &#37;</td>
+  </tr>
+</table>
+
+<table class="table table-striped table-bordered table-condensed dashboard-table">
+  <tr>
+    <td class="left-column"><b>Purchase Price:</b></td>
+    <td class="right-column">&#36;
+      <input
+        id="property_purchase_price"
+        name="property[purchase_price]"
+        type="number"
+        value="<%= @property.purchase_price %>">
+    </td>
+  </tr>
+  <tr>
+    <td><b>Loan to value (LTV &#37;):</b></td>
+    <td class="right-column"><%= @property.loan_to_value %> &#37;</td>
+  </tr>
+  <tr>
+    <td><b>Interest Rate (&#37;):</b></td>
+    <td class="right-column">
+      <input
+        id="property_interest_rate"
+        name="property[interest_rate]"
+        type="number"
+        step="0.01"
+        value="<%= @property.interest_rate %>"> &#37;
+    </td>
+  </tr>
+  <tr>
+    <td><b>Amortization (yrs):</b></td>
+    <td class="right-column">
+      <input
+        id="property_amortization"
+        name="property[amortization]"
+        type="number"
+        value="<%= @property.amortization %>"> yrs
+    </td>
+  </tr>
+  <tr>
+    <td><b>Interest Only:</b></td>
+    <td class="right-column">
+      <input type="radio" name="property[interest_only]" value="Yes" <%= "checked" if @property.interest_only %>> Yes&nbsp;&nbsp;&nbsp;
+      <input type="radio" name="property[interest_only]" value="No" <%= "checked" unless @property.interest_only %>> No
+    </td>
+  </tr>
+  <tr>
+    <td><b>Loan Amount:</b></td>
+    <td class="right-column">&#36;
+      <input
+        id="property_loan_amount"
+        name="property[loan_amount]"
+        type="number"
+        value="<%= @property.loan_amount %>">
+    </td>
+  </tr>
+  <tr>
+    <td><b>Down Payment:</b></td>
+    <td class="right-column">&#36; <%= @property.down_payment %></td>
+  </tr>
+</table>
+
+<a href="/equations.txt">Link to equations</a><br><br>
+
+  <input type="submit" value="Update" class="btn btn-default">
+</form>
+
+
+</center>
 
 
 

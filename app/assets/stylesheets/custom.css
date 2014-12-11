@@ -1,3 +1,89 @@
+/* start of modificaiton of diagram css */
+.middle2 {
+  left: 375px;
+  top: -87px;
+  position: relative;
+  border-radius: 15px;
+  background-color: lightblue;
+  border: 3px solid lightblue;
+  height: 85px;
+  width: 165px;
+  text-align: center;
+  color: white;
+  font-size: 22px;
+  padding-top: 8px;
+  vertical-align: middle;
+  z-index: 1000;
+}
+
+.investmentb {
+  left: 375px;
+  top: -75px;
+  position: relative;
+  border-radius: 15px;
+  background-color: lightblue;
+  border: 3px solid lightblue;
+  height: 85px;
+  width: 165px;
+  text-align: center;
+  color: white;
+  font-size: 22px;
+  padding-top: 26px;
+  z-index: 1000;
+}
+
+.investment2b {
+  left: 375px;
+  top: -60px;
+  position: relative;
+  border-radius: 15px;
+  background-color: lightblue;
+  border: 3px solid lightblue;
+  height: 85px;
+  width: 165px;
+  text-align: center;
+  color: white;
+  font-size: 22px;
+  padding-top: 25px;
+  z-index: 1000;
+}
+
+.middle-result2 {
+  left: 375px;
+  top: -91px;
+  position: relative;
+  border-radius: 15px;
+  background-color: lightblue;
+  border: 3px solid lightblue;
+  height: 85px;
+  width: 165px;
+  text-align: center;
+  color: white;
+  font-size: 22px;
+  padding-top: 25px;
+  z-index: 1000;
+}
+
+.flow2b {
+  height: 22px;
+  width: 360px;
+  border-left: 4px solid rgb(62,103,146);
+  border-bottom: 0px;
+  border-radius: 2px;
+  position: relative;
+  left: 455px;
+  top: -1190px;
+
+}
+
+.diagram2 {
+  margin: auto;
+  width:715px;
+  height: 1070px;
+}
+
+/* end of modificaiton of diagram css */
+
 /* start of inputs on dashboard digram */
 #property_purchase_price {
   width: 110px;
