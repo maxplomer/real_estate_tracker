@@ -60,6 +60,40 @@
   left: 562px;
 }
 
+#property_income {
+  width: 110px;
+}
+
+.income2 {
+  text-align: center;
+  position: relative;
+  width: 133px;
+  height: 73px;
+  top: 25px;
+  left: 75px;
+}
+
+#property_expenses {
+  width: 110px;
+}
+
+.expenses2 {
+  text-align: center;
+  position: relative;
+  width: 133px;
+  height: 73px;
+  top: -48px;
+  left: 292px;
+}
+
+.submit-button {
+  text-align: center;
+  position: relative;
+  width: 133px;
+  height: 73px;
+  top: -114px;
+  left: 506px;
+}
 
 /* end of inputs on dashboard digram */
 

@@ -78,14 +78,34 @@
 
 </div>
 <div class="top-box">
+  <div class="income2">
 
-  
+    <label for="property_income">Income</label><br>
+    &#36; <input
+      id="property_income"
+      name="property[income]"
+      type="number"
+      step="1"
+      value="<%= @property.income.to_i %>"><br><br>
 
+  </div>
+  <div class="expenses2">
+
+    <label for="property_expenses">Expenses</label><br>
+    &#36; <input
+      id="property_expenses"
+      name="property[expenses]"
+      type="number"
+      step="1"
+      value="<%= @property.expenses.to_i %>"><br><br>
+
+  </div>
+
+  <div class="submit-button">
+    <input type="submit" id="pos-neg-submit" value="Update" class="btn btn-default">
+  </div>
 </div>
 
-<br>
-
-<center><input type="submit" id="pos-neg-submit" value="Update" class="btn btn-default"></center>
 </form>
 </div>
 
