@@ -10,14 +10,15 @@
     name="authenticity_token"
     type="hidden"
     value="<%= form_authenticity_token %>">
-<% property = @properties.first %>
-<input type="radio" name="contact[property_id]" value="<%= property.id %>" checked> <%= property.address %> <%= property.floor %> Floor <br>
-
-
-<% @properties[1..-1].each do |property| %>
-  <input type="radio" name="contact[property_id]" value="<%= property.id %>"> <%= property.address %> <%= property.floor %> Floor <br>
-<% end %>
 <br>
+Select Property<br>
+<select name="contact[property_id]">
+  <% @properties.each do |property| %>
+    <option value="<%= property.id %>"><%= property.address %> <%= property.floor %> Floor</option>
+  <% end %>
+</select>
+
+<br><br>
 
   <input
     class="add-showing-input"
@@ -75,14 +76,15 @@
     name="authenticity_token"
     type="hidden"
     value="<%= form_authenticity_token %>">
-<% property = @properties.first %>
-<input type="radio" name="showing[property_id]" value="<%= property.id %>" checked> <%= property.address %> <%= property.floor %> Floor <br>
-
-
-<% @properties[1..-1].each do |property| %>
-  <input type="radio" name="showing[property_id]" value="<%= property.id %>"> <%= property.address %> <%= property.floor %> Floor <br>
-<% end %>
 <br>
+Select Property<br>
+<select name="showing[property_id]">
+  <% @properties.each do |property| %>
+    <option value="<%= property.id %>"><%= property.address %> <%= property.floor %> Floor</option>
+  <% end %>
+</select>
+
+<br><br>
 
   <input
     class="add-showing-input"
