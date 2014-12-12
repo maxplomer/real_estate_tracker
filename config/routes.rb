@@ -5,7 +5,6 @@ RealEstateTracker::Application.routes.draw do
   put 'pos_neg_leverage/update'
   get 'dashboard/show'
   get 'showing_or_contact/new'
-  post 'showing_or_contact/create_showing'
   post 'showing_or_contact/create_contact'
 
   resources :dashboards, :only => [:show]

@@ -1,8 +1,4 @@
-<div class="add-contact-page group">
-
-<div class="create-contact">
-
-<h1>Add Contact</h1>
+<center><h1>Add Contact or Showing</h1>
 
 <form action="<%= showing_or_contact_create_contact_url %>" method="post">
 
@@ -11,7 +7,13 @@
     type="hidden"
     value="<%= form_authenticity_token %>">
 <br>
-Select Property<br>
+
+Select New Listing Contact or Showing<br>
+<input type="radio" name="contact[contact_or_showing]" value="contact" checked> Contact&nbsp;&nbsp;&nbsp;
+    <input type="radio" name="contact[contact_or_showing]" value="showing"> Showing
+
+
+<br><br>Select Property<br>
 <select name="contact[property_id]">
   <% @properties.each do |property| %>
     <option value="<%= property.id %>"><%= property.address %> <%= property.floor %> Floor</option>
@@ -61,77 +63,7 @@ Select Property<br>
   <br><br>
 
 
-  <input type="submit" value="Submit New Contact" class="btn btn-default">
+  <input type="submit" value="Submit" class="btn btn-default">
 </form>
 
-</div>
-
-<div class="create-showing">
-
-<h1>Add Showing</h1>
-
-<form action="<%= showing_or_contact_create_showing_url %>" method="post">
-
-  <input
-    name="authenticity_token"
-    type="hidden"
-    value="<%= form_authenticity_token %>">
-<br>
-Select Property<br>
-<select name="showing[property_id]">
-  <% @properties.each do |property| %>
-    <option value="<%= property.id %>"><%= property.address %> <%= property.floor %> Floor</option>
-  <% end %>
-</select>
-
-<br><br>
-
-  <input
-    class="add-showing-input"
-    id="showing_name"
-    name="showing[name]"
-    type="text"
-    placeholder="Name">
-  <br>
-
-  <input
-    class="add-showing-input"
-    id="showing_title"
-    name="showing[title]"
-    type="text"
-    placeholder="Title">
-  <br>
-
-  <input
-    class="add-showing-input"
-    id="showing_email"
-    name="showing[email]"
-    type="text"
-    placeholder="Email">
-  <br>
-
-  <input
-    class="add-showing-input"
-    id="showing_company"
-    name="showing[company]"
-    type="text"
-    placeholder="Company">
-  <br>
-
-  <input
-    class="add-showing-input"
-    id="showing_phone"
-    name="showing[phone]"
-    type="text"
-    placeholder="Phone">
-  <br><br>
-
-
-  <input type="submit" value="Submit New Showing" class="btn btn-default">
-</form>
-
-</div>
-
-</div>
-
-<br><br><br><br>
+<br><br><br><br></center>

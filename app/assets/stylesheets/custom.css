@@ -644,16 +644,17 @@
   height: 200px;
 }
 
+/* don't need anymore */
 .create-contact {
   float: left;
   width: 250px;
 }
-
+/* don't need anymore */
 .create-showing {
   float: right;
   width: 250px;
 }
-
+/* don't need anymore */
 .add-contact-page {
   width: 600px;
   margin: auto;
