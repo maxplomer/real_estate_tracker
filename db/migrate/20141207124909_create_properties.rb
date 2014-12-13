@@ -6,8 +6,6 @@ class CreateProperties < ActiveRecord::Migration
       t.string :floor, :null => false
       t.integer :asking_rent, :null => false
       t.integer :rsf_available, :null => false
-      t.string :floorplan_url, :null => false
-      t.string :picture_url, :null => false
 
       #values for analysis
       t.float :income, :null => false

@@ -1,4 +1,11 @@
 class Property < ActiveRecord::Base
+  has_attached_file :picture
+  validates_attachment_content_type :picture, :content_type => /\Aimage\/.*\Z/
+
+  has_attached_file :floorplan
+  validates_attachment_content_type :floorplan, :content_type => /\Aimage\/.*\Z/
+
+
   validates :user_id, :presence => true
   validates :address, :presence => true
   validates :floor, :presence => true
@@ -10,13 +17,11 @@ class Property < ActiveRecord::Base
     :in => 1..99999999, 
     :message => "must be between 1 and 99,999,999" 
   }
-  validates :floorplan_url, :presence => true
-  validates :picture_url, :presence => true
 
   #validations for analysis
   validates :purchase_price, :inclusion => { 
-    :in => 1..99999999, 
-    :message => "must be between 1 and 99,999,999" 
+    :in => 0..99999999, 
+    :message => "must be between 0 and 99,999,999" 
   }
   validates :loan_amount, :inclusion => { 
     :in => 0..99999999, 

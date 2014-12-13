@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141208020051) do
+ActiveRecord::Schema.define(version: 20141213031635) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,22 +41,28 @@ ActiveRecord::Schema.define(version: 20141208020051) do
   end
 
   create_table "properties", force: true do |t|
-    t.integer  "user_id",        null: false
-    t.string   "address",        null: false
-    t.string   "floor",          null: false
-    t.integer  "asking_rent",    null: false
-    t.integer  "rsf_available",  null: false
-    t.string   "floorplan_url",  null: false
-    t.string   "picture_url",    null: false
-    t.float    "income",         null: false
-    t.float    "expenses",       null: false
-    t.float    "purchase_price", null: false
-    t.float    "interest_rate",  null: false
-    t.float    "loan_amount",    null: false
-    t.boolean  "interest_only",  null: false
-    t.integer  "amortization",   null: false
+    t.integer  "user_id",                null: false
+    t.string   "address",                null: false
+    t.string   "floor",                  null: false
+    t.integer  "asking_rent",            null: false
+    t.integer  "rsf_available",          null: false
+    t.float    "income",                 null: false
+    t.float    "expenses",               null: false
+    t.float    "purchase_price",         null: false
+    t.float    "interest_rate",          null: false
+    t.float    "loan_amount",            null: false
+    t.boolean  "interest_only",          null: false
+    t.integer  "amortization",           null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "picture_file_name"
+    t.string   "picture_content_type"
+    t.integer  "picture_file_size"
+    t.datetime "picture_updated_at"
+    t.string   "floorplan_file_name"
+    t.string   "floorplan_content_type"
+    t.integer  "floorplan_file_size"
+    t.datetime "floorplan_updated_at"
   end
 
   create_table "showings", force: true do |t|

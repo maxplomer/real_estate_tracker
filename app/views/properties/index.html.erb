@@ -4,7 +4,7 @@
 <% @properties.each do |property| %>
   <div class="index-property">
     <%= link_to "#{property.address} #{property.floor} Floor", property_url(property), class: "btn btn-default" %><br>
-    <img class="img-properties-index" src="<%= property.picture_url %>" > 
+    <%= image_tag property.picture.url, class: "img-properties-index" %>
   </div>
 <% end %>
 </div>

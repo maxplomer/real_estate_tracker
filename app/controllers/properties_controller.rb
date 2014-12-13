@@ -66,9 +66,9 @@ class PropertiesController < ApplicationController
       :address, 
       :floor, 
       :asking_rent, 
-      :rsf_available, 
-      :floorplan_url, 
-      :picture_url
+      :rsf_available,
+      :picture,
+      :floorplan
     )
   end
 

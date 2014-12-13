@@ -1,6 +1,7 @@
 <center><h1>Add Property</h1>
 
-<form action="<%= properties_url %>" method="post">
+
+<%= form_for @property, :url => properties_path, :html => { :multipart => true } do |form| %>
 
   <input
     name="authenticity_token"
@@ -42,23 +43,15 @@
     name="property[rsf_available]"
     type="number"
     placeholder="RSF Available in unit SF, ex: 12500">
+  <br><br>
+  <b>Floor Plan Picture </b>
+  <%= form.file_field :floorplan %>
   <br>
 
-  <input
-    class="add-property-input"
-    id="property_floorplan_url"
-    name="property[floorplan_url]"
-    type="text"
-    placeholder="Floor Plan Picture URL">
-  <br>
-
-  <input
-    class="add-property-input"
-    id="property_picture_url"
-    name="property[picture_url]"
-    type="text"
-    placeholder="Main Picture URL">
+  <b>Main Picture</b>
+  <%= form.file_field :picture %>
   <br><br>
 
   <input type="submit" value="Submit New Property" class="btn btn-default">
-</form></center>
+<% end %>
+</center>

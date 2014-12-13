@@ -3,7 +3,7 @@
 <div class="property-page group">
 <div class="leftbar">
 
-<img src="<%= @property.floorplan_url %>"><br><br>CONTACTS<br><br><br>
+<%= image_tag @property.floorplan.url %><br><br>CONTACTS<br><br><br>
 
 <% @property.contacts.each do |contact| %>
 
@@ -17,7 +17,7 @@
 
 </div>
 <div class="rightbar">
-<img src="<%= @property.picture_url %>"><br><br>SPACE INFORMATION<br><br><br>
+<%= image_tag @property.picture.url %><br><br>SPACE INFORMATION<br><br><br>
 
 <center><table class="table table-condensed space-info">
   <tr>
