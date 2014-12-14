@@ -12,6 +12,8 @@
 
 <br><br>
 
+<center><span id="errors"></span></center>
+
 <div class="diagram2">
 <form action="<%= property_url(@property) %>" method="post">
   <input
@@ -60,8 +62,8 @@
   <div class="interest-only2">
 
     <label for="property_interest_only">Interest Only</label><br>
-    <input type="radio" name="property[interest_only]" value="Yes" <%= "checked" if @property.interest_only %>> Yes&nbsp;&nbsp;&nbsp;
-    <input type="radio" name="property[interest_only]" value="No" <%= "checked" unless @property.interest_only %>> No
+    <input id="interest-only-yes" type="radio" name="property[interest_only]" value="Yes" <%= "checked" if @property.interest_only %>> Yes&nbsp;&nbsp;&nbsp;
+    <input id="interest-only-no" type="radio" name="property[interest_only]" value="No" <%= "checked" unless @property.interest_only %>> No
 
   </div>
   <div class="amortization2">
@@ -144,7 +146,7 @@
 </div>
 <div class="flow"></div>
 <div class="flow2b"></div>
-<div class="down-payment"><b>Down Payment</b><br>&#36; <%= @property.down_payment %></div>
+<div class="down-payment"><b>Down Payment</b><br>&#36; <span id="down-payment-value"><%= @property.down_payment %></span></div>
 <div class="loan-to-value"><b>Loan to value<br>(LTV &#37;)</b><br><%= @property.loan_to_value %> &#37;</div>
 <div class="dscr"><b>Debt Service<br>Coverage Ratio<br>(DSCR)</b><br><%= @property.dscr %></div>
 
@@ -193,6 +195,84 @@
 </div>
 
 <br><br><br><br>
+
+
+
+<script language="JavaScript">
+  function between(x, min, max) {
+    return x >= min && x <= max && x != "";
+  }
+
+  function update_fields() {
+    $("#errors").text("");
+
+
+
+    var flag = false
+
+    var purchasePrice = $("#property_purchase_price").val();
+    if ( !between(purchasePrice, 0, 99999999) ) {
+      $("#errors").append("Purchase price must be between 0 and 99,999,999<br />");
+      flag = true;
+    }
+    
+    var loanAmount = $("#property_loan_amount").val();
+    if ( !between(loanAmount, 0, 99999999) ) {
+      $("#errors").append("Loan amount must be between 0 and 99,999,999<br />");
+      flag = true;
+    }
+
+
+    if (flag) {
+      return
+    }
+
+    //var value = $("#interest-only-yes").is(":checked");
+    //alert(value);
+
+    
+    //alert("no errors, send ajax")
+
+
+    $("#down-payment-value").text("40.0");
+
+
+    // if no errors then send ajax req to update db 
+   
+    // $("input[name=test]").is(":checked");
+
+    //.toString();
+  }
+
+
+  //setup onchange and onkeyup to call updatefields when value has changed
+  document.getElementById("property_purchase_price").onchange = update_fields
+  document.getElementById("property_purchase_price").onkeyup = update_fields
+
+  document.getElementById("property_loan_amount").onchange = update_fields
+  document.getElementById("property_loan_amount").onkeyup = update_fields
+
+  document.getElementById("property_interest_rate").onchange = update_fields
+  document.getElementById("property_interest_rate").onkeyup = update_fields
+
+  document.getElementById("interest-only-yes").onchange = update_fields
+
+  document.getElementById("interest-only-no").onchange = update_fields
+
+  document.getElementById("property_amortization").onchange = update_fields
+  document.getElementById("property_amortization").onkeyup = update_fields
+
+  document.getElementById("property_income").onchange = update_fields
+  document.getElementById("property_income").onkeyup = update_fields
+
+  document.getElementById("property_expenses").onchange = update_fields
+  document.getElementById("property_expenses").onkeyup = update_fields
+
+
+</script>
+
+
+
 
 
 
