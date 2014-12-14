@@ -15,7 +15,7 @@
 <center><span id="errors"></span></center>
 
 <div class="diagram2">
-<form action="<%= property_url(@property) %>" method="post">
+<form id="property-form" action="<%= property_url(@property) %>" method="post">
   <input
     name="_method"
     type="hidden"
@@ -206,7 +206,7 @@
   function update_fields() {
     $("#errors").text("");
 
-
+    //check for errors - start
 
     var flag = false
 
@@ -222,25 +222,64 @@
       flag = true;
     }
 
-
-    if (flag) {
-      return
+    var interestRate = $("#property_interest_rate").val();
+    if ( !between(interestRate, 0, 100) ) {
+      $("#errors").append("Interest rate must be between 0 and 100<br />");
+      flag = true;
     }
 
+    var amortization = $("#property_amortization").val();
+    if ( !between(amortization, 0, 100) ) {
+      $("#errors").append("Amortization must be between 0 and 100<br />");
+      flag = true;
+    }
+
+    var income = $("#property_income").val();
+    if ( !between(income, 0, 99999999) ) {
+      $("#errors").append("Income amount must be between 0 and 99,999,999<br />");
+      flag = true;
+    }
+
+    var expenses = $("#property_expenses").val();
+    if ( !between(expenses, 0, 99999999) ) {
+      $("#errors").append("Expenses amount must be between 0 and 99,999,999<br />");
+      flag = true;
+    }
+
+    if (flag) {
+      return;
+    }
+
+    //check for errors - end
+
+    var data = $("#property-form").serializeJSON();
+
+    //how to access form data: alert(data["property"]["income"]);
+
+    $.ajax({
+      type: "PUT",
+      url: "<%= property_url(@property) %>",
+      data: data,
+      dataType: "json"
+    });
+
+
+
+
+    //get value inside radio button
     //var value = $("#interest-only-yes").is(":checked");
     //alert(value);
 
     
     //alert("no errors, send ajax")
 
-
-    $("#down-payment-value").text("40.0");
+    //write new value
+    //$("#down-payment-value").text("40.0");
+    //will need truncate function
 
 
     // if no errors then send ajax req to update db 
-   
     // $("input[name=test]").is(":checked");
-
     //.toString();
   }
 

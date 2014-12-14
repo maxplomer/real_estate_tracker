@@ -12,12 +12,33 @@ class PropertiesController < ApplicationController
     @property.amortization = params[:property][:amortization]
 
     if @property.save
-      redirect_to dashboard_url(@property)
+      render json: @property
     else
-      flash[:errors] = @property.errors.full_messages
-      redirect_to dashboard_url(@property)
+      render :json => @property.errors, :status => :unprocessable_entity
     end
   end
+
+
+  # start - old update before live JavaScript form
+  # def update
+  #   @property = Property.find(params[:id])
+
+  #   @property.income = params[:property][:income]
+  #   @property.expenses = params[:property][:expenses]
+  #   @property.purchase_price = params[:property][:purchase_price]
+  #   @property.interest_rate = params[:property][:interest_rate]
+  #   @property.loan_amount = params[:property][:loan_amount]
+  #   @property.interest_only = (params[:property][:interest_only].downcase == "yes")
+  #   @property.amortization = params[:property][:amortization]
+
+  #   if @property.save
+  #     redirect_to dashboard_url(@property)
+  #   else
+  #     flash[:errors] = @property.errors.full_messages
+  #     redirect_to dashboard_url(@property)
+  #   end
+  # end
+  # end - old update before live JavaScript form
 
   def index
     @properties = Property.all.sort! { |a,b| b.id <=> a.id }
