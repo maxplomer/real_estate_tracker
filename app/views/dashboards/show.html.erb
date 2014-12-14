@@ -102,9 +102,6 @@
 
   </div>
 
-  <div class="submit-button">
-    <input type="submit" id="pos-neg-submit" value="Update" class="btn btn-default">
-  </div>
 </div>
 
 </form>
@@ -255,11 +252,17 @@
     var data = $("#property-form").serializeJSON();
 
     //how to access form data: alert(data["property"]["income"]);
+     
+    //location.reload();
+    var success = function () {
+      window.location.reload();
+    };
 
     $.ajax({
       type: "PUT",
       url: "<%= property_url(@property) %>",
       data: data,
+      success: success,
       dataType: "json"
     });
 

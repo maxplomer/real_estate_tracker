@@ -190,7 +190,7 @@
   width: 133px;
   height: 73px;
   top: 25px;
-  left: 75px;
+  left: 179px;
 }
 
 #property_expenses {
@@ -203,9 +203,10 @@
   width: 133px;
   height: 73px;
   top: -48px;
-  left: 292px;
+  left: 396px;
 }
 
+/* Don't need this anymore */
 .submit-button {
   text-align: center;
   position: relative;
