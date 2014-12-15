@@ -1,3 +1,4 @@
+<center><span id="errors"></span></center>
 <div class="property-page">
 <center><h2><a href="<%= property_url(@property) %>"><%= @property.address %> <%= @property.floor %> Floor</a></h2>
 
@@ -12,7 +13,6 @@
 
 <br><br>
 
-<center><span id="errors"></span></center>
 
 <div class="diagram2">
 <form id="property-form">
@@ -230,6 +230,8 @@
 
     var error = function (data) {
       $("#errors").text("");
+      var $errorTitle = $("<h3>Please fix the following errors:</h3>");
+      $("#errors").append($errorTitle);
       var responseText = data["responseText"];
       var responseObj = JSON.parse(responseText);
       var keys = Object.keys(responseObj);
@@ -240,6 +242,7 @@
           " " + responseObj[key] + "<br />"
         );
       }
+      $("#errors").append($("<hr>"));
     }
 
     $.ajax({
