@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
   helper_method :current_user, :signed_in?, :remove_trailing_zeros
 
   def truncate(x)
-    (x * 100).floor / 100.0
+    (x * 100).round / 100.0
   end
   
   private
