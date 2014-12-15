@@ -116,7 +116,7 @@
 </div>
 <div class="top-box">
   <div class="inner2">Cash Flow</div>
-  <div class="investment2">&#36;<%= @pos_neg_leverage.net_operating_income.to_i %></div>
+  <div class="investment2">&#36;<span class="net-operating-income-span"><%= @pos_neg_leverage.net_operating_income.to_i %></span></div>
   <div class="left3">&#36;<span id="cash-flow-low-interest-rate-span"><%= @pos_neg_leverage.cash_flow_low_interest_rate.to_i %></span></div>
   <div class="right3">&#36;<span id="cash-flow-high-interest-rate-span"><%= @pos_neg_leverage.cash_flow_high_interest_rate.to_i %></span></div>
 </div>
