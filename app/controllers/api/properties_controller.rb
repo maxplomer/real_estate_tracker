@@ -11,11 +11,19 @@ class Api::PropertiesController < ApplicationController
     @property.interest_only = (params[:property][:interest_only].downcase == "yes")
     @property.amortization = params[:property][:amortization]
 
+    @property.interest_rate = truncate(@property.interest_rate)
+
     if @property.save
       render :show
     else
       render :json => @property.errors, :status => :unprocessable_entity
     end
+  end
+
+  private
+
+  def truncate(x)
+    (x * 100).floor / 100.0
   end
 
 end

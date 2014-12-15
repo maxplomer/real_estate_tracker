@@ -190,6 +190,10 @@
 
 <script language="JavaScript">
 
+  function truncate(x) {
+    return Math.floor(x * 100) / 100.0;
+  }
+
   function updateFields() {
 
     String.prototype.capitalize = function() {
@@ -201,9 +205,9 @@
     var success = function (data) {
       $("#errors").text("");
 
-      var purchasePrice = $("#property_purchase_price").val();
-      var loanAmount = $("#property_loan_amount").val();
-      var interestRate = $("#property_interest_rate").val();
+      var purchasePrice = Math.floor($("#property_purchase_price").val());
+      var loanAmount = Math.floor($("#property_loan_amount").val());
+      var interestRate = truncate($("#property_interest_rate").val());
 
       var netOperatingIncome = data["net_operating_income"];
       var debtService = data["debt_service"];
