@@ -64,3 +64,38 @@ heroku run rails c  <-- will need to set user to admin
 
 
 somtimes u need to restart your server after migration...try running "heroku restart"
+
+
+
+s3 heroku paperclip
+
+https://devcenter.heroku.com/articles/s3
+
+heroku config:set AWS_ACCESS_KEY_ID=xxx AWS_SECRET_ACCESS_KEY=yyy
+heroku config:set S3_BUCKET_NAME=appname-assets
+
+
+https://devcenter.heroku.com/articles/paperclip-s3  ***use this article***
+
+
+
+# Gemfile
+gem 'paperclip'
+gem 'aws-sdk'
+
+
+
+# config/environments/production.rb
+config.paperclip_defaults = {
+  :storage => :s3,
+  :s3_credentials => {
+    :bucket => ENV['S3_BUCKET_NAME'],
+    :access_key_id => ENV['AWS_ACCESS_KEY_ID'],
+    :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']
+  }
+}
+
+
+$ heroku config:set S3_BUCKET_NAME=your_bucket_name
+$ heroku config:set AWS_ACCESS_KEY_ID=your_access_key_id
+$ heroku config:set AWS_SECRET_ACCESS_KEY=your_secret_access_key

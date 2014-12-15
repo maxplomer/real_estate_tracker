@@ -60,7 +60,7 @@ gem 'active_median', '~> 0.1.0'
 
 # paperclip gem
 gem "paperclip", "~> 4.2"
-
+gem 'aws-sdk'
 
 
 
