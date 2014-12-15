@@ -49,7 +49,7 @@
       name="property[interest_rate]"
       type="number"
       step="0.01"
-      value="<%= @property.interest_rate %>"> &#37;<br><br>
+      value="<%= remove_trailing_zeros(@property.interest_rate) %>"> &#37;<br><br>
 
   </div>
   <div class="interest-only2">
