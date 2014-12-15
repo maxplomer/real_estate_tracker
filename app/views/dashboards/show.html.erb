@@ -101,44 +101,44 @@
 <br><br>
 
 <div class="top-box">
-  <div class="inner">Investment @ <br><span class="cap-rate-span"></span>% Cap Rate</div>
-  <div class="investment-top">&#36;<span id="purchase-price-span"></span></div>
+  <div class="inner">Investment @ <br><span class="cap-rate-span"><%= @property.cap_rate %></span>% Cap Rate</div>
+  <div class="investment-top">&#36;<span id="purchase-price-span"><%= @property.purchase_price.to_i %></span></div>
 </div>
 <div class="top-box">
   <div class="inner4">Leveraged (Borrowing) vs. Unleveraged</div>
   <div class="middle2"></div>
-  <div class="left">&#36;<span id="loan-amount-span"></span> &#64;<br><font color="black"><span id="interest-rate-span"></span>&#37;</font> Interest</div>
+  <div class="left">&#36;<span id="loan-amount-span"><%= @property.loan_amount.to_i %></span> &#64;<br><font color="black"><span id="interest-rate-span"><%= @property.interest_rate %></span>&#37;</font> Interest</div>
   <div class="right">Borrow <br>Nothing</div>
 </div>
 <div class="top-box">
   <div class="inner">Net Operating <br>Income</div>
   <div class="investmentb"></div>
-  <div class="left2">&#36;<span class="net-operating-income-span"></span></div>
-  <div class="right2">&#36;<span class="net-operating-income-span"></span></div>
+  <div class="left2">&#36;<span class="net-operating-income-span"><%= @property.net_operating_income.to_i %></span></div>
+  <div class="right2">&#36;<span class="net-operating-income-span"><%= @property.net_operating_income.to_i %></span></div>
 </div>
 <div class="top-box">
   <div class="inner">Debt Service <br>Payments</div>
   <div class="investmentb"></div>
-  <div class="left2">&#36;<span id="debt-service-span"></span></div>
+  <div class="left2">&#36;<span id="debt-service-span"><%= @property.debt_service.to_i %></span></div>
   <div class="right2">$0</div>
 </div>
 <div class="top-box">
   <div class="inner2">Cash Flow</div>
   <div class="investment2b"></div>
-  <div class="left3">&#36;<span id="cash-flow-span"></span></div>
-  <div class="right3">&#36;<span class="net-operating-income-span"></span></div>
+  <div class="left3">&#36;<span id="cash-flow-span"><%= @property.cash_flow.to_i %></span></div>
+  <div class="right3">&#36;<span class="net-operating-income-span"><%= @property.net_operating_income.to_i %></span></div>
 </div>
 <div class="top-box">
   <div class="inner3">Cash on Cash <br>(Income Earned / <br>Initial Investment)</div>
   <div class="middle-result2"></div>
-  <div class="left-result"><span id="cash-on-cash-span"></span>&#37;</div>
-  <div class="right-result"><span class="cap-rate-span"></span>&#37;</div>
+  <div class="left-result"><span id="cash-on-cash-span"><%= @property.cash_on_cash %></span>&#37;</div>
+  <div class="right-result"><span class="cap-rate-span"><%= @property.cap_rate %></span>&#37;</div>
 </div>
 <div class="flow"></div>
 <div class="flow2b"></div>
-<div class="down-payment"><b>Down Payment</b><br>&#36; <span id="down-payment-span"></span></div>
-<div class="loan-to-value"><b>Loan to value<br>(LTV &#37;)</b><br><span id="loan-to-value-span"></span> &#37;</div>
-<div class="dscr"><b>Debt Service<br>Coverage Ratio<br>(DSCR)</b><br><span id="dscr-span"></span></div>
+<div class="down-payment"><b>Down Payment</b><br>&#36; <span id="down-payment-span"><%= @property.down_payment.to_i %></span></div>
+<div class="loan-to-value"><b>Loan to value<br>(LTV &#37;)</b><br><span id="loan-to-value-span"><%= @property.loan_to_value %></span> &#37;</div>
+<div class="dscr"><b>Debt Service<br>Coverage Ratio<br>(DSCR)</b><br><span id="dscr-span"><%= @property.dscr %></span></div>
 
 
 </div>
@@ -193,7 +193,7 @@
     return x >= min && x <= max && x != "";
   }
 
-  function update_fields() {
+  function updateFields() {
     $("#errors").text("");
 
     //check for errors - start
@@ -280,10 +280,11 @@
 
 
   //setup onchange and onkeyup to call updatefields when value has changed
-  document.getElementById("property-form").onchange = update_fields;
-  document.getElementById("property-form").onkeyup = update_fields;
+  document.getElementById("property-form").onchange = updateFields;
+  document.getElementById("property-form").onkeyup = updateFields;
 
-  update_fields();
+
+  updateFields();
 
 </script>
 
