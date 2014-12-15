@@ -4,9 +4,17 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   
   # Expose these methods to the views
-  helper_method :current_user, :signed_in?
+  helper_method :current_user, :signed_in?, :remove_trailing_zeros
 
   private
+
+  def remove_trailing_zeros(x)
+    if x == x.to_i
+      x.to_i
+    else
+      x
+    end
+  end
 
   def current_user
     return nil unless session[:token]

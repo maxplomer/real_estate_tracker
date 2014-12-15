@@ -32,6 +32,7 @@ class PositiveVsNegativeLeverage < ActiveRecord::Base
     foreign_key: :user_id
   )
 
+
   def net_operating_income
     truncate(self.purchase_price * self.cap_rate / 100)
   end
