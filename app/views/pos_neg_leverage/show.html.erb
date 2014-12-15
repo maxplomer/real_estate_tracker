@@ -137,6 +137,10 @@
 
 <script language="JavaScript">
 
+  function truncate(x) {
+    return Math.floor(x * 100) / 100.0;
+  }
+
   function updateFields() {
 
     String.prototype.capitalize = function() {
@@ -148,11 +152,11 @@
     var success = function (data) {
       $("#errors").text("");
 
-      var purchasePrice = $("#pos_neg_leverage_purchase_price").val();
-      var loanAmount = $("#pos_neg_leverage_loan_amount").val();
-      var capRate = $("#pos_neg_leverage_cap_rate").val();
-      var lowInterestRate = $("#pos_neg_leverage_low_interest_rate").val();
-      var highInterestRate = $("#pos_neg_leverage_high_interest_rate").val();
+      var purchasePrice = Math.floor($("#pos_neg_leverage_purchase_price").val());
+      var loanAmount = Math.floor($("#pos_neg_leverage_loan_amount").val());
+      var capRate = truncate($("#pos_neg_leverage_cap_rate").val());
+      var lowInterestRate = truncate($("#pos_neg_leverage_low_interest_rate").val());
+      var highInterestRate = truncate($("#pos_neg_leverage_high_interest_rate").val());
 
       var netOperatingIncome = data["net_operating_income"];
       var debtServiceLowInterestRate = data["debt_service_low_interest_rate"];

@@ -20,10 +20,4 @@ class Api::PropertiesController < ApplicationController
     end
   end
 
-  private
-
-  def truncate(x)
-    (x * 100).floor / 100.0
-  end
-
 end

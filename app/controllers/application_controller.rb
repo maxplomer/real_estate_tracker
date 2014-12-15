@@ -6,6 +6,10 @@ class ApplicationController < ActionController::Base
   # Expose these methods to the views
   helper_method :current_user, :signed_in?, :remove_trailing_zeros
 
+  def truncate(x)
+    (x * 100).floor / 100.0
+  end
+  
   private
 
   def remove_trailing_zeros(x)

@@ -11,6 +11,10 @@ class Api::PosNegLeverageController < ApplicationController
     @pos_neg_leverage.interest_only = (params[:pos_neg_leverage][:interest_only].downcase == "yes")
     @pos_neg_leverage.amortization = params[:pos_neg_leverage][:amortization]
     
+    @pos_neg_leverage.cap_rate = truncate(@pos_neg_leverage.cap_rate)
+    @pos_neg_leverage.low_interest_rate = truncate(@pos_neg_leverage.low_interest_rate)
+    @pos_neg_leverage.high_interest_rate = truncate(@pos_neg_leverage.high_interest_rate)
+
     if @pos_neg_leverage.save
       render :show
     else
