@@ -63,14 +63,22 @@ class PositiveVsNegativeLeverage < ActiveRecord::Base
   end
 
   def cash_on_cash_low_interest_rate
-    truncate(cash_flow_low_interest_rate / (self.purchase_price - self.loan_amount) * 100)
+    remove_trailing_zeros(truncate(cash_flow_low_interest_rate / (self.purchase_price - self.loan_amount) * 100))
   end
 
   def cash_on_cash_high_interest_rate
-    truncate(cash_flow_high_interest_rate / (self.purchase_price - self.loan_amount) * 100)
+    remove_trailing_zeros(truncate(cash_flow_high_interest_rate / (self.purchase_price - self.loan_amount) * 100))
   end
 
   private
+
+  def remove_trailing_zeros(x)
+    if x == x.to_i
+      x.to_i
+    else
+      x
+    end
+  end
 
   def truncate(x)
     (x * 100).floor / 100.0

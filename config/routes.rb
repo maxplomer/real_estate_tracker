@@ -2,7 +2,7 @@ RealEstateTracker::Application.routes.draw do
   root :to => "properties#index"
 
   get 'pos_neg_leverage/show'
-  put 'pos_neg_leverage/update'
+  
   get 'dashboard/show'
   get 'showing_or_contact/new'
   post 'showing_or_contact/create_contact'
@@ -14,7 +14,8 @@ RealEstateTracker::Application.routes.draw do
 
 
   namespace :api, :defaults => { :format => :json } do
-    resources :properties, :only => [:update, :show]
+    resources :properties, :only => [:update]
+    put 'pos_neg_leverage/update'
   end
 end
 

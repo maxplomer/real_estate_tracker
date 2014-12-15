@@ -1,3 +1,4 @@
+<center><span id="errors"></span></center>
 <div class="pos-neg-lev">
 
 <h1>Positive vs. Negative Leverage</h1>
@@ -5,15 +6,8 @@
 
 
 <div class="diagram">
-<form action="<%= pos_neg_leverage_update_url %>" method="post">
-  <input
-    name="_method"
-    type="hidden"
-    value="put">
-  <input
-    name="authenticity_token"
-    type="hidden"
-    value="<%= form_authenticity_token %>">
+<form id="pos-neg-lev-form">
+
 
 <div class="top-box">
   <div class="purchase-price">
@@ -95,7 +89,6 @@
 
 <br>
 
-<center><input type="submit" id="pos-neg-submit" value="Update" class="btn btn-default"></center>
 </form>
 <br>
 
@@ -139,3 +132,82 @@
 </div>
 
 <br><br><br>
+
+
+
+<script language="JavaScript">
+
+  function updateFields() {
+
+    String.prototype.capitalize = function() {
+      return this.charAt(0).toUpperCase() + this.slice(1);
+    }
+
+    var data = $("#pos-neg-lev-form").serializeJSON();
+
+    var success = function (data) {
+      $("#errors").text("");
+
+      var purchasePrice = $("#pos_neg_leverage_purchase_price").val();
+      var loanAmount = $("#pos_neg_leverage_loan_amount").val();
+      var capRate = $("#pos_neg_leverage_cap_rate").val();
+      var lowInterestRate = $("#pos_neg_leverage_low_interest_rate").val();
+      var highInterestRate = $("#pos_neg_leverage_high_interest_rate").val();
+
+      var netOperatingIncome = data["net_operating_income"];
+      var debtServiceLowInterestRate = data["debt_service_low_interest_rate"];
+      var debtServiceHighInterestRate = data["debt_service_high_interest_rate"];
+      var cashFlowLowInterestRate = data["cash_flow_low_interest_rate"];
+      var cashFlowHighInterestRate = data["cash_flow_high_interest_rate"];
+      var cashOnCashLowInterestRate = data["cash_on_cash_low_interest_rate"];
+      var cashOnCashHighInterestRate = data["cash_on_cash_high_interest_rate"];
+
+      $("#purchase-price-span").text(purchasePrice);
+      $(".loan-amount-span").text(loanAmount);
+      $(".cap-rate-span").text(capRate);
+      $("#low-interest-rate-span").text(lowInterestRate);
+      $("#high-interest-rate-span").text(highInterestRate);
+
+      $(".net-operating-income-span").text(netOperatingIncome);
+      $("#debt-service-low-interest-rate-span").text(debtServiceLowInterestRate);
+      $("#debt-service-high-interest-rate-span").text(debtServiceHighInterestRate);
+      $("#cash-flow-low-interest-rate-span").text(cashFlowLowInterestRate);
+      $("#cash-flow-high-interest-rate-span").text(cashFlowHighInterestRate);
+      $("#cash-on-cash-low-interest-rate").text(cashOnCashLowInterestRate);
+      $("#cash-on-cash-high-interest-rate").text(cashOnCashHighInterestRate);
+
+    };
+
+    var error = function (data) {
+      $("#errors").text("");
+      var $errorTitle = $("<h3>Please fix the following errors:</h3>");
+      $("#errors").append($errorTitle);
+      var responseText = data["responseText"];
+      var responseObj = JSON.parse(responseText);
+      var keys = Object.keys(responseObj);
+      for (var i=0; i<keys.length; i++) {
+        var key = keys[i];
+        $("#errors").append(
+          key.replace(/_/g, ' ').capitalize() + 
+          " " + responseObj[key] + "<br />"
+        );
+      }
+      $("#errors").append($("<hr>"));
+    }
+
+    $.ajax({
+      type: "PUT",
+      url: "<%= api_pos_neg_leverage_update_url %>",
+      data: data,
+      success: success,
+      error: error,
+      dataType: "json"
+    });
+
+  }
+
+  //setup onchange and onkeyup to call updatefields when value has changed
+  document.getElementById("pos-neg-lev-form").onchange = updateFields;
+  document.getElementById("pos-neg-lev-form").onkeyup = updateFields;
+
+</script>
