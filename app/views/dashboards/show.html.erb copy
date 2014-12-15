@@ -101,7 +101,7 @@
 <br><br>
 
 <div class="top-box">
-  <div class="inner">Investment @ <%= @property.cap_rate %>% Cap Rate</div>
+  <div class="inner">Investment @ <span class="cap-rate"><%= @property.cap_rate %></span>% Cap Rate</div>
   <div class="investment-top">&#36;<%= @property.purchase_price.to_i %></div>
 </div>
 <div class="top-box">
@@ -113,32 +113,32 @@
 <div class="top-box">
   <div class="inner">Net Operating <br>Income</div>
   <div class="investmentb"></div>
-  <div class="left2">&#36;<%= @property.net_operating_income.to_i %></div>
-  <div class="right2">&#36;<%= @property.net_operating_income.to_i %></div>
+  <div class="left2">&#36;<span class="net-operating-income"><%= @property.net_operating_income.to_i %></span></div>
+  <div class="right2">&#36;<span class="net-operating-income"><%= @property.net_operating_income.to_i %></span></div>
 </div>
 <div class="top-box">
   <div class="inner">Debt Service <br>Payments</div>
   <div class="investmentb"></div>
-  <div class="left2">&#36;<%= @property.debt_service.to_i %></div>
+  <div class="left2">&#36;<span id="debt-service"><%= @property.debt_service.to_i %></span></div>
   <div class="right2">$0</div>
 </div>
 <div class="top-box">
   <div class="inner2">Cash Flow</div>
   <div class="investment2b"></div>
-  <div class="left3">&#36;<%= @property.cash_flow.to_i %></div>
-  <div class="right3">&#36;<%= @property.net_operating_income.to_i %></span></div>
+  <div class="left3">&#36;<span id="cash-flow"><%= @property.cash_flow.to_i %></span></div>
+  <div class="right3">&#36;<span class="net-operating-income"><%= @property.net_operating_income.to_i %></span</div>
 </div>
 <div class="top-box">
   <div class="inner3">Cash on Cash <br>(Income Earned / <br>Initial Investment)</div>
   <div class="middle-result2"></div>
   <div class="left-result"><span id="cash-on-cash"><%= @property.cash_on_cash %></span>&#37;</div>
-  <div class="right-result"><%= @property.cap_rate %>&#37;</div>
+  <div class="right-result"><span class="cap-rate"><%= @property.cap_rate %></span>&#37;</div>
 </div>
 <div class="flow"></div>
 <div class="flow2b"></div>
 <div class="down-payment"><b>Down Payment</b><br>&#36; <span id="down-payment-value"><%= @property.down_payment.to_i %></span></div>
 <div class="loan-to-value"><b>Loan to value<br>(LTV &#37;)</b><br><span class="loan-to-value-span"><%= @property.loan_to_value %></span> &#37;</div>
-<div class="dscr"><b>Debt Service<br>Coverage Ratio<br>(DSCR)</b><br><span id="dscr"><%= @property.dscr %></span></div>
+<div class="dscr"><b>Debt Service<br>Coverage Ratio<br>(DSCR)</b><br><span id="dscr"><%= @property.dscr %></span</div>
 
 
 </div>
@@ -256,14 +256,14 @@
       var dscr = data["dscr"];
 
 
-      $(".net-operating-income").text(netOperatingIncome);
-      $("#debt-service").text(debtService);
-      $("#cash-flow").text(cashFlow);
-      $("#cash-on-cash").text(cashOnCash);
-      $(".cap-rate").text(capRate);
-      $("#down-payment-value").text(downPayment);
-      $("#loan-to-value-span").text(loanToValue);
-      $("#dscr").text(dscr);
+      // $(".net-operating-income").text(netOperatingIncome);
+      // $("#debt-service").text(debtService);
+      // $("#cash-flow").text(cashFlow);
+      // $("#cash-on-cash").text(cashOnCash);
+      // $(".cap-rate").text(capRate);
+      // $("#down-payment-value").text(downPayment);
+      // $("#loan-to-value-span").text(loanToValue);
+      // $("#dscr").text(dscr);
     };
 
     $.ajax({

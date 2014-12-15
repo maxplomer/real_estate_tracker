@@ -10,7 +10,12 @@ RealEstateTracker::Application.routes.draw do
   resources :dashboards, :only => [:show]
   resources :users, :only => [:create, :new, :edit, :update]
   resource :session, :only => [:create, :destroy, :new]
-  resources :properties, :only => [:create, :new, :show, :index, :update]
+  resources :properties, :only => [:create, :new, :show, :index]
+
+
+  namespace :api, :defaults => { :format => :json } do
+    resources :properties, :only => [:update, :show]
+  end
 end
 
 
