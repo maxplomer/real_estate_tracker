@@ -96,12 +96,12 @@ class Property < ActiveRecord::Base
 
   def cash_on_cash
     return "n/a" if down_payment == 0 || cash_flow.class == String
-    truncate(cash_flow / down_payment * 100)
+    remove_trailing_zeros(truncate(cash_flow / down_payment * 100))
   end
 
   def cap_rate
     return "n/a" if self.purchase_price == 0
-    truncate(net_operating_income / self.purchase_price * 100)
+    remove_trailing_zeros(truncate(net_operating_income / self.purchase_price * 100))
   end
 
   def down_payment
@@ -110,15 +110,23 @@ class Property < ActiveRecord::Base
 
   def loan_to_value
     return "n/a" if self.purchase_price == 0
-    truncate(self.loan_amount / self.purchase_price * 100)
+    remove_trailing_zeros(truncate(self.loan_amount / self.purchase_price * 100))
   end
 
   def dscr
     return "n/a" if debt_service == 0 || debt_service.class == String
-    truncate(net_operating_income / debt_service)
+    remove_trailing_zeros(truncate(net_operating_income / debt_service))
   end
 
   private
+
+  def remove_trailing_zeros(x)
+    if x == x.to_i
+      x.to_i
+    else
+      x
+    end
+  end
 
   def truncate(x)
     (x * 100).floor / 100.0
