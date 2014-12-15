@@ -189,62 +189,21 @@
 
 
 <script language="JavaScript">
-  function between(x, min, max) {
-    return x >= min && x <= max && x != "";
-  }
 
   function updateFields() {
-    $("#errors").text("");
 
-    //check for errors - start
-
-    var flag = false
-
-    var purchasePrice = $("#property_purchase_price").val();
-    if ( !between(purchasePrice, 0, 99999999) ) {
-      $("#errors").append("Purchase price must be between 0 and 99,999,999<br />");
-      flag = true;
+    String.prototype.capitalize = function() {
+      return this.charAt(0).toUpperCase() + this.slice(1);
     }
-    
-    var loanAmount = $("#property_loan_amount").val();
-    if ( !between(loanAmount, 0, 99999999) ) {
-      $("#errors").append("Loan amount must be between 0 and 99,999,999<br />");
-      flag = true;
-    }
-
-    var interestRate = $("#property_interest_rate").val();
-    if ( !between(interestRate, 0, 100) ) {
-      $("#errors").append("Interest rate must be between 0 and 100<br />");
-      flag = true;
-    }
-
-    var amortization = $("#property_amortization").val();
-    if ( !between(amortization, 0, 100) ) {
-      $("#errors").append("Amortization must be between 0 and 100<br />");
-      flag = true;
-    }
-
-    var income = $("#property_income").val();
-    if ( !between(income, 0, 99999999) ) {
-      $("#errors").append("Income amount must be between 0 and 99,999,999<br />");
-      flag = true;
-    }
-
-    var expenses = $("#property_expenses").val();
-    if ( !between(expenses, 0, 99999999) ) {
-      $("#errors").append("Expenses amount must be between 0 and 99,999,999<br />");
-      flag = true;
-    }
-
-    if (flag) {
-      return;
-    }
-
-    //check for errors - end
 
     var data = $("#property-form").serializeJSON();
 
     var success = function (data) {
+      $("#errors").text("");
+
+      var purchasePrice = $("#property_purchase_price").val();
+      var loanAmount = $("#property_loan_amount").val();
+      var interestRate = $("#property_interest_rate").val();
 
       var netOperatingIncome = data["net_operating_income"];
       var debtService = data["debt_service"];
@@ -258,6 +217,7 @@
       $("#purchase-price-span").text(purchasePrice);
       $("#loan-amount-span").text(loanAmount);
       $("#interest-rate-span").text(interestRate);
+
       $(".net-operating-income-span").text(netOperatingIncome);
       $("#debt-service-span").text(debtService);
       $("#cash-flow-span").text(cashFlow);
@@ -268,21 +228,34 @@
       $("#dscr-span").text(dscr);
     };
 
+    var error = function (data) {
+      $("#errors").text("");
+      var responseText = data["responseText"];
+      var responseObj = JSON.parse(responseText);
+      var keys = Object.keys(responseObj);
+      for (var i=0; i<keys.length; i++) {
+        var key = keys[i];
+        $("#errors").append(
+          key.replace(/_/g, ' ').capitalize() + 
+          " " + responseObj[key] + "<br />"
+        );
+      }
+    }
+
     $.ajax({
       type: "PUT",
       url: "<%= api_property_url(@property) %>",
       data: data,
       success: success,
+      error: error,
       dataType: "json"
     });
 
   }
 
-
   //setup onchange and onkeyup to call updatefields when value has changed
   document.getElementById("property-form").onchange = updateFields;
   document.getElementById("property-form").onkeyup = updateFields;
-
 
 </script>
 
