@@ -107,7 +107,7 @@
 <div class="top-box">
   <div class="inner4">Leveraged (Borrowing) vs. Unleveraged</div>
   <div class="middle2"></div>
-  <div class="left">&#36;<span id="loan-amount-span"><%= @property.loan_amount.to_i %></span> &#64;<br><font color="black"><span id="interest-rate-span"><%= @property.interest_rate %></span>&#37;</font> Interest</div>
+  <div class="left">&#36;<span id="loan-amount-span"><%= @property.loan_amount.to_i %></span> &#64;<br><font color="black"><span id="interest-rate-span"><%= remove_trailing_zeros(@property.interest_rate) %></span>&#37;</font> Interest</div>
   <div class="right">Borrow <br>Nothing</div>
 </div>
 <div class="top-box">
