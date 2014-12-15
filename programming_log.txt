@@ -99,3 +99,8 @@ config.paperclip_defaults = {
 $ heroku config:set S3_BUCKET_NAME=your_bucket_name
 $ heroku config:set AWS_ACCESS_KEY_ID=your_access_key_id
 $ heroku config:set AWS_SECRET_ACCESS_KEY=your_secret_access_key
+
+
+If you are seeing the following error: “The bucket you are attempting to access must be addressed using the specified endpoint. Please send all future requests to this endpoint.” Try setting the specified endpoint with the s3_host_name config var.
+# config/initializers/paperclip.rb
+Paperclip::Attachment.default_options[:s3_host_name] = 's3-us-west-2.amazonaws.com'
