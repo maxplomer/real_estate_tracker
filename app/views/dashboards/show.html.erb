@@ -60,7 +60,7 @@
 
     <label for="property_amortization">Amortization</label><br>
     <input
-      class="remove-chars"
+      class="add-commas"
       id="property_amortization"
       name="property[amortization]"
       value="<%= @property.amortization %>"> yrs<br><br>
@@ -199,6 +199,7 @@
     var num = $this.val().replace(/(\s)/g, '');
     num = num.replace (/,/g, "");
     num = num.replace(/[^\d.-]/g, '');
+    num = Math.floor(Number(num)).toString();
     $this.val(num.replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,"));
   }
 
@@ -208,7 +209,7 @@
     }
     var $this = $(this);
     var num = $this.val()
-    $this.val(num.replace(/[^\d.-]/g, ''));
+    $this.val(truncate(num));
   }
 
   var commasFloor = function(x) {
