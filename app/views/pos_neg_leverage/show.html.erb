@@ -133,6 +133,7 @@
 <script language="JavaScript">
 
   function truncate(x) {
+    x = removeDoubles(x);
     x = Number(x.replace(/[^\d.-]/g, ''));
     return Math.round(x * 100) / 100.0;
   }
@@ -145,17 +146,9 @@
     var num = $this.val().replace(/(\s)/g, '');
     num = num.replace (/,/g, "");
     num = num.replace(/[^\d.-]/g, '');
+    num = removeDoubles(num);
     num = Math.floor(Number(num)).toString();
     $this.val(num.replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,"));
-  }
-
-  var commasFloor = function(x) {
-    x = x.replace(/(\s)/g, '');
-    x = x.replace (/,/g, "");
-    x = x.replace(/[^\d.-]/g, '');
-    x = Math.floor(Number(x)).toString();
-    x = x.replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
-    return x;
   }
 
   var removeChars = function(event) {
@@ -163,8 +156,35 @@
       event.preventDefault();
     }
     var $this = $(this);
-    var num = $this.val()
+    var num = $this.val();
+    num = removeDoubles(num);
     $this.val(truncate(num));
+  }
+
+  var commasFloor = function(x) {
+    x = x.replace(/(\s)/g, '');
+    x = x.replace (/,/g, "");
+    x = x.replace(/[^\d.-]/g, '');
+    x = removeDoubles(x);
+    x = Math.floor(Number(x)).toString();
+    x = x.replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
+    return x;
+  }
+
+  var removeDoubles = function (x) {
+    return removeDoubleNegative(removeDoublePeriod(x));
+  }
+
+  var removeDoublePeriod = function(x) {
+    return x.replace(/\./, "x")
+      .replace(/\./g, "")
+      .replace(/x/, ".");
+  }
+
+  var removeDoubleNegative = function(x) {
+    return x.replace(/\-/, "x")
+      .replace(/\-/g, "")
+      .replace(/x/, "-");
   }
 
   function updateFields() {
