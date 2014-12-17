@@ -18,6 +18,23 @@ class ApplicationController < ActionController::Base
   def truncate(x)
     (x * 100).round / 100.0
   end
+
+
+  def remove_doubles(x) 
+    remove_double_negative(remove_double_period(x))
+  end
+
+  def remove_double_period(x) 
+    x.sub(/\./, "x")
+      .gsub(/\./, "")
+      .sub(/x/, ".")
+  end
+
+  def remove_double_negative(x) 
+    x.sub(/\-/, "x")
+      .gsub(/\-/, "")
+      .sub(/x/, "-")
+  end
   
   private
 
