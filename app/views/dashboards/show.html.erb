@@ -201,7 +201,13 @@
     num = num.replace (/,/g, "");
     num = num.replace(/[^\d.-]/g, '');
     num = removeDoubles(num);
-    num = Math.floor(Number(num)).toString();
+    num = Number(num);
+    if (num > 0) {
+      num = Math.floor(num);
+    } else {
+      num = Math.ceil(num);
+    }
+    num = num.toString();
     $this.val(num.replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,"));
   }
 
@@ -220,7 +226,13 @@
     x = x.replace (/,/g, "");
     x = x.replace(/[^\d.-]/g, '');
     x = removeDoubles(x);
-    x = Math.floor(Number(x)).toString();
+    x = Number(x);
+    if (x > 0) {
+      x = Math.floor(x);
+    } else {
+      x = Math.ceil(x);
+    }
+    x = x.toString();
     x = x.replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
     return x;
   }
