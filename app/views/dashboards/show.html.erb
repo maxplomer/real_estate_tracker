@@ -43,6 +43,7 @@
 
     <label for="property_interest_rate">Interest Rate</label><br>
     <input
+      class="remove-chars"
       id="property_interest_rate"
       name="property[interest_rate]"
       value="<%= remove_trailing_zeros(@property.interest_rate) %>"> &#37;<br><br>
@@ -59,6 +60,7 @@
 
     <label for="property_amortization">Amortization</label><br>
     <input
+      class="remove-chars"
       id="property_amortization"
       name="property[amortization]"
       value="<%= @property.amortization %>"> yrs<br><br>
@@ -185,6 +187,7 @@
 <script language="JavaScript">
 
   function truncate(x) {
+    x = Number(x.replace(/[^\d.-]/g, ''));
     return Math.round(x * 100) / 100.0;
   }
 
@@ -197,6 +200,15 @@
     num = num.replace (/,/g, "");
     num = num.replace(/[^\d.-]/g, '');
     $this.val(num.replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,"));
+  }
+
+  var removeChars = function(event) {
+    if(event.which >= 37 && event.which <= 40){
+      event.preventDefault();
+    }
+    var $this = $(this);
+    var num = $this.val()
+    $this.val(num.replace(/[^\d.-]/g, ''));
   }
 
   var commasFloor = function(x) {
@@ -275,6 +287,7 @@
   }
 
   $('input.add-commas').change(addCommas);
+  $('input.remove-chars').change(removeChars);
 
   //setup onchange and onkeyup to call updatefields when value has changed
   document.getElementById("property-form").onchange = updateFields;

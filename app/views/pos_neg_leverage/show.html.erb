@@ -44,6 +44,7 @@
 
     <label for="pos_neg_leverage_cap_rate">Cap Rate</label><br>
     <input
+      class="remove-chars"
       id="pos_neg_leverage_cap_rate"
       name="pos_neg_leverage[cap_rate]"
       value="<%= remove_trailing_zeros(@pos_neg_leverage.cap_rate) %>"> &#37;<br><br>
@@ -53,6 +54,7 @@
 
     <label for="pos_neg_leverage_low_interest_rate">Low Interest Rate</label><br>
     <input
+      class="remove-chars"
       id="pos_neg_leverage_low_interest_rate"
       name="pos_neg_leverage[low_interest_rate]"
       value="<%= remove_trailing_zeros(@pos_neg_leverage.low_interest_rate) %>"> &#37;<br><br>
@@ -62,6 +64,7 @@
 
     <label for="pos_neg_leverage_high_interest_rate">High Interest Rate</label><br>
     <input
+      class="remove-chars"
       id="pos_neg_leverage_high_interest_rate"
       name="pos_neg_leverage[high_interest_rate]"
       value="<%= remove_trailing_zeros(@pos_neg_leverage.high_interest_rate) %>"> &#37;<br><br>
@@ -71,6 +74,7 @@
 
     <label for="pos_neg_leverage_amortization">Amortization</label><br>
     <input
+      class="remove-chars"
       id="pos_neg_leverage_amortization"
       name="pos_neg_leverage[amortization]"
       value="<%= @pos_neg_leverage.amortization %>"> yrs<br><br>
@@ -129,6 +133,7 @@
 <script language="JavaScript">
 
   function truncate(x) {
+    x = Number(x.replace(/[^\d.-]/g, ''));
     return Math.round(x * 100) / 100.0;
   }
 
@@ -150,6 +155,15 @@
     x = Math.floor(Number(x)).toString();
     x = x.replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
     return x;
+  }
+
+  var removeChars = function(event) {
+    if(event.which >= 37 && event.which <= 40){
+      event.preventDefault();
+    }
+    var $this = $(this);
+    var num = $this.val()
+    $this.val(num.replace(/[^\d.-]/g, ''));
   }
 
   function updateFields() {
@@ -222,6 +236,7 @@
   }
 
   $('input.add-commas').change(addCommas);
+  $('input.remove-chars').change(removeChars);
 
   //setup onchange and onkeyup to call updatefields when value has changed
   document.getElementById("pos-neg-lev-form").onchange = updateFields;
