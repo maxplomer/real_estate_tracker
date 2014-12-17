@@ -3,13 +3,13 @@ class Api::PropertiesController < ApplicationController
   def update
     @property = Property.find(params[:id])
 
-    @property.income = params[:property][:income].gsub(',', '').gsub(' ','')
-    @property.expenses = params[:property][:expenses].gsub(',', '').gsub(' ','')
-    @property.purchase_price = params[:property][:purchase_price].gsub(',', '').gsub(' ','')
-    @property.interest_rate = params[:property][:interest_rate].gsub(',', '').gsub(' ','')
-    @property.loan_amount = params[:property][:loan_amount].gsub(',', '').gsub(' ','')
+    @property.income = params[:property][:income].gsub(/[^\d.-]/, '')
+    @property.expenses = params[:property][:expenses].gsub(/[^\d.-]/, '')
+    @property.purchase_price = params[:property][:purchase_price].gsub(/[^\d.-]/, '')
+    @property.interest_rate = params[:property][:interest_rate].gsub(/[^\d.-]/, '')
+    @property.loan_amount = params[:property][:loan_amount].gsub(/[^\d.-]/, '')
     @property.interest_only = (params[:property][:interest_only].downcase == "yes")
-    @property.amortization = params[:property][:amortization].gsub(',', '').gsub(' ','')
+    @property.amortization = params[:property][:amortization].gsub(/[^\d.-]/, '')
 
     @property.interest_rate = truncate(@property.interest_rate)
 

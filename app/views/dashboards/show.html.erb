@@ -195,12 +195,14 @@
     var $this = $(this);
     var num = $this.val().replace(/(\s)/g, '');
     num = num.replace (/,/g, "");
+    num = num.replace(/[^\d.-]/g, '');
     $this.val(num.replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,"));
   }
 
   var commasFloor = function(x) {
     x = x.replace(/(\s)/g, '');
     x = x.replace (/,/g, "");
+    x = x.replace(/[^\d.-]/g, '');
     x = Math.floor(Number(x)).toString();
     x = x.replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
     return x;
