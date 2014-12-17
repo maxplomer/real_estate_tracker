@@ -1,16 +1,29 @@
 class ApplicationController < ActionController::Base
+  require 'action_view'
+  include ActionView::Helpers::NumberHelper
+
+
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
   
   # Expose these methods to the views
-  helper_method :current_user, :signed_in?, :remove_trailing_zeros
+  helper_method(
+    :current_user, 
+    :signed_in?, 
+    :remove_trailing_zeros, 
+    :commas_and_integer
+  )
 
   def truncate(x)
     (x * 100).round / 100.0
   end
   
   private
+
+  def commas_and_integer(x) 
+    number_with_precision(x, :precision => 0, :delimiter => ',') 
+  end
 
   def remove_trailing_zeros(x)
     if x == x.to_i

@@ -23,20 +23,21 @@
 
     <label for="property_purchase_price">Purchase Price</label><br>
     &#36; <input
-      class="add-commas"
+      class="number"
       id="property_purchase_price"
       name="property[purchase_price]"
-      value="<%= commas_and_integer(@property.purchase_price) %>"><br><br>
+      value="<%= @property.purchase_price.to_i %>"><br><br>
 
   </div>
   <div class="loan-amount2">
 
     <label for="property_loan_amount">Loan Amount</label><br>
     &#36; <input
-      class="add-commas"
       id="property_loan_amount"
       name="property[loan_amount]"
-      value="<%= commas_and_integer(@property.loan_amount) %>"><br><br>
+      type="number"
+      step="1"
+      value="<%= @property.loan_amount.to_i %>"><br><br>
 
   </div>
   <div class="interest-rate2">
@@ -45,6 +46,8 @@
     <input
       id="property_interest_rate"
       name="property[interest_rate]"
+      type="number"
+      step="0.01"
       value="<%= remove_trailing_zeros(@property.interest_rate) %>"> &#37;<br><br>
 
   </div>
@@ -61,6 +64,7 @@
     <input
       id="property_amortization"
       name="property[amortization]"
+      type="number"
       value="<%= @property.amortization %>"> yrs<br><br>
 
   </div>
@@ -71,20 +75,22 @@
 
     <label for="property_income">Income</label><br>
     &#36; <input
-      class="add-commas"
       id="property_income"
       name="property[income]"
-      value="<%= commas_and_integer(@property.income) %>"><br><br>
+      type="number"
+      step="1"
+      value="<%= @property.income.to_i %>"><br><br>
 
   </div>
   <div class="expenses2">
 
     <label for="property_expenses">Expenses</label><br>
     &#36; <input
-      class="add-commas"
       id="property_expenses"
       name="property[expenses]"
-      value="<%= commas_and_integer(@property.expenses) %>"><br><br>
+      type="number"
+      step="1"
+      value="<%= @property.expenses.to_i %>"><br><br>
 
   </div>
 
@@ -95,31 +101,31 @@
 
 <div class="top-box">
   <div class="inner">Investment @ <br><span class="cap-rate-span"><%= @property.cap_rate %></span>% Cap Rate</div>
-  <div class="investment-top">&#36;<span id="purchase-price-span"><%= commas_and_integer(@property.purchase_price) %></span></div>
+  <div class="investment-top">&#36;<span id="purchase-price-span"><%= @property.purchase_price.to_i %></span></div>
 </div>
 <div class="top-box">
   <div class="inner4">Leveraged (Borrowing) vs. Unleveraged</div>
   <div class="middle2"></div>
-  <div class="left">&#36;<span id="loan-amount-span"><%= commas_and_integer(@property.loan_amount) %></span> &#64;<br><font color="black"><span id="interest-rate-span"><%= remove_trailing_zeros(@property.interest_rate) %></span>&#37;</font> Interest</div>
+  <div class="left">&#36;<span id="loan-amount-span"><%= @property.loan_amount.to_i %></span> &#64;<br><font color="black"><span id="interest-rate-span"><%= remove_trailing_zeros(@property.interest_rate) %></span>&#37;</font> Interest</div>
   <div class="right">Borrow <br>Nothing</div>
 </div>
 <div class="top-box">
   <div class="inner">Net Operating <br>Income</div>
   <div class="investmentb"></div>
-  <div class="left2">&#36;<span class="net-operating-income-span"><%= commas_and_integer(@property.net_operating_income) %></span></div>
-  <div class="right2">&#36;<span class="net-operating-income-span"><%= commas_and_integer(@property.net_operating_income) %></span></div>
+  <div class="left2">&#36;<span class="net-operating-income-span"><%= @property.net_operating_income.to_i %></span></div>
+  <div class="right2">&#36;<span class="net-operating-income-span"><%= @property.net_operating_income.to_i %></span></div>
 </div>
 <div class="top-box">
   <div class="inner">Debt Service <br>Payments</div>
   <div class="investmentb"></div>
-  <div class="left2">&#36;<span id="debt-service-span"><%= commas_and_integer(@property.debt_service) %></span></div>
+  <div class="left2">&#36;<span id="debt-service-span"><%= @property.debt_service.to_i %></span></div>
   <div class="right2">$0</div>
 </div>
 <div class="top-box">
   <div class="inner2">Cash Flow</div>
   <div class="investment2b"></div>
-  <div class="left3">&#36;<span id="cash-flow-span"><%= commas_and_integer(@property.cash_flow) %></span></div>
-  <div class="right3">&#36;<span class="net-operating-income-span"><%= commas_and_integer(@property.net_operating_income) %></span></div>
+  <div class="left3">&#36;<span id="cash-flow-span"><%= @property.cash_flow.to_i %></span></div>
+  <div class="right3">&#36;<span class="net-operating-income-span"><%= @property.net_operating_income.to_i %></span></div>
 </div>
 <div class="top-box">
   <div class="inner3">Cash on Cash <br>(Income Earned / <br>Initial Investment)</div>
@@ -129,7 +135,7 @@
 </div>
 <div class="flow"></div>
 <div class="flow2b"></div>
-<div class="down-payment"><b>Down Payment</b><br>&#36; <span id="down-payment-span"><%= commas_and_integer(@property.down_payment) %></span></div>
+<div class="down-payment"><b>Down Payment</b><br>&#36; <span id="down-payment-span"><%= @property.down_payment.to_i %></span></div>
 <div class="loan-to-value"><b>Loan to value<br>(LTV &#37;)</b><br><span id="loan-to-value-span"><%= @property.loan_to_value %></span> &#37;</div>
 <div class="dscr"><b>Debt Service<br>Coverage Ratio<br>(DSCR)</b><br><span id="dscr-span"><%= @property.dscr %></span></div>
 
@@ -198,14 +204,6 @@
     $this.val(num.replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,"));
   }
 
-  var commasFloor = function(x) {
-    x = x.replace(/(\s)/g, '');
-    x = x.replace (/,/g, "");
-    x = Math.floor(Number(x)).toString();
-    x = x.replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
-    return x;
-  }
-
   function updateFields() {
 
     String.prototype.capitalize = function() {
@@ -217,8 +215,8 @@
     var success = function (data) {
       $("#errors").text("");
 
-      var purchasePrice = commasFloor($("#property_purchase_price").val());
-      var loanAmount = commasFloor($("#property_loan_amount").val());
+      var purchasePrice = Math.floor($("#property_purchase_price").val());
+      var loanAmount = Math.floor($("#property_loan_amount").val());
       var interestRate = truncate($("#property_interest_rate").val());
 
       var netOperatingIncome = data["net_operating_income"];
@@ -272,11 +270,11 @@
 
   }
 
-  $('input.add-commas').change(addCommas);
+  $('input.number').change(addCommas);
 
   //setup onchange and onkeyup to call updatefields when value has changed
-  document.getElementById("property-form").onchange = updateFields;
-  document.getElementById("property-form").onkeyup = updateFields;
+  //document.getElementById("property-form").onchange = updateFields;
+  //document.getElementById("property-form").onkeyup = updateFields;
 
 
   
