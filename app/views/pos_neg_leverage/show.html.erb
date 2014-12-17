@@ -14,22 +14,20 @@
 
     <label for="pos_neg_leverage_purchase_price">Purchase Price</label><br>
     &#36; <input
+      class="add-commas"
       id="pos_neg_leverage_purchase_price"
       name="pos_neg_leverage[purchase_price]"
-      type="number"
-      step="1"
-      value="<%= @pos_neg_leverage.purchase_price.to_i %>"><br><br>
+      value="<%= commas_and_integer(@pos_neg_leverage.purchase_price) %>"><br><br>
 
   </div>
   <div class="loan-amount">
 
     <label for="pos_neg_leverage_loan_amount">Loan Amount</label><br>
     &#36; <input
+      class="add-commas"
       id="pos_neg_leverage_loan_amount"
       name="pos_neg_leverage[loan_amount]"
-      type="number"
-      step="1"
-      value="<%= @pos_neg_leverage.loan_amount.to_i %>"><br><br>
+      value="<%= commas_and_integer(@pos_neg_leverage.loan_amount) %>"><br><br>
 
   </div>
   <div class="interest-only">
@@ -48,8 +46,6 @@
     <input
       id="pos_neg_leverage_cap_rate"
       name="pos_neg_leverage[cap_rate]"
-      type="number"
-      step="0.01"
       value="<%= remove_trailing_zeros(@pos_neg_leverage.cap_rate) %>"> &#37;<br><br>
 
   </div>
@@ -59,8 +55,6 @@
     <input
       id="pos_neg_leverage_low_interest_rate"
       name="pos_neg_leverage[low_interest_rate]"
-      type="number"
-      step="0.01"
       value="<%= remove_trailing_zeros(@pos_neg_leverage.low_interest_rate) %>"> &#37;<br><br>
 
   </div>
@@ -70,8 +64,6 @@
     <input
       id="pos_neg_leverage_high_interest_rate"
       name="pos_neg_leverage[high_interest_rate]"
-      type="number"
-      step="0.01"
       value="<%= remove_trailing_zeros(@pos_neg_leverage.high_interest_rate) %>"> &#37;<br><br>
 
   </div>
@@ -81,7 +73,6 @@
     <input
       id="pos_neg_leverage_amortization"
       name="pos_neg_leverage[amortization]"
-      type="number"
       value="<%= @pos_neg_leverage.amortization %>"> yrs<br><br>
 
   </div>
@@ -94,31 +85,31 @@
 
 <div class="top-box">
   <div class="inner">Investment @ <br><span class="cap-rate-span"><%= remove_trailing_zeros(@pos_neg_leverage.cap_rate) %></span>% Cap Rate</div>
-  <div class="investment-top">&#36;<span id="purchase-price-span"><%= @pos_neg_leverage.purchase_price.to_i %></span></div>
+  <div class="investment-top">&#36;<span id="purchase-price-span"><%= commas_and_integer(@pos_neg_leverage.purchase_price) %></span></div>
 </div>
 <div class="top-box">
   <div class="inner4">Leveraged (Borrowing) vs. Unleveraged</div>
   <div class="middle">Borrow <br>Nothing</div>
-  <div class="left">&#36;<span class="loan-amount-span"><%= @pos_neg_leverage.loan_amount.to_i %></span> &#64;<br><font color="black"><span id="low-interest-rate-span"><%= remove_trailing_zeros(@pos_neg_leverage.low_interest_rate) %></span>&#37;</font> Interest</div>
-  <div class="right">&#36;<span class="loan-amount-span"><%= @pos_neg_leverage.loan_amount.to_i %></span> &#64;<br><font color="black"><span id="high-interest-rate-span"><%= remove_trailing_zeros(@pos_neg_leverage.high_interest_rate) %></span>&#37;</font> Interest</div>
+  <div class="left">&#36;<span class="loan-amount-span"><%= commas_and_integer(@pos_neg_leverage.loan_amount) %></span> &#64;<br><font color="black"><span id="low-interest-rate-span"><%= remove_trailing_zeros(@pos_neg_leverage.low_interest_rate) %></span>&#37;</font> Interest</div>
+  <div class="right">&#36;<span class="loan-amount-span"><%= commas_and_integer(@pos_neg_leverage.loan_amount) %></span> &#64;<br><font color="black"><span id="high-interest-rate-span"><%= remove_trailing_zeros(@pos_neg_leverage.high_interest_rate) %></span>&#37;</font> Interest</div>
 </div>
 <div class="top-box">
   <div class="inner">Net Operating <br>Income</div>
-  <div class="investment">&#36;<span class="net-operating-income-span"><%= @pos_neg_leverage.net_operating_income.to_i %></span></div>
-  <div class="left2">&#36;<span class="net-operating-income-span"><%= @pos_neg_leverage.net_operating_income.to_i %></span></div>
-  <div class="right2">&#36;<span class="net-operating-income-span"><%= @pos_neg_leverage.net_operating_income.to_i %></span></div>
+  <div class="investment">&#36;<span class="net-operating-income-span"><%= commas_and_integer(@pos_neg_leverage.net_operating_income) %></span></div>
+  <div class="left2">&#36;<span class="net-operating-income-span"><%= commas_and_integer(@pos_neg_leverage.net_operating_income) %></span></div>
+  <div class="right2">&#36;<span class="net-operating-income-span"><%= commas_and_integer(@pos_neg_leverage.net_operating_income) %></span></div>
 </div>
 <div class="top-box">
   <div class="inner">Debt Service <br>Payments</div>
   <div class="investment">$0</div>
-  <div class="left2">&#36;<span id="debt-service-low-interest-rate-span"><%= @pos_neg_leverage.debt_service_low_interest_rate.to_i %></span></div>
-  <div class="right2">&#36;<span id="debt-service-high-interest-rate-span"><%= @pos_neg_leverage.debt_service_high_interest_rate.to_i %></span></div>
+  <div class="left2">&#36;<span id="debt-service-low-interest-rate-span"><%= commas_and_integer(@pos_neg_leverage.debt_service_low_interest_rate) %></span></div>
+  <div class="right2">&#36;<span id="debt-service-high-interest-rate-span"><%= commas_and_integer(@pos_neg_leverage.debt_service_high_interest_rate) %></span></div>
 </div>
 <div class="top-box">
   <div class="inner2">Cash Flow</div>
-  <div class="investment2">&#36;<span class="net-operating-income-span"><%= @pos_neg_leverage.net_operating_income.to_i %></span></div>
-  <div class="left3">&#36;<span id="cash-flow-low-interest-rate-span"><%= @pos_neg_leverage.cash_flow_low_interest_rate.to_i %></span></div>
-  <div class="right3">&#36;<span id="cash-flow-high-interest-rate-span"><%= @pos_neg_leverage.cash_flow_high_interest_rate.to_i %></span></div>
+  <div class="investment2">&#36;<span class="net-operating-income-span"><%= commas_and_integer(@pos_neg_leverage.net_operating_income) %></span></div>
+  <div class="left3">&#36;<span id="cash-flow-low-interest-rate-span"><%= commas_and_integer(@pos_neg_leverage.cash_flow_low_interest_rate) %></span></div>
+  <div class="right3">&#36;<span id="cash-flow-high-interest-rate-span"><%= commas_and_integer(@pos_neg_leverage.cash_flow_high_interest_rate) %></span></div>
 </div>
 <div class="top-box">
   <div class="inner3">Cash on Cash <br>(Income Earned / <br>Initial Investment)</div>
@@ -141,6 +132,24 @@
     return Math.round(x * 100) / 100.0;
   }
 
+  var addCommas = function(event) {
+    if(event.which >= 37 && event.which <= 40){
+      event.preventDefault();
+    }
+    var $this = $(this);
+    var num = $this.val().replace(/(\s)/g, '');
+    num = num.replace (/,/g, "");
+    $this.val(num.replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,"));
+  }
+
+  var commasFloor = function(x) {
+    x = x.replace(/(\s)/g, '');
+    x = x.replace (/,/g, "");
+    x = Math.floor(Number(x)).toString();
+    x = x.replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
+    return x;
+  }
+
   function updateFields() {
 
     String.prototype.capitalize = function() {
@@ -152,8 +161,8 @@
     var success = function (data) {
       $("#errors").text("");
 
-      var purchasePrice = Math.floor($("#pos_neg_leverage_purchase_price").val());
-      var loanAmount = Math.floor($("#pos_neg_leverage_loan_amount").val());
+      var purchasePrice = commasFloor($("#pos_neg_leverage_purchase_price").val());
+      var loanAmount = commasFloor($("#pos_neg_leverage_loan_amount").val());
       var capRate = truncate($("#pos_neg_leverage_cap_rate").val());
       var lowInterestRate = truncate($("#pos_neg_leverage_low_interest_rate").val());
       var highInterestRate = truncate($("#pos_neg_leverage_high_interest_rate").val());
@@ -180,7 +189,7 @@
       $("#cash-on-cash-low-interest-rate").text(cashOnCashLowInterestRate);
       $("#cash-on-cash-high-interest-rate").text(cashOnCashHighInterestRate);
 
-    };
+    }
 
     var error = function (data) {
       $("#errors").text("");
@@ -209,6 +218,8 @@
     });
 
   }
+
+  $('input.add-commas').change(addCommas);
 
   //setup onchange and onkeyup to call updatefields when value has changed
   document.getElementById("pos-neg-lev-form").onchange = updateFields;

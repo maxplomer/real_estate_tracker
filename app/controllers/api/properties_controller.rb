@@ -6,10 +6,10 @@ class Api::PropertiesController < ApplicationController
     @property.income = params[:property][:income].gsub(',', '').gsub(' ','')
     @property.expenses = params[:property][:expenses].gsub(',', '').gsub(' ','')
     @property.purchase_price = params[:property][:purchase_price].gsub(',', '').gsub(' ','')
-    @property.interest_rate = params[:property][:interest_rate]
+    @property.interest_rate = params[:property][:interest_rate].gsub(',', '').gsub(' ','')
     @property.loan_amount = params[:property][:loan_amount].gsub(',', '').gsub(' ','')
     @property.interest_only = (params[:property][:interest_only].downcase == "yes")
-    @property.amortization = params[:property][:amortization]
+    @property.amortization = params[:property][:amortization].gsub(',', '').gsub(' ','')
 
     @property.interest_rate = truncate(@property.interest_rate)
 
@@ -17,6 +17,7 @@ class Api::PropertiesController < ApplicationController
     @property.expenses = @property.expenses.floor
     @property.purchase_price = @property.purchase_price.floor
     @property.loan_amount = @property.loan_amount.floor
+    @property.amortization = @property.amortization.floor
 
     if @property.save
       render :show
