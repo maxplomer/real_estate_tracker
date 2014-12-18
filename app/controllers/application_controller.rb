@@ -38,9 +38,11 @@ class ApplicationController < ActionController::Base
   
   private
 
+  #### get rid of this function ####
   def commas_and_integer(x) 
     number_with_precision(x, :precision => 0, :delimiter => ',') 
   end
+  #### get rid of this function ####
 
   def remove_trailing_zeros(x)
     if x == x.to_i

@@ -1,188 +1,255 @@
 <center><span id="errors"></span></center>
+
 <div class="property-page">
-<center><h2><a href="<%= property_url(@property) %>"><%= @property.address %> <%= @property.floor %> Floor</a></h2>
+  <center>
+    <h2>
+      <a href="<%= property_url(@property) %>">
+        <%= @property.address %> <%= @property.floor %> Floor
+      </a>
+    </h2>
 
-<% @properties.each do |property| %>
-  <% if property == @property %>
-    <% class_str = "btn btn-default current-button" %>
-  <% else %>
-    <% class_str = "btn btn-default" %>
-  <% end %> 
-  <%= link_to "#{property.address} #{property.floor} Floor", dashboard_url(property), class: class_str %>
-<% end %></center>
+    <% @properties.each do |property| %>
+      <% if property == @property %>
+        <% class_str = "btn btn-default current-button" %>
+      <% else %>
+        <% class_str = "btn btn-default" %>
+      <% end %> 
+      <%= link_to "#{property.address} #{property.floor} Floor", dashboard_url(property), class: class_str %>
+    <% end %>
+  </center>
 
-<br><br>
+  <br><br>
 
+  <div class="diagram2">
+    <form id="property-form">
+      <div class="top-box">
+        <div class="purchase-price2">
+          <label for="property_purchase_price">Purchase Price</label><br>
+          &#36; <input
+            class="add-commas"
+            id="property_purchase_price"
+            name="property[purchase_price]"
+            value="<%= commas_and_integer(@property.purchase_price) %>">
+        </div>
 
-<div class="diagram2">
-<form id="property-form">
+        <div class="loan-amount2">
+          <label for="property_loan_amount">Loan Amount</label><br>
 
+          &#36; <input
+            class="add-commas"
+            id="property_loan_amount"
+            name="property[loan_amount]"
+            value="<%= commas_and_integer(@property.loan_amount) %>">
+        </div>
 
-<div class="top-box">
-  <div class="purchase-price2">
+        <div class="interest-rate2">
+          <label for="property_interest_rate">Interest Rate</label><br>
 
-    <label for="property_purchase_price">Purchase Price</label><br>
-    &#36; <input
-      class="add-commas"
-      id="property_purchase_price"
-      name="property[purchase_price]"
-      value="<%= commas_and_integer(@property.purchase_price) %>">
+          <input
+            class="remove-chars"
+            id="property_interest_rate"
+            name="property[interest_rate]"
+            value="<%= remove_trailing_zeros(@property.interest_rate) %>"> &#37;
+        </div>
 
-  </div>
-  <div class="loan-amount2">
+        <div class="interest-only2">
+          <label for="property_interest_only">Interest Only</label><br>
+          <input id="interest-only-yes" type="radio" name="property[interest_only]" value="Yes" <%= "checked" if @property.interest_only %>> Yes&nbsp;&nbsp;&nbsp;
+          <input id="interest-only-no" type="radio" name="property[interest_only]" value="No" <%= "checked" unless @property.interest_only %>> No
+        </div>
 
-    <label for="property_loan_amount">Loan Amount</label><br>
-    &#36; <input
-      class="add-commas"
-      id="property_loan_amount"
-      name="property[loan_amount]"
-      value="<%= commas_and_integer(@property.loan_amount) %>">
+        <div class="amortization2">
+          <label for="property_amortization">Amortization</label><br>
 
-  </div>
-  <div class="interest-rate2">
+          <select name="property[amortization]">
+            <% [5, 7, 10, 15, 20, 25, 30].each do |num| %>
+              <option value="<%= num %>" <%= "selected" if @property.amortization == num  %>><%= num %> years</option>
+            <% end %>
+          </select>
+        </div>
+      </div>
 
-    <label for="property_interest_rate">Interest Rate</label><br>
-    <input
-      class="remove-chars"
-      id="property_interest_rate"
-      name="property[interest_rate]"
-      value="<%= remove_trailing_zeros(@property.interest_rate) %>"> &#37;
+      <div class="top-box">
+        <div class="income2">
+          <label for="property_income">Income</label><br>
+          &#36; <input
+            class="add-commas"
+            id="property_income"
+            name="property[income]"
+            value="<%= commas_and_integer(@property.income) %>">
+        </div>
 
-  </div>
-  <div class="interest-only2">
+        <div class="expenses2">
+          <label for="property_expenses">Expenses</label><br>
+          &#36; <input
+            class="add-commas"
+            id="property_expenses"
+            name="property[expenses]"
+            value="<%= commas_and_integer(@property.expenses) %>">
+        </div>
+      </div>
+    </form>
 
-    <label for="property_interest_only">Interest Only</label><br>
-    <input id="interest-only-yes" type="radio" name="property[interest_only]" value="Yes" <%= "checked" if @property.interest_only %>> Yes&nbsp;&nbsp;&nbsp;
-    <input id="interest-only-no" type="radio" name="property[interest_only]" value="No" <%= "checked" unless @property.interest_only %>> No
+    <br><br>
 
-  </div>
-  <div class="amortization2">
+    <div class="top-box">
+      <div class="inner">Investment @ <br>
+        <span class="cap-rate-span">
+          <%= @property.cap_rate %>
+        </span>% Cap Rate
+      </div>
 
-    <label for="property_amortization">Amortization</label><br>
-    <select name="property[amortization]">
-      <% [5, 7, 10, 15, 20, 25, 30].each do |num| %>
-        <option value="<%= num %>" <%= "selected" if @property.amortization == num  %>><%= num %> years</option>
-      <% end %>
-    </select>
-
-  </div>
-
-</div>
-<div class="top-box">
-  <div class="income2">
-
-    <label for="property_income">Income</label><br>
-    &#36; <input
-      class="add-commas"
-      id="property_income"
-      name="property[income]"
-      value="<%= commas_and_integer(@property.income) %>">
-
-  </div>
-  <div class="expenses2">
-
-    <label for="property_expenses">Expenses</label><br>
-    &#36; <input
-      class="add-commas"
-      id="property_expenses"
-      name="property[expenses]"
-      value="<%= commas_and_integer(@property.expenses) %>">
-
-  </div>
-
-</div>
-
-</form>
-<br><br>
-
-<div class="top-box">
-  <div class="inner">Investment @ <br><span class="cap-rate-span"><%= @property.cap_rate %></span>% Cap Rate</div>
-  <div class="investment-top">&#36;<span id="purchase-price-span"><%= commas_and_integer(@property.purchase_price) %></span></div>
-</div>
-<div class="top-box">
-  <div class="inner4">Leveraged (Borrowing) vs. Unleveraged</div>
-  <div class="middle2"></div>
-  <div class="left">&#36;<span id="loan-amount-span"><%= commas_and_integer(@property.loan_amount) %></span> &#64;<br><font color="black"><span id="interest-rate-span"><%= remove_trailing_zeros(@property.interest_rate) %></span>&#37;</font> Interest</div>
-  <div class="right">Borrow <br>Nothing</div>
-</div>
-<div class="top-box">
-  <div class="inner">Net Operating <br>Income</div>
-  <div class="investmentb"></div>
-  <div class="left2">&#36;<span class="net-operating-income-span"><%= commas_and_integer(@property.net_operating_income) %></span></div>
-  <div class="right2">&#36;<span class="net-operating-income-span"><%= commas_and_integer(@property.net_operating_income) %></span></div>
-</div>
-<div class="top-box">
-  <div class="inner">Debt Service <br>Payments</div>
-  <div class="investmentb"></div>
-  <div class="left2">&#36;<span id="debt-service-span"><%= commas_and_integer(@property.debt_service) %></span></div>
-  <div class="right2">$0</div>
-</div>
-<div class="top-box">
-  <div class="inner2">Cash Flow</div>
-  <div class="investment2b"></div>
-  <div class="left3">&#36;<span id="cash-flow-span"><%= commas_and_integer(@property.cash_flow) %></span></div>
-  <div class="right3">&#36;<span class="net-operating-income-span"><%= commas_and_integer(@property.net_operating_income) %></span></div>
-</div>
-<div class="top-box">
-  <div class="inner3">Cash on Cash <br>(Income Earned / <br>Initial Investment)</div>
-  <div class="middle-result2"></div>
-  <div class="left-result"><span id="cash-on-cash-span"><%= @property.cash_on_cash %></span>&#37;</div>
-  <div class="right-result"><span class="cap-rate-span"><%= @property.cap_rate %></span>&#37;</div>
-</div>
-<div class="flow"></div>
-<div class="flow2b"></div>
-<div class="down-payment"><b>Down Payment</b><br>&#36; <span id="down-payment-span"><%= commas_and_integer(@property.down_payment) %></span></div>
-<div class="loan-to-value"><b>Loan to value<br>(LTV &#37;)</b><br><span id="loan-to-value-span"><%= @property.loan_to_value %></span> &#37;</div>
-<div class="dscr"><b>Debt Service<br>Coverage Ratio<br>(DSCR)</b><br><span id="dscr-span"><%= @property.dscr %></span></div>
-
-
-</div>
-<center><a href="/equations.txt">Link to equations</a><br><br></center>
-
-
-
-
-
-
-
-
-<h3>Page Views</h3>
-(does not count logged in user on own properties)
-
-<% data = @property.views.group_by_day(:created_at).count %>
-<% new_data = {} %>
-<% data.each { |key, value| new_data[key.to_date] = value } %>
-
-<%= line_chart(new_data, discrete: true) %>
-
-<h3>Showings</h3>
-
-<% data = @property.showings.group_by_day(:created_at).count %>
-<% new_data = {} %>
-<% data.each { |key, value| new_data[key.to_date] = value } %>
-
-<%= line_chart(new_data, discrete: true) %>
-
-<br>
-<div class="group">
-  <% @property.showings.each do |showing| %>
-    <div class="showing"> 
-      <%= showing.name %><br>
-      <%= showing.title %><br>
-      <%= showing.email %><br>
-      <%= showing.company %><br>
-      <%= showing.phone %><br>
+      <div class="investment-top">&#36;
+        <span id="purchase-price-span">
+          <%= number_with_precision(@property.purchase_price, :precision => 0, :delimiter => ',') %>
+        </span>
+      </div>
     </div>
-  <% end %>
-</div>
 
+    <div class="top-box">
+      <div class="inner4">Leveraged (Borrowing) vs. Unleveraged</div>
 
+      <div class="middle2"></div>
+
+      <div class="left">&#36;
+        <span id="loan-amount-span">
+          <%= number_with_precision(@property.loan_amount, :precision => 0, :delimiter => ',') %>
+        </span> &#64;<br>
+        <font color="black">
+          <span id="interest-rate-span">
+            <%= remove_trailing_zeros(@property.interest_rate) %>
+          </span>&#37;
+        </font> Interest
+      </div>
+
+      <div class="right">Borrow <br>Nothing</div>
+    </div>
+
+    <div class="top-box">
+      <div class="inner">Net Operating <br>Income</div>
+
+      <div class="investmentb"></div>
+
+      <div class="left2">&#36;
+        <span class="net-operating-income-span">
+          <%= number_with_precision(@property.net_operating_income, :precision => 0, :delimiter => ',') %>
+        </span>
+      </div>
+
+      <div class="right2">&#36;
+        <span class="net-operating-income-span">
+          <%= number_with_precision(@property.net_operating_income, :precision => 0, :delimiter => ',') %>
+        </span>
+      </div>
+    </div>
+
+    <div class="top-box">
+      <div class="inner">Debt Service <br>Payments</div>
+
+      <div class="investmentb"></div>
+
+      <div class="left2">&#36;
+        <span id="debt-service-span">
+          <%= number_with_precision(@property.debt_service, :precision => 0, :delimiter => ',') %>
+        </span>
+      </div>
+
+      <div class="right2">$0</div>
+    </div>
+
+    <div class="top-box">
+      <div class="inner2">Cash Flow</div>
+
+      <div class="investment2b"></div>
+
+      <div class="left3">&#36;
+        <span id="cash-flow-span">
+          <%= number_with_precision(@property.cash_flow, :precision => 0, :delimiter => ',') %>
+        </span>
+      </div>
+
+      <div class="right3">&#36;
+        <span class="net-operating-income-span">
+          <%= number_with_precision(@property.net_operating_income, :precision => 0, :delimiter => ',') %>
+        </span>
+      </div>
+    </div>
+
+    <div class="top-box">
+      <div class="inner3">Cash on Cash <br>(Income Earned / <br>Initial Investment)</div>
+
+      <div class="middle-result2"></div>
+
+      <div class="left-result">
+        <span id="cash-on-cash-span">
+          <%= @property.cash_on_cash %>
+        </span>&#37;
+      </div>
+
+      <div class="right-result">
+        <span class="cap-rate-span">
+          <%= @property.cap_rate %>
+        </span>&#37;
+      </div>
+    </div>
+
+    <div class="flow"></div>
+
+    <div class="flow2b"></div>
+
+    <div class="down-payment"><b>Down Payment</b><br>&#36; 
+      <span id="down-payment-span">
+        <%= number_with_precision(@property.down_payment, :precision => 0, :delimiter => ',') %>
+      </span>
+    </div>
+
+    <div class="loan-to-value"><b>Loan to value<br>(LTV &#37;)</b><br>
+      <span id="loan-to-value-span">
+        <%= @property.loan_to_value %>
+      </span> &#37;
+    </div>
+
+    <div class="dscr"><b>Debt Service<br>Coverage Ratio<br>(DSCR)</b><br>
+      <span id="dscr-span">
+        <%= @property.dscr %>
+      </span>
+    </div>
+  </div>
+
+  <center><a href="/equations.txt">Link to equations</a><br><br></center>
+
+  <h3>Page Views</h3>
+  (does not count logged in user on own properties)
+
+  <% data = @property.views.group_by_day(:created_at).count %>
+  <% new_data = {} %>
+  <% data.each { |key, value| new_data[key.to_date] = value } %>
+
+  <%= line_chart(new_data, discrete: true) %>
+
+  <h3>Showings</h3>
+
+  <% data = @property.showings.group_by_day(:created_at).count %>
+  <% new_data = {} %>
+  <% data.each { |key, value| new_data[key.to_date] = value } %>
+
+  <%= line_chart(new_data, discrete: true) %>
+
+  <br>
+  <div class="group">
+    <% @property.showings.each do |showing| %>
+      <div class="showing"> 
+        <%= showing.name %><br>
+        <%= showing.title %><br>
+        <%= showing.email %><br>
+        <%= showing.company %><br>
+        <%= showing.phone %><br>
+      </div>
+    <% end %>
+  </div>
 </div>
 
 <br><br><br><br>
-
-
-
 
 <script language="JavaScript">
 
