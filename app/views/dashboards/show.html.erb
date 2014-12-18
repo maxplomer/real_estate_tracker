@@ -26,7 +26,7 @@
       class="add-commas"
       id="property_purchase_price"
       name="property[purchase_price]"
-      value="<%= commas_and_integer(@property.purchase_price) %>"><br><br>
+      value="<%= commas_and_integer(@property.purchase_price) %>">
 
   </div>
   <div class="loan-amount2">
@@ -36,7 +36,7 @@
       class="add-commas"
       id="property_loan_amount"
       name="property[loan_amount]"
-      value="<%= commas_and_integer(@property.loan_amount) %>"><br><br>
+      value="<%= commas_and_integer(@property.loan_amount) %>">
 
   </div>
   <div class="interest-rate2">
@@ -46,7 +46,7 @@
       class="remove-chars"
       id="property_interest_rate"
       name="property[interest_rate]"
-      value="<%= remove_trailing_zeros(@property.interest_rate) %>"> &#37;<br><br>
+      value="<%= remove_trailing_zeros(@property.interest_rate) %>"> &#37;
 
   </div>
   <div class="interest-only2">
@@ -59,11 +59,11 @@
   <div class="amortization2">
 
     <label for="property_amortization">Amortization</label><br>
-    <input
-      class="add-commas"
-      id="property_amortization"
-      name="property[amortization]"
-      value="<%= @property.amortization %>"> yrs<br><br>
+    <select name="property[amortization]">
+      <% [5, 7, 10, 15, 20, 25, 30].each do |num| %>
+        <option value="<%= num %>" <%= "selected" if @property.amortization == num  %>><%= num %> years</option>
+      <% end %>
+    </select>
 
   </div>
 
@@ -76,7 +76,7 @@
       class="add-commas"
       id="property_income"
       name="property[income]"
-      value="<%= commas_and_integer(@property.income) %>"><br><br>
+      value="<%= commas_and_integer(@property.income) %>">
 
   </div>
   <div class="expenses2">
@@ -86,7 +86,7 @@
       class="add-commas"
       id="property_expenses"
       name="property[expenses]"
-      value="<%= commas_and_integer(@property.expenses) %>"><br><br>
+      value="<%= commas_and_integer(@property.expenses) %>">
 
   </div>
 

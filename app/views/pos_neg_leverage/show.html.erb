@@ -17,7 +17,7 @@
       class="add-commas"
       id="pos_neg_leverage_purchase_price"
       name="pos_neg_leverage[purchase_price]"
-      value="<%= commas_and_integer(@pos_neg_leverage.purchase_price) %>"><br><br>
+      value="<%= commas_and_integer(@pos_neg_leverage.purchase_price) %>">
 
   </div>
   <div class="loan-amount">
@@ -27,7 +27,7 @@
       class="add-commas"
       id="pos_neg_leverage_loan_amount"
       name="pos_neg_leverage[loan_amount]"
-      value="<%= commas_and_integer(@pos_neg_leverage.loan_amount) %>"><br><br>
+      value="<%= commas_and_integer(@pos_neg_leverage.loan_amount) %>">
 
   </div>
   <div class="interest-only">
@@ -47,7 +47,7 @@
       class="remove-chars"
       id="pos_neg_leverage_cap_rate"
       name="pos_neg_leverage[cap_rate]"
-      value="<%= remove_trailing_zeros(@pos_neg_leverage.cap_rate) %>"> &#37;<br><br>
+      value="<%= remove_trailing_zeros(@pos_neg_leverage.cap_rate) %>"> &#37;
 
   </div>
   <div class="low-interest-rate">
@@ -57,7 +57,7 @@
       class="remove-chars"
       id="pos_neg_leverage_low_interest_rate"
       name="pos_neg_leverage[low_interest_rate]"
-      value="<%= remove_trailing_zeros(@pos_neg_leverage.low_interest_rate) %>"> &#37;<br><br>
+      value="<%= remove_trailing_zeros(@pos_neg_leverage.low_interest_rate) %>"> &#37;
 
   </div>
   <div class="high-interest-rate">
@@ -67,17 +67,17 @@
       class="remove-chars"
       id="pos_neg_leverage_high_interest_rate"
       name="pos_neg_leverage[high_interest_rate]"
-      value="<%= remove_trailing_zeros(@pos_neg_leverage.high_interest_rate) %>"> &#37;<br><br>
+      value="<%= remove_trailing_zeros(@pos_neg_leverage.high_interest_rate) %>"> &#37;
 
   </div>
   <div class="amortization">
 
     <label for="pos_neg_leverage_amortization">Amortization</label><br>
-    <input
-      class="add-commas"
-      id="pos_neg_leverage_amortization"
-      name="pos_neg_leverage[amortization]"
-      value="<%= @pos_neg_leverage.amortization %>"> yrs<br><br>
+    <select name="pos_neg_leverage[amortization]">
+      <% [5, 7, 10, 15, 20, 25, 30].each do |num| %>
+        <option value="<%= num %>" <%= "selected" if @pos_neg_leverage.amortization == num  %>><%= num %> years</option>
+      <% end %>
+    </select>
 
   </div>
 </div>

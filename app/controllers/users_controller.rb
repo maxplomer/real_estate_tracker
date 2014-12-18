@@ -14,12 +14,12 @@ class UsersController < ApplicationController
       PositiveVsNegativeLeverage.create(
         user_id: @user.id,
         purchase_price: 1000000, 
-        cap_rate: 7.0, 
+        cap_rate: 10, 
         loan_amount: 700000, 
-        low_interest_rate: 6.0, 
+        low_interest_rate: 4.0, 
         high_interest_rate: 8.0, 
-        interest_only: true, 
-        amortization: 30
+        interest_only: false, 
+        amortization: 15
       )
       redirect_to dashboard_show_url
     else

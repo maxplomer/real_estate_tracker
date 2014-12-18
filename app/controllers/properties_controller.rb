@@ -29,13 +29,13 @@ class PropertiesController < ApplicationController
   def create
     @property = Property.new(property_params)  #can later try to refill the form if error occured
 
-    @property.income = 0
-    @property.expenses = 0
-    @property.purchase_price = 0
-    @property.interest_rate = 0
-    @property.loan_amount = 0
-    @property.interest_only = true
-    @property.amortization = 0
+    @property.income = 50000
+    @property.expenses = 5000
+    @property.purchase_price = 400000
+    @property.interest_rate = 4.5
+    @property.loan_amount = 200000
+    @property.interest_only = false
+    @property.amortization = 15
 
     if @property.save
       redirect_to property_url(@property)
