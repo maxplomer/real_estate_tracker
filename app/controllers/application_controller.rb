@@ -11,8 +11,7 @@ class ApplicationController < ActionController::Base
   helper_method(
     :current_user, 
     :signed_in?, 
-    :remove_trailing_zeros, 
-    :commas_and_integer
+    :remove_trailing_zeros
   )
 
   def truncate(x)
@@ -37,12 +36,6 @@ class ApplicationController < ActionController::Base
   end
   
   private
-
-  #### get rid of this function ####
-  def commas_and_integer(x) 
-    number_with_precision(x, :precision => 0, :delimiter => ',') 
-  end
-  #### get rid of this function ####
 
   def remove_trailing_zeros(x)
     if x == x.to_i

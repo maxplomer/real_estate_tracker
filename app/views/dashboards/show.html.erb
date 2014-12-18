@@ -29,7 +29,7 @@
             class="add-commas"
             id="property_purchase_price"
             name="property[purchase_price]"
-            value="<%= commas_and_integer(@property.purchase_price) %>">
+            value="<%= number_with_precision(@property.purchase_price, :precision => 0, :delimiter => ',') %>">
         </div>
 
         <div class="loan-amount2">
@@ -39,7 +39,7 @@
             class="add-commas"
             id="property_loan_amount"
             name="property[loan_amount]"
-            value="<%= commas_and_integer(@property.loan_amount) %>">
+            value="<%= number_with_precision(@property.loan_amount, :precision => 0, :delimiter => ',') %>">
         </div>
 
         <div class="interest-rate2">
@@ -76,7 +76,7 @@
             class="add-commas"
             id="property_income"
             name="property[income]"
-            value="<%= commas_and_integer(@property.income) %>">
+            value="<%= number_with_precision(@property.income, :precision => 0, :delimiter => ',') %>">
         </div>
 
         <div class="expenses2">
@@ -85,7 +85,7 @@
             class="add-commas"
             id="property_expenses"
             name="property[expenses]"
-            value="<%= commas_and_integer(@property.expenses) %>">
+            value="<%= number_with_precision(@property.expenses, :precision => 0, :delimiter => ',') %>">
         </div>
       </div>
     </form>

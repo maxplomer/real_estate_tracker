@@ -76,22 +76,22 @@ class Property < ActiveRecord::Base
   )
 
   def net_operating_income
-    truncate(self.income - self.expenses)
+    self.income - self.expenses
   end
 
   def debt_service
     return 0 if self.loan_amount == 0
     if self.interest_only
-      truncate(self.interest_rate / 100 * self.loan_amount)
+      self.interest_rate / 100 * self.loan_amount
     else
       return "n/a" if self.interest_rate == 0 || self.amortization == 0
-      truncate(pmt(self.interest_rate/100, self.amortization, -self.loan_amount))
+      pmt(self.interest_rate/100, self.amortization, -self.loan_amount)
     end 
   end
 
   def cash_flow
     return "n/a" if debt_service.class == String
-    truncate(net_operating_income - debt_service)
+    net_operating_income - debt_service
   end
 
   def cash_on_cash
@@ -105,7 +105,7 @@ class Property < ActiveRecord::Base
   end
 
   def down_payment
-    truncate(self.purchase_price - self.loan_amount)
+    self.purchase_price - self.loan_amount
   end
 
   def loan_to_value

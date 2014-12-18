@@ -14,7 +14,7 @@
           class="add-commas"
           id="pos_neg_leverage_purchase_price"
           name="pos_neg_leverage[purchase_price]"
-          value="<%= commas_and_integer(@pos_neg_leverage.purchase_price) %>">
+          value="<%= number_with_precision(@pos_neg_leverage.purchase_price, :precision => 0, :delimiter => ',') %>">
       </div>
 
       <div class="loan-amount">
@@ -24,7 +24,7 @@
           class="add-commas"
           id="pos_neg_leverage_loan_amount"
           name="pos_neg_leverage[loan_amount]"
-          value="<%= commas_and_integer(@pos_neg_leverage.loan_amount) %>">
+          value="<%= number_with_precision(@pos_neg_leverage.loan_amount, :precision => 0, :delimiter => ',') %>">
       </div>
 
       <div class="interest-only">

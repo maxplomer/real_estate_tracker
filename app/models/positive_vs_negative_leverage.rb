@@ -34,7 +34,7 @@ class PositiveVsNegativeLeverage < ActiveRecord::Base
 
 
   def net_operating_income
-    truncate(self.purchase_price * self.cap_rate / 100)
+    self.purchase_price * self.cap_rate / 100
   end
   
   def debt_service_low_interest_rate
@@ -48,19 +48,19 @@ class PositiveVsNegativeLeverage < ActiveRecord::Base
   def debt_service(interest_rate)
     return 0 if self.loan_amount == 0
     if self.interest_only
-      truncate(interest_rate / 100 * self.loan_amount)
+      interest_rate / 100 * self.loan_amount
     else
       return "n/a" if interest_rate == 0 || self.amortization == 0
-      truncate(pmt(interest_rate/100, self.amortization, -self.loan_amount))
+      pmt(interest_rate/100, self.amortization, -self.loan_amount)
     end 
   end
 
   def cash_flow_low_interest_rate
-    truncate(net_operating_income - debt_service_low_interest_rate)
+    net_operating_income - debt_service_low_interest_rate
   end
 
   def cash_flow_high_interest_rate
-    truncate(net_operating_income - debt_service_high_interest_rate)
+    net_operating_income - debt_service_high_interest_rate
   end
 
   def cash_on_cash_low_interest_rate
