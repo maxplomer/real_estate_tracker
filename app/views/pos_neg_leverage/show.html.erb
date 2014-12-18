@@ -41,7 +41,7 @@
         <label for="pos_neg_leverage_cap_rate">Cap Rate</label><br>
 
         <input
-          class="remove-chars"
+          class="remove-chars-truncate"
           id="pos_neg_leverage_cap_rate"
           name="pos_neg_leverage[cap_rate]"
           value="<%= remove_trailing_zeros(@pos_neg_leverage.cap_rate) %>"> &#37;
@@ -51,7 +51,7 @@
         <label for="pos_neg_leverage_low_interest_rate">Low Interest Rate</label><br>
 
         <input
-          class="remove-chars"
+          class="remove-chars-truncate"
           id="pos_neg_leverage_low_interest_rate"
           name="pos_neg_leverage[low_interest_rate]"
           value="<%= remove_trailing_zeros(@pos_neg_leverage.low_interest_rate) %>"> &#37;
@@ -60,7 +60,7 @@
       <div class="high-interest-rate">
         <label for="pos_neg_leverage_high_interest_rate">High Interest Rate</label><br>
         <input
-          class="remove-chars"
+          class="remove-chars-truncate"
           id="pos_neg_leverage_high_interest_rate"
           name="pos_neg_leverage[high_interest_rate]"
           value="<%= remove_trailing_zeros(@pos_neg_leverage.high_interest_rate) %>"> &#37;
@@ -199,44 +199,40 @@
 
 <script language="JavaScript">
 
-  function truncate(x) {
-    x = removeDoubles(x);
-    x = Number(x.replace(/[^\d.-]/g, ''));
-    return Math.round(x * 100) / 100.0;
-  }
-
-  var addCommas = function(event) {
-    if(event.which >= 37 && event.which <= 40){
-      event.preventDefault();
-    }
-    var $this = $(this);
-    var num = $this.val().replace(/(\s)/g, '');
-    num = num.replace (/,/g, "");
-    num = num.replace(/[^\d.-]/g, '');
-    num = removeDoubles(num);
-    num = Number(num);
-    if (num > 0) {
-      num = Math.floor(num);
-    } else {
-      num = Math.ceil(num);
-    }
-    num = num.toString();
-    $this.val(num.replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,"));
-  }
-
-  var removeChars = function(event) {
+  var removeCharsTruncateThis = function(event) {
     if(event.which >= 37 && event.which <= 40){
       event.preventDefault();
     }
     var $this = $(this);
     var num = $this.val();
-    num = removeDoubles(num);
-    $this.val(truncate(num));
+    num = removeCharsTruncate(num);
+    $this.val(num);
   }
 
-  var commasFloor = function(x) {
-    x = x.replace(/(\s)/g, '');
-    x = x.replace (/,/g, "");
+  function removeCharsTruncate(x) {
+    x = removeDoubles(x);
+    x = x.replace(/[^\d.-]/g, '');
+    x = Number(x) * 100;
+    if (x > 0) {
+      x = Math.floor(x);
+    } else {
+      x = Math.ceil(x);
+    }
+    x = x / 100.0;
+    return x;
+  }
+
+  var addCommasThis = function(event) {
+    if(event.which >= 37 && event.which <= 40){
+      event.preventDefault();
+    }
+    var $this = $(this);
+    var num = $this.val();
+    num = addCommas(num);
+    $this.val(num);
+  }
+
+  var addCommas = function(x) {
     x = x.replace(/[^\d.-]/g, '');
     x = removeDoubles(x);
     x = Number(x);
@@ -277,11 +273,11 @@
     var success = function (data) {
       $("#errors").text("");
 
-      var purchasePrice = commasFloor($("#pos_neg_leverage_purchase_price").val());
-      var loanAmount = commasFloor($("#pos_neg_leverage_loan_amount").val());
-      var capRate = truncate($("#pos_neg_leverage_cap_rate").val());
-      var lowInterestRate = truncate($("#pos_neg_leverage_low_interest_rate").val());
-      var highInterestRate = truncate($("#pos_neg_leverage_high_interest_rate").val());
+      var purchasePrice = addCommas($("#pos_neg_leverage_purchase_price").val());
+      var loanAmount = addCommas($("#pos_neg_leverage_loan_amount").val());
+      var capRate = removeCharsTruncate($("#pos_neg_leverage_cap_rate").val());
+      var lowInterestRate = removeCharsTruncate($("#pos_neg_leverage_low_interest_rate").val());
+      var highInterestRate = removeCharsTruncate($("#pos_neg_leverage_high_interest_rate").val());
 
       var netOperatingIncome = data["net_operating_income"];
       var debtServiceLowInterestRate = data["debt_service_low_interest_rate"];
@@ -335,8 +331,8 @@
 
   }
 
-  $('input.add-commas').change(addCommas);
-  $('input.remove-chars').change(removeChars);
+  $('input.add-commas').change(addCommasThis);
+  $('input.remove-chars-truncate').change(removeCharsTruncateThis);
 
   //setup onchange and onkeyup to call updatefields when value has changed
   document.getElementById("pos-neg-lev-form").onchange = updateFields;
