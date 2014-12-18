@@ -83,13 +83,11 @@
   <div class="top-box">
     <div class="inner">Investment @ <br>
       <span class="cap-rate-span">
-        <%= remove_trailing_zeros(@pos_neg_leverage.cap_rate) %>
-      </span>% Cap Rate
+        <%= remove_trailing_zeros(@pos_neg_leverage.cap_rate) %></span>% Cap Rate
     </div>
 
-    <div class="investment-top">&#36;
-      <span id="purchase-price-span">
-        <%= number_with_precision(@pos_neg_leverage.purchase_price, :precision => 0, :delimiter => ',') %>
+    <div class="investment-top">
+      &#36;<span id="purchase-price-span"><%= number_with_precision(@pos_neg_leverage.purchase_price, :precision => 0, :delimiter => ',') %>
       </span>
     </div>
   </div>
@@ -99,25 +97,21 @@
 
     <div class="middle">Borrow <br>Nothing</div>
 
-    <div class="left">&#36;
-      <span class="loan-amount-span">
-        <%= number_with_precision(@pos_neg_leverage.loan_amount, :precision => 0, :delimiter => ',') %>
+    <div class="left">
+      &#36;<span class="loan-amount-span"><%= number_with_precision(@pos_neg_leverage.loan_amount, :precision => 0, :delimiter => ',') %>
       </span> &#64;<br>
       <font color="black">
         <span id="low-interest-rate-span">
-          <%= remove_trailing_zeros(@pos_neg_leverage.low_interest_rate) %>
-        </span>&#37;
+          <%= remove_trailing_zeros(@pos_neg_leverage.low_interest_rate) %></span>&#37;
       </font> Interest
     </div>
 
-    <div class="right">&#36;
-      <span class="loan-amount-span">
-        <%= number_with_precision(@pos_neg_leverage.loan_amount, :precision => 0, :delimiter => ',') %>
+    <div class="right">
+      &#36;<span class="loan-amount-span"><%= number_with_precision(@pos_neg_leverage.loan_amount, :precision => 0, :delimiter => ',') %>
       </span> &#64;<br>
       <font color="black">
         <span id="high-interest-rate-span">
-          <%= remove_trailing_zeros(@pos_neg_leverage.high_interest_rate) %>
-        </span>&#37;
+          <%= remove_trailing_zeros(@pos_neg_leverage.high_interest_rate) %></span>&#37;
       </font> Interest
     </div>
   </div>
@@ -125,21 +119,18 @@
   <div class="top-box">
     <div class="inner">Net Operating <br>Income</div>
 
-    <div class="investment">&#36;
-      <span class="net-operating-income-span">
-        <%= number_with_precision(@pos_neg_leverage.net_operating_income, :precision => 0, :delimiter => ',') %>
+    <div class="investment">
+      &#36;<span class="net-operating-income-span"><%= number_with_precision(@pos_neg_leverage.net_operating_income, :precision => 0, :delimiter => ',') %>
       </span>
     </div>
 
-    <div class="left2">&#36;
-      <span class="net-operating-income-span">
-        <%= number_with_precision(@pos_neg_leverage.net_operating_income, :precision => 0, :delimiter => ',') %>
+    <div class="left2">
+      &#36;<span class="net-operating-income-span"><%= number_with_precision(@pos_neg_leverage.net_operating_income, :precision => 0, :delimiter => ',') %>
       </span>
     </div>
 
-    <div class="right2">&#36;
-      <span class="net-operating-income-span">
-        <%= number_with_precision(@pos_neg_leverage.net_operating_income, :precision => 0, :delimiter => ',') %>
+    <div class="right2">
+      &#36;<span class="net-operating-income-span"><%= number_with_precision(@pos_neg_leverage.net_operating_income, :precision => 0, :delimiter => ',') %>
       </span>
     </div>
   </div>
@@ -149,15 +140,13 @@
 
     <div class="investment">$0</div>
 
-    <div class="left2">&#36;
-      <span id="debt-service-low-interest-rate-span">
-        <%= number_with_precision(@pos_neg_leverage.debt_service_low_interest_rate, :precision => 0, :delimiter => ',') %>
+    <div class="left2">
+      &#36;<span id="debt-service-low-interest-rate-span"><%= number_with_precision(@pos_neg_leverage.debt_service_low_interest_rate, :precision => 0, :delimiter => ',') %>
       </span>
     </div>
 
-    <div class="right2">&#36;
-      <span id="debt-service-high-interest-rate-span">
-        <%= number_with_precision(@pos_neg_leverage.debt_service_high_interest_rate, :precision => 0, :delimiter => ',') %>
+    <div class="right2">
+      &#36;<span id="debt-service-high-interest-rate-span"><%= number_with_precision(@pos_neg_leverage.debt_service_high_interest_rate, :precision => 0, :delimiter => ',') %>
       </span>
     </div>
   </div>
@@ -165,20 +154,17 @@
   <div class="top-box">
     <div class="inner2">Cash Flow</div>
 
-    <div class="investment2">&#36;
-      <span class="net-operating-income-span">
-        <%= number_with_precision(@pos_neg_leverage.net_operating_income, :precision => 0, :delimiter => ',') %>
+    <div class="investment2">
+      &#36;<span class="net-operating-income-span"><%= number_with_precision(@pos_neg_leverage.net_operating_income, :precision => 0, :delimiter => ',') %>
       </span>
     </div>
 
-    <div class="left3">&#36;
-      <span id="cash-flow-low-interest-rate-span">
-        <%= number_with_precision(@pos_neg_leverage.cash_flow_low_interest_rate, :precision => 0, :delimiter => ',') %>
+    <div class="left3">
+      &#36;<span id="cash-flow-low-interest-rate-span"><%= number_with_precision(@pos_neg_leverage.cash_flow_low_interest_rate, :precision => 0, :delimiter => ',') %>
       </span>
     </div>
-    <div class="right3">&#36;
-      <span id="cash-flow-high-interest-rate-span">
-        <%= number_with_precision(@pos_neg_leverage.cash_flow_high_interest_rate, :precision => 0, :delimiter => ',') %>
+    <div class="right3">
+      &#36;<span id="cash-flow-high-interest-rate-span"><%= number_with_precision(@pos_neg_leverage.cash_flow_high_interest_rate, :precision => 0, :delimiter => ',') %>
       </span>
     </div>
   </div>
@@ -188,20 +174,17 @@
 
     <div class="middle-result">
       <span class="cap-rate-span">
-        <%= remove_trailing_zeros(@pos_neg_leverage.cap_rate) %>
-      </span>&#37;
+        <%= remove_trailing_zeros(@pos_neg_leverage.cap_rate) %></span>&#37;
     </div>
 
     <div class="left-result">
       <span id="cash-on-cash-low-interest-rate">
-        <%= @pos_neg_leverage.cash_on_cash_low_interest_rate %>
-      </span>&#37;
+        <%= @pos_neg_leverage.cash_on_cash_low_interest_rate %></span>&#37;
     </div>
 
     <div class="right-result">
       <span id="cash-on-cash-high-interest-rate">
-        <%= @pos_neg_leverage.cash_on_cash_high_interest_rate %>
-      </span>&#37;
+        <%= @pos_neg_leverage.cash_on_cash_high_interest_rate %></span>&#37;
     </div>
   </div>
 

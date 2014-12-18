@@ -95,13 +95,11 @@
     <div class="top-box">
       <div class="inner">Investment @ <br>
         <span class="cap-rate-span">
-          <%= @property.cap_rate %>
-        </span>% Cap Rate
+          <%= @property.cap_rate %></span>% Cap Rate
       </div>
 
-      <div class="investment-top">&#36;
-        <span id="purchase-price-span">
-          <%= number_with_precision(@property.purchase_price, :precision => 0, :delimiter => ',') %>
+      <div class="investment-top">
+        &#36;<span id="purchase-price-span"><%= number_with_precision(@property.purchase_price, :precision => 0, :delimiter => ',') %>
         </span>
       </div>
     </div>
@@ -111,14 +109,12 @@
 
       <div class="middle2"></div>
 
-      <div class="left">&#36;
-        <span id="loan-amount-span">
-          <%= number_with_precision(@property.loan_amount, :precision => 0, :delimiter => ',') %>
+      <div class="left">
+        &#36;<span id="loan-amount-span"><%= number_with_precision(@property.loan_amount, :precision => 0, :delimiter => ',') %>
         </span> &#64;<br>
         <font color="black">
           <span id="interest-rate-span">
-            <%= remove_trailing_zeros(@property.interest_rate) %>
-          </span>&#37;
+            <%= remove_trailing_zeros(@property.interest_rate) %></span>&#37;
         </font> Interest
       </div>
 
@@ -130,15 +126,13 @@
 
       <div class="investmentb"></div>
 
-      <div class="left2">&#36;
-        <span class="net-operating-income-span">
-          <%= number_with_precision(@property.net_operating_income, :precision => 0, :delimiter => ',') %>
+      <div class="left2">
+        &#36;<span class="net-operating-income-span"><%= number_with_precision(@property.net_operating_income, :precision => 0, :delimiter => ',') %>
         </span>
       </div>
 
-      <div class="right2">&#36;
-        <span class="net-operating-income-span">
-          <%= number_with_precision(@property.net_operating_income, :precision => 0, :delimiter => ',') %>
+      <div class="right2">
+        &#36;<span class="net-operating-income-span"><%= number_with_precision(@property.net_operating_income, :precision => 0, :delimiter => ',') %>
         </span>
       </div>
     </div>
@@ -148,9 +142,8 @@
 
       <div class="investmentb"></div>
 
-      <div class="left2">&#36;
-        <span id="debt-service-span">
-          <%= number_with_precision(@property.debt_service, :precision => 0, :delimiter => ',') %>
+      <div class="left2">
+        &#36;<span id="debt-service-span"><%= number_with_precision(@property.debt_service, :precision => 0, :delimiter => ',') %>
         </span>
       </div>
 
@@ -162,15 +155,13 @@
 
       <div class="investment2b"></div>
 
-      <div class="left3">&#36;
-        <span id="cash-flow-span">
-          <%= number_with_precision(@property.cash_flow, :precision => 0, :delimiter => ',') %>
+      <div class="left3">
+        &#36;<span id="cash-flow-span"><%= number_with_precision(@property.cash_flow, :precision => 0, :delimiter => ',') %>
         </span>
       </div>
 
-      <div class="right3">&#36;
-        <span class="net-operating-income-span">
-          <%= number_with_precision(@property.net_operating_income, :precision => 0, :delimiter => ',') %>
+      <div class="right3">
+        &#36;<span class="net-operating-income-span"><%= number_with_precision(@property.net_operating_income, :precision => 0, :delimiter => ',') %>
         </span>
       </div>
     </div>
@@ -182,14 +173,12 @@
 
       <div class="left-result">
         <span id="cash-on-cash-span">
-          <%= @property.cash_on_cash %>
-        </span>&#37;
+          <%= @property.cash_on_cash %></span>&#37;
       </div>
 
       <div class="right-result">
         <span class="cap-rate-span">
-          <%= @property.cap_rate %>
-        </span>&#37;
+          <%= @property.cap_rate %></span>&#37;
       </div>
     </div>
 
@@ -197,16 +186,14 @@
 
     <div class="flow2b"></div>
 
-    <div class="down-payment"><b>Down Payment</b><br>&#36; 
-      <span id="down-payment-span">
-        <%= number_with_precision(@property.down_payment, :precision => 0, :delimiter => ',') %>
+    <div class="down-payment"><b>Down Payment</b><br> 
+      &#36;<span id="down-payment-span"><%= number_with_precision(@property.down_payment, :precision => 0, :delimiter => ',') %>
       </span>
     </div>
 
     <div class="loan-to-value"><b>Loan to value<br>(LTV &#37;)</b><br>
       <span id="loan-to-value-span">
-        <%= @property.loan_to_value %>
-      </span> &#37;
+        <%= @property.loan_to_value %></span>&#37;
     </div>
 
     <div class="dscr"><b>Debt Service<br>Coverage Ratio<br>(DSCR)</b><br>
