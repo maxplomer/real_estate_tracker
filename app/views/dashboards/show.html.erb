@@ -22,44 +22,78 @@
 
   <div class="diagram2">
     <form id="property-form">
-      <div class="top-box">
-        <div class="purchase-price2">
-          <label for="property_purchase_price">Purchase Price</label><br>
 
-          <input
-            class="add-commas"
-            id="property_purchase_price"
-            name="property[purchase_price]"
-            value="$<%= number_with_precision(@property.purchase_price, :precision => 0, :delimiter => ',') %>">
+
+      <div class="left-slider-input">
+        <label for="property_purchase_price">Purchase Price</label><br>
+        <input
+          class="add-commas"
+          id="property_purchase_price"
+          name="property[purchase_price]"
+          value="$<%= number_with_precision(@property.purchase_price, :precision => 0, :delimiter => ',') %>">
+      </div>
+      <div class="relative">
+        <div class="right-slider-input">
+          <input type=range min=0 max=10000000 value="<%= @property.purchase_price %>" id="property_purchase_price_slider" step="10000" oninput="purchasePriceOutputUpdate(value)" list="property_purchase_price_list">
+
+          <datalist id="property_purchase_price_list">
+            <% 0.upto(10) do |num| %>
+              <option><%= num * 10**6 %></option>
+            <% end %>
+          </datalist>
         </div>
+      </div>
 
-        <div class="loan-amount2">
-          <label for="property_loan_amount">Loan Amount</label><br>
+      <div class="left-slider-input">
+        <label for="property_loan_amount">Loan Amount</label><br>
+        <input
+          class="add-commas"
+          id="property_loan_amount"
+          name="property[loan_amount]"
+          value="$<%= number_with_precision(@property.loan_amount, :precision => 0, :delimiter => ',') %>">
+      </div>
 
-          <input
-            class="add-commas"
-            id="property_loan_amount"
-            name="property[loan_amount]"
-            value="$<%= number_with_precision(@property.loan_amount, :precision => 0, :delimiter => ',') %>">
+      <div class="relative">
+        <div class="right-slider-input">
+          <input type=range min=0 max=10000000 value="<%= @property.loan_amount %>" id="property_loan_amount_slider" step="10000" oninput="loanAmountOutputUpdate(value)" list="property_loan_amount_list">
+
+          <datalist id="property_loan_amount_list">
+            <% 0.upto(10) do |num| %>
+              <option><%= num * 10**6 %></option>
+            <% end %>
+          </datalist>
         </div>
+      </div>
 
-        <div class="interest-rate2">
-          <label for="property_interest_rate">Interest Rate</label><br>
+      <div class="left-slider-input">
+        <label for="property_interest_rate">Interest Rate</label><br>
+        <input
+          class="remove-chars-truncate"
+          id="property_interest_rate"
+          name="property[interest_rate]"
+          value="<%= remove_trailing_zeros(@property.interest_rate) %>%">
+      </div>
 
-          <input
-            class="remove-chars-truncate"
-            id="property_interest_rate"
-            name="property[interest_rate]"
-            value="<%= remove_trailing_zeros(@property.interest_rate) %>%">
+      <div class="relative">
+        <div class="right-slider-input">
+          <input type=range min=0 max=25 value="<%= @property.interest_rate %>" id="property_interest_rate_slider" step="0.01" oninput="interestRateOutputUpdate(value)" list="property_interest_rate_list">
+
+          <datalist id="property_interest_rate_list">
+            <% 0.upto(10) do |num| %>
+              <option><%= num * 2.5 %></option>
+            <% end %>
+          </datalist>
         </div>
+      </div>
 
-        <div class="interest-only2">
-          <label for="property_interest_only">Interest Only</label><br>
-          <input id="interest-only-yes" type="radio" name="property[interest_only]" value="Yes" <%= "checked" if @property.interest_only %>> Yes&nbsp;&nbsp;&nbsp;
-          <input id="interest-only-no" type="radio" name="property[interest_only]" value="No" <%= "checked" unless @property.interest_only %>> No
-        </div>
+      <div class="left-slider-input2">
+        <label for="property_interest_only">Interest Only</label><br>
+        <input id="interest-only-yes" type="radio" name="property[interest_only]" value="Yes" <%= "checked" if @property.interest_only %>> Yes&nbsp;&nbsp;&nbsp;
+        <input id="interest-only-no" type="radio" name="property[interest_only]" value="No" <%= "checked" unless @property.interest_only %>> No
+      </div>
 
-        <div class="amortization2">
+      <div class="relative2">
+        <div class="right-slider-input2">
           <label for="property_amortization">Amortization</label><br>
 
           <select name="property[amortization]">
@@ -70,24 +104,45 @@
         </div>
       </div>
 
-      <div class="top-box">
-        <div class="income2">
-          <label for="property_income">Income</label><br>
+      <div class="left-slider-input">
+        <label for="property_income">Income</label><br>
+        <input
+          class="add-commas"
+          id="property_income"
+          name="property[income]"
+          value="$<%= number_with_precision(@property.income, :precision => 0, :delimiter => ',') %>">
+      </div>
 
-          <input
-            class="add-commas"
-            id="property_income"
-            name="property[income]"
-            value="$<%= number_with_precision(@property.income, :precision => 0, :delimiter => ',') %>">
+      <div class="relative">
+        <div class="right-slider-input">
+          <input type=range min=0 max=2000000 value="<%= @property.income %>" id="property_income_slider" step=2000 oninput="incomeOutputUpdate(value)" list="property_income_list">
+
+          <datalist id="property_income_list">
+            <% 0.upto(10) do |num| %>
+              <option><%= num * 2*10**5 %></option>
+            <% end %>
+          </datalist>
         </div>
+      </div>
 
-        <div class="expenses2">
-          <label for="property_expenses">Expenses</label><br>
-          <input
-            class="add-commas"
-            id="property_expenses"
-            name="property[expenses]"
-            value="$<%= number_with_precision(@property.expenses, :precision => 0, :delimiter => ',') %>">
+      <div class="left-slider-input">
+        <label for="property_expenses">Expenses</label><br>
+        <input
+          class="add-commas"
+          id="property_expenses"
+          name="property[expenses]"
+          value="$<%= number_with_precision(@property.expenses, :precision => 0, :delimiter => ',') %>">
+      </div>
+
+      <div class="relative">
+        <div class="right-slider-input">
+          <input type=range min=0 max=1000000 value="<%= @property.expenses %>" id="property_expenses_slider" step=1000 oninput="expensesOutputUpdate(value)" list="property_expenses_list">
+
+          <datalist id="property_expenses_list">
+            <% 0.upto(10) do |num| %>
+              <option><%= num * 10**5 %></option>
+            <% end %>
+          </datalist>
         </div>
       </div>
     </form>
@@ -387,7 +442,60 @@
   document.getElementById("property-form").onkeyup = updateFields;
 
 
-  
+  //new function for sliders
+  function purchasePriceOutputUpdate(value) {
+    document.querySelector('#property_purchase_price').value = addCommas(value);
+  }
+
+  function loanAmountOutputUpdate(value) {
+    document.querySelector('#property_loan_amount').value = addCommas(value);
+  }
+
+  function interestRateOutputUpdate(value) {
+    document.querySelector('#property_interest_rate').value = removeCharsTruncate(value);
+  }
+
+  function incomeOutputUpdate(value) {
+    document.querySelector('#property_income').value = addCommas(value);
+  }
+
+  function expensesOutputUpdate(value) {
+    document.querySelector('#property_expenses').value = addCommas(value);
+  }
+
+  //want to make sure not setting up an endless loop!
+
+  var cleanUpFormat = function (value) {
+    value = value.replace(/[^\d.-]/g, '');
+    value = removeDoubles(value);   
+    value = fixNegativeSign(value);
+    return value;
+  }
+
+  document.getElementById("property_purchase_price").onkeyup = function () {
+    var value = cleanUpFormat(document.getElementById("property_purchase_price").value);
+    document.querySelector('#property_purchase_price_slider').value = value;
+  };
+
+  document.getElementById("property_loan_amount").onkeyup = function () {
+    var value = cleanUpFormat(document.getElementById("property_loan_amount").value);
+    document.querySelector('#property_loan_amount_slider').value = value;
+  };
+
+  document.getElementById("property_interest_rate").onkeyup = function () {
+    var value = cleanUpFormat(document.getElementById("property_interest_rate").value);
+    document.querySelector('#property_interest_rate_slider').value = value;
+  };
+
+  document.getElementById("property_income").onkeyup = function () {
+    var value = cleanUpFormat(document.getElementById("property_income").value);
+    document.querySelector('#property_income_slider').value = value;
+  };
+
+  document.getElementById("property_expenses").onkeyup = function () {
+    var value = cleanUpFormat(document.getElementById("property_expenses").value);
+    document.querySelector('#property_expenses_slider').value = value;
+  };
 
 </script>
 
