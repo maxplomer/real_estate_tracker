@@ -212,13 +212,7 @@
   function removeCharsTruncate(x) {
     x = removeDoubles(x);
     x = x.replace(/[^\d.-]/g, '');
-    x = Number(x) * 100;
-    if (x > 0) {
-      x = Math.floor(x);
-    } else {
-      x = Math.ceil(x);
-    }
-    x = x / 100.0;
+    x = Math.round(Number(x) * 100) / 100.0;
     x = x + "%";
     return x;
   }
