@@ -253,8 +253,9 @@
   }
 
   function removeCharsTruncate(x) {
-    x = removeDoubles(x);
     x = x.replace(/[^\d.-]/g, '');
+    x = removeDoubles(x);
+    x = fixNegativeSign(x);
     x = Math.round(Number(x) * 100) / 100.0;
     x = x + "%";
     return x;
@@ -273,6 +274,7 @@
   var addCommas = function(x) {
     x = x.replace(/[^\d.-]/g, '');
     x = removeDoubles(x);
+    x = fixNegativeSign(x);
     x = Number(x);
     if (x > 0) {
       x = Math.floor(x);
@@ -283,6 +285,16 @@
     x = x.replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
     x = "$" + x;
     return x;
+  }
+
+  var fixNegativeSign = function (str) {
+    if (str.indexOf("-") > -1) {
+      str = str.replace(/-/g, '');
+      str = "-" + str;
+      return str;
+    } else {
+      return str;
+    }
   }
 
   var removeDoubles = function (x) {
