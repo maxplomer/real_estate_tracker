@@ -10,21 +10,21 @@
       <div class="purchase-price">
         <label for="pos_neg_leverage_purchase_price">Purchase Price</label><br>
 
-        &#36; <input
+        <input
           class="add-commas"
           id="pos_neg_leverage_purchase_price"
           name="pos_neg_leverage[purchase_price]"
-          value="<%= number_with_precision(@pos_neg_leverage.purchase_price, :precision => 0, :delimiter => ',') %>">
+          value="$<%= number_with_precision(@pos_neg_leverage.purchase_price, :precision => 0, :delimiter => ',') %>">
       </div>
 
       <div class="loan-amount">
         <label for="pos_neg_leverage_loan_amount">Loan Amount</label><br>
 
-        &#36; <input
+        <input
           class="add-commas"
           id="pos_neg_leverage_loan_amount"
           name="pos_neg_leverage[loan_amount]"
-          value="<%= number_with_precision(@pos_neg_leverage.loan_amount, :precision => 0, :delimiter => ',') %>">
+          value="$<%= number_with_precision(@pos_neg_leverage.loan_amount, :precision => 0, :delimiter => ',') %>">
       </div>
 
       <div class="interest-only">
@@ -44,7 +44,7 @@
           class="remove-chars-truncate"
           id="pos_neg_leverage_cap_rate"
           name="pos_neg_leverage[cap_rate]"
-          value="<%= remove_trailing_zeros(@pos_neg_leverage.cap_rate) %>"> &#37;
+          value="<%= remove_trailing_zeros(@pos_neg_leverage.cap_rate) %>%">
       </div>
 
       <div class="low-interest-rate">
@@ -54,7 +54,7 @@
           class="remove-chars-truncate"
           id="pos_neg_leverage_low_interest_rate"
           name="pos_neg_leverage[low_interest_rate]"
-          value="<%= remove_trailing_zeros(@pos_neg_leverage.low_interest_rate) %>"> &#37;
+          value="<%= remove_trailing_zeros(@pos_neg_leverage.low_interest_rate) %>%">
       </div>
 
       <div class="high-interest-rate">
@@ -63,7 +63,7 @@
           class="remove-chars-truncate"
           id="pos_neg_leverage_high_interest_rate"
           name="pos_neg_leverage[high_interest_rate]"
-          value="<%= remove_trailing_zeros(@pos_neg_leverage.high_interest_rate) %>"> &#37;
+          value="<%= remove_trailing_zeros(@pos_neg_leverage.high_interest_rate) %>%">
       </div>
 
       <div class="amortization">
@@ -83,11 +83,11 @@
   <div class="top-box">
     <div class="inner">Investment @ <br>
       <span class="cap-rate-span">
-        <%= remove_trailing_zeros(@pos_neg_leverage.cap_rate) %></span>% Cap Rate
+        <%= remove_trailing_zeros(@pos_neg_leverage.cap_rate) %>%</span> Cap Rate
     </div>
 
     <div class="investment-top">
-      &#36;<span id="purchase-price-span"><%= number_with_precision(@pos_neg_leverage.purchase_price, :precision => 0, :delimiter => ',') %>
+      <span id="purchase-price-span">&#36;<%= number_with_precision(@pos_neg_leverage.purchase_price, :precision => 0, :delimiter => ',') %>
       </span>
     </div>
   </div>
@@ -98,20 +98,20 @@
     <div class="middle">Borrow <br>Nothing</div>
 
     <div class="left">
-      &#36;<span class="loan-amount-span"><%= number_with_precision(@pos_neg_leverage.loan_amount, :precision => 0, :delimiter => ',') %>
+      <span class="loan-amount-span">&#36;<%= number_with_precision(@pos_neg_leverage.loan_amount, :precision => 0, :delimiter => ',') %>
       </span> &#64;<br>
       <font color="black">
         <span id="low-interest-rate-span">
-          <%= remove_trailing_zeros(@pos_neg_leverage.low_interest_rate) %></span>&#37;
+          <%= remove_trailing_zeros(@pos_neg_leverage.low_interest_rate) %>&#37;</span>
       </font> Interest
     </div>
 
     <div class="right">
-      &#36;<span class="loan-amount-span"><%= number_with_precision(@pos_neg_leverage.loan_amount, :precision => 0, :delimiter => ',') %>
+      <span class="loan-amount-span">&#36;<%= number_with_precision(@pos_neg_leverage.loan_amount, :precision => 0, :delimiter => ',') %>
       </span> &#64;<br>
       <font color="black">
         <span id="high-interest-rate-span">
-          <%= remove_trailing_zeros(@pos_neg_leverage.high_interest_rate) %></span>&#37;
+          <%= remove_trailing_zeros(@pos_neg_leverage.high_interest_rate) %>&#37;</span>
       </font> Interest
     </div>
   </div>
@@ -174,7 +174,7 @@
 
     <div class="middle-result">
       <span class="cap-rate-span">
-        <%= remove_trailing_zeros(@pos_neg_leverage.cap_rate) %></span>&#37;
+        <%= remove_trailing_zeros(@pos_neg_leverage.cap_rate) %>&#37;</span>
     </div>
 
     <div class="left-result">
@@ -219,6 +219,7 @@
       x = Math.ceil(x);
     }
     x = x / 100.0;
+    x = x + "%";
     return x;
   }
 
@@ -243,6 +244,7 @@
     }
     x = x.toString();
     x = x.replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
+    x = "$" + x;
     return x;
   }
 

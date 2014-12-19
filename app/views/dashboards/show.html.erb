@@ -25,21 +25,22 @@
       <div class="top-box">
         <div class="purchase-price2">
           <label for="property_purchase_price">Purchase Price</label><br>
-          &#36; <input
+
+          <input
             class="add-commas"
             id="property_purchase_price"
             name="property[purchase_price]"
-            value="<%= number_with_precision(@property.purchase_price, :precision => 0, :delimiter => ',') %>">
+            value="$<%= number_with_precision(@property.purchase_price, :precision => 0, :delimiter => ',') %>">
         </div>
 
         <div class="loan-amount2">
           <label for="property_loan_amount">Loan Amount</label><br>
 
-          &#36; <input
+          <input
             class="add-commas"
             id="property_loan_amount"
             name="property[loan_amount]"
-            value="<%= number_with_precision(@property.loan_amount, :precision => 0, :delimiter => ',') %>">
+            value="$<%= number_with_precision(@property.loan_amount, :precision => 0, :delimiter => ',') %>">
         </div>
 
         <div class="interest-rate2">
@@ -49,7 +50,7 @@
             class="remove-chars-truncate"
             id="property_interest_rate"
             name="property[interest_rate]"
-            value="<%= remove_trailing_zeros(@property.interest_rate) %>"> &#37;
+            value="<%= remove_trailing_zeros(@property.interest_rate) %>%">
         </div>
 
         <div class="interest-only2">
@@ -72,20 +73,21 @@
       <div class="top-box">
         <div class="income2">
           <label for="property_income">Income</label><br>
-          &#36; <input
+
+          <input
             class="add-commas"
             id="property_income"
             name="property[income]"
-            value="<%= number_with_precision(@property.income, :precision => 0, :delimiter => ',') %>">
+            value="$<%= number_with_precision(@property.income, :precision => 0, :delimiter => ',') %>">
         </div>
 
         <div class="expenses2">
           <label for="property_expenses">Expenses</label><br>
-          &#36; <input
+          <input
             class="add-commas"
             id="property_expenses"
             name="property[expenses]"
-            value="<%= number_with_precision(@property.expenses, :precision => 0, :delimiter => ',') %>">
+            value="$<%= number_with_precision(@property.expenses, :precision => 0, :delimiter => ',') %>">
         </div>
       </div>
     </form>
@@ -99,7 +101,7 @@
       </div>
 
       <div class="investment-top">
-        &#36;<span id="purchase-price-span"><%= number_with_precision(@property.purchase_price, :precision => 0, :delimiter => ',') %>
+        <span id="purchase-price-span">&#36;<%= number_with_precision(@property.purchase_price, :precision => 0, :delimiter => ',') %>
         </span>
       </div>
     </div>
@@ -110,11 +112,11 @@
       <div class="middle2"></div>
 
       <div class="left">
-        &#36;<span id="loan-amount-span"><%= number_with_precision(@property.loan_amount, :precision => 0, :delimiter => ',') %>
+        <span id="loan-amount-span">&#36;<%= number_with_precision(@property.loan_amount, :precision => 0, :delimiter => ',') %>
         </span> &#64;<br>
         <font color="black">
           <span id="interest-rate-span">
-            <%= remove_trailing_zeros(@property.interest_rate) %></span>&#37;
+            <%= remove_trailing_zeros(@property.interest_rate) %>&#37;</span>
         </font> Interest
       </div>
 
@@ -260,6 +262,7 @@
       x = Math.ceil(x);
     }
     x = x / 100.0;
+    x = x + "%";
     return x;
   }
 
@@ -284,6 +287,7 @@
     }
     x = x.toString();
     x = x.replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
+    x = "$" + x;
     return x;
   }
 
