@@ -760,7 +760,8 @@
 
 .space-info {
   width: 500px;
-
+  float: right;
+  margin-right: 100px;
 }
 
 .rightbar {
