@@ -689,6 +689,7 @@
   float: left;
   width: 300px;
   margin: 5px;
+  text-align: center;
 }
 
 .index-property-page {
@@ -697,7 +698,7 @@
 }
 
 .img-properties-index {
-  width: 290px;
+  width: auto;
   height: 200px;
 }
 
